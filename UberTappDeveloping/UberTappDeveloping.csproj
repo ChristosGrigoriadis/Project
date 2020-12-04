@@ -210,6 +210,10 @@
     <Compile Include="Migrations\202012031156558_LocationRelationshipWithUsersAndVenues.Designer.cs">
       <DependentUpon>202012031156558_LocationRelationshipWithUsersAndVenues.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012041335518_FixBeerModel.cs" />
+    <Compile Include="Migrations\202012041335518_FixBeerModel.Designer.cs">
+      <DependentUpon>202012041335518_FixBeerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\Location.cs" />
@@ -331,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012031156558_LocationRelationshipWithUsersAndVenues.resx">
       <DependentUpon>202012031156558_LocationRelationshipWithUsersAndVenues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012041335518_FixBeerModel.resx">
+      <DependentUpon>202012041335518_FixBeerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
