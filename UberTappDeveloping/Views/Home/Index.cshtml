@@ -1,31 +1,78 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+        .wrapper{
+            width: 1170px;
+            margin:auto;
+        }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+        header {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../../img/31-biggest-beer-brands-in-america.jpg');
+            height: 100vh;
+            /*-webkit-background-size:cover;*/
+            background-size: cover;
+            background-position: center center;
+            position: relative;
+        }
+
+        .logo img{
+            width: 300px;
+            float:left;
+            height:auto;
+        }
+
+        .welcome-text{
+            position: absolute;
+            width: 600px;
+            height: 300px;
+            margin: 20% 30%;
+            text-align: center;
+        }
+
+        .welcome-text h1{
+            text-align: center;
+            color:#fff;
+            text-transform: uppercase;
+            font-size: 60px;
+        }
+
+        .welcome-text a{
+            border: 1px solid #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-top: 20px;
+            display: inline-block;
+            color: #fff;
+        }
+
+        .welcome-text a:hover{
+            background: #fff;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="logo">
+                <img src="~/img/Beer-quiz-25-questions-to-test-your-knowledge_wrbm_large.jpg" />
+            </div>
+        </div>
+
+        <div class="welcome-text">
+            <h1>We are Creative</h1>
+            <a href="#">Contact us</a>
+        </div>
+    </header>
+</body>
+</html>
