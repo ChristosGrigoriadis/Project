@@ -33,11 +33,11 @@ namespace UberTappDeveloping.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserBeerViewModel viewModel)
+        public ActionResult Create(BeerViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Venues = db.Venues.ToList();
+                viewModel.Beers = db.Beers.ToList();
                 return View("Create", viewModel);
             }
 
