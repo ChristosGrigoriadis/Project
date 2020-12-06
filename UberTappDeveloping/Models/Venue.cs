@@ -18,7 +18,7 @@ namespace UberTappDeveloping.Models
 		[StringLength(225)]
 		public string Manager { get; set; }
 
-		[Display(Name = "Date Opened")]
+		[Display(Name = "Date Founded")]
 		public DateTime? DateOpened { get; set; }
 
         public string OwnerId { get; set; }
@@ -26,6 +26,7 @@ namespace UberTappDeveloping.Models
 
         public ICollection<VenueBeer> VenueBeers { get; set; }
 
+        [Display(Name = "Venue Location")]
         public int LocationId { get; set; }
         public Location Location { get; set; }
 

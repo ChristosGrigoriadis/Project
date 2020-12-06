@@ -24,6 +24,11 @@ namespace UberTappDeveloping.Models
 		public string AddressNumber { get; set; }
 		public int PostalCode { get; set; }
 
+		public string GetLocation()
+        {
+			return Country + " | " + City + " | " + AddressLine1 + " | " + AddressNumber;
+
+		}
 
         public ICollection<ApplicationUser> UserLocations { get; set; }
         public ICollection<Venue> VenueLocations { get; set; }
