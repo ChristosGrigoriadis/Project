@@ -18,6 +18,7 @@ namespace UberTappDeveloping.Models
         public string BeerEnthusiastId { get; set; }
 
         public Beer FavouriteBeer { get; set; }
+
         public ApplicationUser BeerEnthusiast { get; set; }
     }
 }
