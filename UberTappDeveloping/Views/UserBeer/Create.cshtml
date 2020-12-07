@@ -14,7 +14,7 @@
                     @beer.Name
                 </span>
                 <span class="fav">
-                    @if (Model.ShowActions)
+                    @if (!Model.ShowActions)
                     {
                         <button data-user-id="@beer.Id" class="btn btn-link js-toggle-fav">Add as Favourite Beer</button>
                     }
