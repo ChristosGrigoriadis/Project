@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using UberTappDeveloping.Helper.Enums;
+using UberTappDeveloping.Models;
 
 namespace UberTappDeveloping.ViewModels
 {
@@ -79,6 +82,31 @@ namespace UberTappDeveloping.ViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Username should be 3-50 characters long")]
+        public string Username { get; set; }
+
+        [Display(Name = "First Name")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "First Name should be 3-50 characters long")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Last Name should be 3-50 characters long")]
+        public string LastName { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MMM/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date Of Birth")]
+        public DateTime? BirthDate { get; set; }
+
+        public Gender? Gender { get; set; }
+
+        [Display(Name = "Are you a Venue Owner?")]
+        public bool IsVenueOwner { get; set; }
+
+        public Location Location { get; set; }
     }
 
     public class ResetPasswordViewModel
