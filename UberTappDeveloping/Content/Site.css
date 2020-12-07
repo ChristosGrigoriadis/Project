@@ -22,32 +22,3 @@ select,
 textarea {
     max-width: 280px;
 }
-
-/*Page-level styles*/
-.beers {
-    list-style: none;
-}
-
-    .beers > li {
-        position: relative;
-        margin-bottom: 10px;
-    }
-
-.gigs > li .details {
-    position: absolute;
-    top: 0;
-    left: 70px;
-}
-
-.beers > li .details .beer {
-    font-size: 15px;
-    display: block;
-    margin-top: 8px;
-    position: relative;
-}
-
-.beers > li .details .fav {
-    display: block;
-    position: relative;
-    left: -15px;
-}

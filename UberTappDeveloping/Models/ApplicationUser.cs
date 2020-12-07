@@ -36,7 +36,7 @@ namespace UberTappDeveloping.Models
 
         public ICollection<UserBeer> UserBeers { get; set; }
 
-        public int? LocationId { get; set; }
+        public int LocationId { get; set; }
         public Location Location { get; set; }
 
 
