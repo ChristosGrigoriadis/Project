@@ -19,14 +19,14 @@
 @using (Html.BeginForm("Index", "Beer", FormMethod.Get))
 {
     <p>
-        Find By Name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
+        @*Find By Name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)*@
+        <input id="myInput" type="text" placeholder="Search..." />
     </p>
 }
 
 <table class="table">
     <tr>
-        <th>
+        <th id="thName">
             @Html.DisplayNameFor(model => model.First().Name)
         </th>
         <th>
@@ -82,3 +82,16 @@
     @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $(".table tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}
