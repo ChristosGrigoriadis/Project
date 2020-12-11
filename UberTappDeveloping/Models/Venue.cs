@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -21,6 +22,7 @@ namespace UberTappDeveloping.Models
 		[Display(Name = "Date Founded")]
 		public DateTime? DateOpened { get; set; }
 
+        //[ForeignKey("ApplicationUser")]
         public string OwnerId { get; set; }
         public ApplicationUser Owner { get; set; }
 
