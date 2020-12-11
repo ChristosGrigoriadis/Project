@@ -5,8 +5,9 @@
 
 <h2>Venue Form</h2>
 
-@using (Html.BeginForm("New", "Venue"))
+@using (Html.BeginForm(Model.ActionName, "Venue"))
 {
+    @Html.HiddenFor(v => v.Venue.Id)
     <div class="form-group">
         @Html.LabelFor(v => v.Venue.Name)
         @Html.TextBoxFor(v => v.Venue.Name, new { @class = "form-control", autofocus = true })
@@ -15,13 +16,13 @@
 
     <div class="form-group">
         @Html.LabelFor(v => v.Venue.Manager)
-        @Html.TextBoxFor(v => v.Venue.Manager, new { @class = "form-control" })
+        @Html.TextBoxFor(v => v.Venue.Manager, new { @class = "form-control", @Value = Model.ManagerName })
         @Html.ValidationMessageFor(v => v.Venue.Manager)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(v => v.Venue.DateOpened)
-        @Html.TextBoxFor(v => v.Venue.DateOpened, new { @class = "form-control", placeholder = "17 5 2021" })
+        @Html.TextBoxFor(v => v.Venue.DateOpened, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
     </div>
 
     <div class="form-group">
