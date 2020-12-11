@@ -228,6 +228,10 @@
     <Compile Include="Migrations\202012061552179_MakeApplicationUserFKLocationNullable.Designer.cs">
       <DependentUpon>202012061552179_MakeApplicationUserFKLocationNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012111702010_FixBeerModel.cs" />
+    <Compile Include="Migrations\202012111702010_FixBeerModel.Designer.cs">
+      <DependentUpon>202012111702010_FixBeerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\Location.cs" />
@@ -354,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012061552179_MakeApplicationUserFKLocationNullable.resx">
       <DependentUpon>202012061552179_MakeApplicationUserFKLocationNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012111702010_FixBeerModel.resx">
+      <DependentUpon>202012111702010_FixBeerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
