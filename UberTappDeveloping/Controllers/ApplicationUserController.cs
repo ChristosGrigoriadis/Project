@@ -27,8 +27,8 @@ namespace UberTappDeveloping.Controllers
 
 		#region GET
 
-		// GET: All ApplicationUsers
-		//[Authorize(Roles = RoleNames.Admin)]
+		// GET: All ApplicationUsers (Admin)
+		[Authorize(Roles = RoleNames.Admin)]
 		public ActionResult AllUsers()
 		{
 			var applicationUsers = context.Users.ToList();
@@ -36,7 +36,7 @@ namespace UberTappDeveloping.Controllers
 		}
 
 		// GET: An ApplicationUser
-		//[Authorize]
+		[Authorize]
 		public ActionResult Edit(string id)
 		{
 			var applicationUser = context.Users.SingleOrDefault(u => u.Id == id);
@@ -62,7 +62,7 @@ namespace UberTappDeveloping.Controllers
 		}
 
 		// GET: ApplicationUser Details
-		//[Authorize]
+		[Authorize]
 		public ActionResult Details(string id)
 		{
 			var applicationUser = context.Users.SingleOrDefault(u => u.Id == id);
@@ -79,7 +79,7 @@ namespace UberTappDeveloping.Controllers
 
 		// POST: Edit ApplicationUser
 		[HttpPost]
-		//[Authorize]
+		[Authorize]
 		[ValidateAntiForgeryToken]
 		public ActionResult Save(ApplicationUser applicationUser)
 		{
@@ -106,5 +106,6 @@ namespace UberTappDeveloping.Controllers
 
 		#endregion
 
-	}
-}
+	} // public class ApplicationUserController : Controller END //
+
+} // namespace UberTappDeveloping.Controllers END //

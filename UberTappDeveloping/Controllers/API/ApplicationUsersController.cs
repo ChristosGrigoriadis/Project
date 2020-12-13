@@ -26,7 +26,7 @@ namespace UberTappDeveloping.Controllers.API
 		#region DELETE
 
 		// DELETE: /api/applicationusers/id
-		//[Authorize(Roles = RoleNames.Admin)]
+		[Authorize(Roles = RoleNames.Admin)]
 		[HttpDelete]
 		public IHttpActionResult Delete(string id)
 		{
@@ -42,5 +42,7 @@ namespace UberTappDeveloping.Controllers.API
 		}
 
 		#endregion
-	}
-}
+
+	} // public class ApplicationUsersController : ApiController END //
+
+} // namespace UberTappDeveloping.Controllers.API END //
