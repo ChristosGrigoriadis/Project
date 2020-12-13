@@ -50,7 +50,7 @@ namespace UberTappDeveloping.Controllers
 
             var viewModel = new VenueFormViewModel
             {
-                Locations = GetLocations(),
+                Locations = context.Locations,
                 ManagerName = GetUser().FirstName + " " + GetUser().LastName,
                 Venue = venue
             };
@@ -69,7 +69,7 @@ namespace UberTappDeveloping.Controllers
             {
                 var viewModel = new VenueFormViewModel
                 {
-                    Locations = GetLocations(),
+                    Locations = context.Locations,
                     ManagerName = GetUser().FirstName + " " + GetUser().LastName,
                     Venue = venue
                 };
@@ -103,12 +103,12 @@ namespace UberTappDeveloping.Controllers
             return View(userVenues);
         }
 
-        private IEnumerable<object> GetLocations()
-        {
-            return context.Locations
-                .Select(l => new { value = l.Id, text = l.Country + " | " + l.City + " | " + l.AddressLine1 + " " + l.AddressNumber });
-            //    as IEnumerable<object>;
-        }
+        //private IEnumerable<object> GetLocations()
+        //{
+        //    //return context.Locations
+        //    //    .Select(l => new { value = l.Id, text = l.Country + " | " + l.City + " | " + l.AddressLine1 + " " + l.AddressNumber });
+        //    //    as IEnumerable<object>;
+        //}
 
         private ApplicationUser GetUser()
         {
@@ -123,7 +123,7 @@ namespace UberTappDeveloping.Controllers
             
             var viewModel = new VenueFormViewModel
             {
-                Locations = GetLocations(),
+                Locations = context.Locations,
                 ManagerName = GetUser().FirstName + " " + GetUser().LastName,
                 Venue = new Venue()
             };
@@ -140,7 +140,7 @@ namespace UberTappDeveloping.Controllers
             {
                 var viewModel = new VenueFormViewModel
                 {
-                    Locations = GetLocations(),
+                    Locations = context.Locations,
                     ManagerName = GetUser().FirstName + " " + GetUser().LastName,
                     Venue = new Venue()
                 };

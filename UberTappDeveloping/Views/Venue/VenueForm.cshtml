@@ -27,7 +27,7 @@
 
     <div class="form-group">
         @Html.LabelFor(v => v.Venue.LocationId)
-        @Html.DropDownListFor(v => v.Venue.LocationId, new SelectList(Model.Locations, "value", "text"), "Select", new { @class = "form-control" })
+        @Html.DropDownListFor(v => v.Venue.LocationId, new SelectList(Model.Locations, "Id", "Display"), " --- Select --- ", new { @class = "form-control" })
         @Html.ValidationMessageFor(v => v.Venue.LocationId)
     </div>
 

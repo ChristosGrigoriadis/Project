@@ -37,7 +37,7 @@ namespace UberTappDeveloping.DAL
 
             modelBuilder.Entity<Location>()
                 .HasMany(l => l.UserLocations)
-                .WithOptional(a => a.Location)
+                .WithRequired(a => a.Location)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>()

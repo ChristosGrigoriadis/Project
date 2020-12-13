@@ -13,7 +13,7 @@ namespace UberTappDeveloping.ViewModels
     {
         public Venue Venue { get; set; }
 
-        public IEnumerable<object> Locations { get; set; }
+        public IEnumerable<Location> Locations { get; set; }
 
         public string ManagerName { get; set; }
         
