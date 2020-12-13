@@ -176,7 +176,7 @@ namespace UberTappDeveloping.Controllers
 				var user = new ApplicationUser
 				{
 					Email = viewModel.Email,
-					UserName = viewModel.Username,
+					UserName = viewModel.UserName,
 					FirstName = viewModel.FirstName,
 					LastName = viewModel.LastName,
 					BirthDate = viewModel.BirthDate,

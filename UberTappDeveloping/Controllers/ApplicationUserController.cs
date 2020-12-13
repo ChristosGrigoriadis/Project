@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using UberTappDeveloping.DAL;
 using UberTappDeveloping.Helper.Roles;
 using UberTappDeveloping.Models;
+using System.Data.Entity;
+using UberTappDeveloping.ViewModels;
 
 namespace UberTappDeveloping.Controllers
 {
@@ -26,15 +28,15 @@ namespace UberTappDeveloping.Controllers
 		#region GET
 
 		// GET: All ApplicationUsers
-		[Authorize(Roles = RoleNames.Admin)]
-		public ActionResult Index()
+		//[Authorize(Roles = RoleNames.Admin)]
+		public ActionResult AllUsers()
 		{
 			var applicationUsers = context.Users.ToList();
-			return View("Index", applicationUsers);
+			return View("AllUsers", applicationUsers);
 		}
 
 		// GET: An ApplicationUser
-		[Authorize]
+		//[Authorize]
 		public ActionResult Edit(string id)
 		{
 			var applicationUser = context.Users.SingleOrDefault(u => u.Id == id);
@@ -42,11 +44,25 @@ namespace UberTappDeveloping.Controllers
 			if (applicationUser == null)
 				return HttpNotFound();
 
-			return View("UserForm", applicationUser);
+			var viewModel = new UserFormViewModel 
+			{
+				Id = applicationUser.Id,
+				Email = applicationUser.Email,
+				UserName = applicationUser.UserName,
+				FirstName = applicationUser.FirstName,
+				LastName=applicationUser.LastName,
+				BirthDate = applicationUser.BirthDate,
+				Gender =applicationUser.Gender,
+				IsVenueOwner = applicationUser.IsVenueOwner,
+				LocationId = applicationUser.LocationId,
+				Locations = context.Locations
+			};
+
+			return View("UserForm", viewModel);
 		}
 
 		// GET: ApplicationUser Details
-		[Authorize]
+		//[Authorize]
 		public ActionResult Details(string id)
 		{
 			var applicationUser = context.Users.SingleOrDefault(u => u.Id == id);
@@ -63,7 +79,7 @@ namespace UberTappDeveloping.Controllers
 
 		// POST: Edit ApplicationUser
 		[HttpPost]
-		[Authorize]
+		//[Authorize]
 		[ValidateAntiForgeryToken]
 		public ActionResult Save(ApplicationUser applicationUser)
 		{
@@ -81,6 +97,7 @@ namespace UberTappDeveloping.Controllers
 			userDb.LastName = applicationUser.LastName;
 			userDb.BirthDate = applicationUser.BirthDate;
 			userDb.Gender = applicationUser.Gender;
+			userDb.LocationId = applicationUser.LocationId;
 
 			context.SaveChanges();
 
