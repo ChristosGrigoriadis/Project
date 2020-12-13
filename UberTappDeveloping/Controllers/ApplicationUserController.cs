@@ -65,7 +65,9 @@ namespace UberTappDeveloping.Controllers
 		[Authorize]
 		public ActionResult Details(string id)
 		{
-			var applicationUser = context.Users.SingleOrDefault(u => u.Id == id);
+			var applicationUser = context.Users
+				.Include(u => u.Location)
+				.SingleOrDefault(u => u.Id == id);
 
 			if (applicationUser == null)
 				return HttpNotFound();

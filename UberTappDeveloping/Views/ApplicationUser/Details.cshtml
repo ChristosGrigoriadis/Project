@@ -67,7 +67,7 @@
                 </tr>
                 <tr>
                     <td>Location</td>
-                    <td>@Html.DisplayFor(model => model.LocationId)</td>
+                    <td>@Html.DisplayFor(model => model.Location.Display)</td>
                 </tr>
                 <tr>
                     <td>Email</td>
@@ -107,7 +107,7 @@
         $(document).ready(function () {
             $("#deleteBtn").on("click", function () {
                 bootbox.alert('You cannot delete your profile! If you wish to unsubscribe' +
-                    ' from UberTap please click on "Contact" and submit a request!');
+                    ' from UberTapp please click on "Contact" and submit a request!');
             });
         });
 

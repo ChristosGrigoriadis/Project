@@ -39,7 +39,7 @@
                         <td>@user.LastName</td>
                         <td class="buttons">
                             <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "ApplicationUser", new { Id = user.Id }, new { title = "View User's Profile" })</button>
-                            <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "ApplicationUser", new { Id = user.Id }, new { title = "Update User Info" })</button>
+                            <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "ApplicationUser", new { Id = user.Id }, new { title = "Update User's Info" })</button>
                             <button class="btn btn-sm btn-danger js-delete" data-user-id="@user.Id" title="Delete This User">Delete</button>
                         </td>
                     </tr>
