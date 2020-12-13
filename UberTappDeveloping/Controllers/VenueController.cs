@@ -25,6 +25,17 @@ namespace UberTappDeveloping.Controllers
             base.Dispose(disposing);
         }
 
+
+        public ActionResult VenueBeers()
+        {
+            var viewModel = new VenueBeersViewModel
+            {
+                AllBeers = context.Beers
+            };
+
+            return View(viewModel);
+        }
+
         // GET: Venue
         public ActionResult Index()
         {
@@ -32,6 +43,7 @@ namespace UberTappDeveloping.Controllers
         }
 
         //Get: Edit/id
+        [Authorize(Roles = "Venue Owner")]
         public ActionResult Edit(int id)
         {
             var venue = context.Venues.SingleOrDefault(v => v.Id == id);
@@ -47,6 +59,7 @@ namespace UberTappDeveloping.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Venue Owner")]
         public ActionResult Update(Venue venue)
         {
             if (venue == null)
@@ -78,6 +91,7 @@ namespace UberTappDeveloping.Controllers
             return RedirectToAction("Index", "home");
         }
 
+        [Authorize(Roles = "Venue Owner")]
         public ActionResult UserVenues()
         {
             var userId = User.Identity.GetUserId();

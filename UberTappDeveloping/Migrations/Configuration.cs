@@ -46,8 +46,8 @@ namespace UberTappDeveloping.Migrations
             };
 
 
-            beers.ForEach(b => context.Beers.AddOrUpdate(kv => kv.Name, b));
-            context.SaveChanges();
+            //beers.ForEach(b => context.Beers.AddOrUpdate(kv => kv.Name, b));
+            //context.SaveChanges();
 
 
 

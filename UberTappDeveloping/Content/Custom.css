@@ -1,0 +1,57 @@
+﻿
+.container {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.all {
+    background-color: antiquewhite;
+    height: 100%;
+    border: medium solid black;
+    overflow: scroll;
+}
+
+.selected {
+    background-color: burlywood;
+    height: 100%;
+    border: medium solid black;
+    overflow: scroll;
+}
+
+.box {
+    background-color: cornflowerblue;
+    margin: 5px auto;
+    width: 80%;
+    height: 8%;
+    border: medium solid black;
+    cursor: move;
+}
+
+.destination {
+    width: 30%;
+    height: 700px;
+    text-align: center;
+}
+
+.origin {
+    width: 30%;
+    height: 700px;
+    text-align: center;
+}
+
+.venues {
+    width: 25%;
+    height: 700px;
+    text-align: center;
+}
+
+.myVenues {
+    background-color: aquamarine;
+    height: 100%;
+    border: medium solid black;
+    overflow: scroll;
+}
