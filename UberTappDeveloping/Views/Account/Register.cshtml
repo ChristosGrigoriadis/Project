@@ -5,123 +5,96 @@
 }
 
 @*<style></style>*@
-
+<link href="~/Content/CustomDisplay.css" rel="stylesheet" />
 @*<style></style>*@
 
-<h2>Create a new account (the boring stuff...)</h2>
-<h6>Fields with (*) are required...</h6>
+<body class="body">
+    <div class="container-fluid">
+        <h2>Create a new account (the boring stuff...)</h2>
+        <h6>Fields with (*) are required...</h6>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
 
-    <h4>Login Details</h4>
+            <h4>Login Details</h4>
 
-    <div class="row">
-        <div class="form-group col-md-6">
-            @Html.LabelFor(m => m.Email)*
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Email)
-        </div>
-        <div class="form-group col-md-6">
-            @Html.LabelFor(m => m.Username)*
-            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Username)
-        </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.Email)*
+                    @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.Email)
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.UserName)*
+                    @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.UserName)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.Password)*
+                    @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.Password)
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.ConfirmPassword)*
+                    @Html.PasswordFor(u => u.ConfirmPassword, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.ConfirmPassword)
+                </div>
+            </div>
+
+            <h4>Personal Details</h4>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.FirstName)
+                    @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.FirstName)
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.LastName)
+                    @Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.LastName)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.BirthDate)
+                    @Html.TextBoxFor(u => u.BirthDate, "{0:dd/MMM/yyyy}", new { @class = "form-control", type = "date" })
+                    @Html.ValidationMessageFor(m => m.BirthDate)
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.Gender)
+                    @Html.EnumDropDownListFor(u => u.Gender, "--- Select ---", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <h4>Location Details</h4>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.LocationId)*
+                    @Html.DropDownListFor(u => u.LocationId, new SelectList(Model.Locations, "Id", "Display"), " --- Select --- ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(u => u.LocationId)
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(u => u.IsVenueOwner)
+                    @Html.CheckBoxFor(u => u.IsVenueOwner)
+                </div>
+            </div>
+
+            <div id="btnRow" class="row">
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-primary">Join UberTap (The fun stuff!!!)</button>
+                </div>
+            </div>
+
+        }
     </div>
-
-    <div class="row">
-        <div class="form-group col-md-6">
-            @Html.LabelFor(m => m.Password)*
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Password)
-        </div>
-        <div class="form-group col-md-6">
-            @Html.LabelFor(m => m.ConfirmPassword)*
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.ConfirmPassword)
-        </div>
-    </div>
-
-    <h4>Personal Details</h4>
-
-    <div class="row">
-        <div class="form-group col-md-6">
-            @Html.LabelFor(m => m.FirstName)
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.FirstName)
-        </div>
-        <div class="form-group col-md-6">
-            @Html.LabelFor(m => m.LastName)
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.LastName)
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="form-group col-md-6">
-            @Html.LabelFor(u => u.BirthDate)
-            @Html.TextBoxFor(u => u.BirthDate, "{0:dd/MMM/yyyy}", new { @class = "form-control", type = "date" })
-            @Html.ValidationMessageFor(m => m.BirthDate)
-        </div>
-        <div class="form-group col-md-6">
-            @Html.LabelFor(u => u.Gender)
-            @Html.EnumDropDownListFor(u => u.Gender, "--- Select ---", new { @class = "form-control" })
-        </div>
-    </div>
-
-    <h4>Location Details</h4>
-
-    @*<div class="row">
-        <div class="form-group col-md-4">
-            @Html.LabelFor(m => m.Location.Country)*
-            @Html.TextBoxFor(m => m.Location.Country, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Location.Country)
-        </div>
-        <div class="form-group col-md-4">
-            @Html.LabelFor(m => m.Location.City)*
-            @Html.TextBoxFor(m => m.Location.City, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Location.City)
-        </div>
-        <div class="form-group col-md-4">
-            @Html.LabelFor(m => m.Location.AddressLine1)*
-            @Html.TextBoxFor(m => m.Location.AddressLine1, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Location.AddressLine1)
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="form-group col-md-4">
-            @Html.LabelFor(m => m.Location.AddressLine2)
-            @Html.TextBoxFor(m => m.Location.AddressLine2, new { @class = "form-control", placeholder = "Only if you have one..." })
-            @Html.ValidationMessageFor(m => m.Location.AddressLine2)
-        </div>
-        <div class="form-group col-md-4">
-            @Html.LabelFor(m => m.Location.AddressNumber)*
-            @Html.TextBoxFor(m => m.Location.AddressNumber, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Location.AddressNumber)
-        </div>
-        <div class="form-group col-md-4">
-            @Html.LabelFor(m => m.Location.PostalCode)*
-            @Html.TextBoxFor(m => m.Location.PostalCode, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Location.PostalCode)
-        </div>
-    </div>*@
-
-    <div class="row">
-        <div class="form-group col-md-6">
-            @Html.LabelFor(m => m.IsVenueOwner)
-            @Html.CheckBoxFor(m => m.IsVenueOwner)
-        </div>
-    </div>
-
-    <div id="btnRow" class="row">
-        <div class="form-group col-md-12">
-            <button type="submit" class="btn btn-primary">Join UberTap (The fun stuff!!!)</button>
-        </div>
-    </div>
-
-}
+</body>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

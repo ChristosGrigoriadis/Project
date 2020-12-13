@@ -156,7 +156,12 @@ namespace UberTappDeveloping.Controllers
 		[AllowAnonymous]
 		public ActionResult Register()
 		{
-			return View();
+			var locations = context.Locations.ToList();
+			var viewModel = new RegisterViewModel
+			{
+				Locations = locations
+			};
+			return View(viewModel);
 		}
 
 		//
@@ -171,13 +176,13 @@ namespace UberTappDeveloping.Controllers
 				var user = new ApplicationUser
 				{
 					Email = viewModel.Email,
-					UserName = viewModel.Username,					
+					UserName = viewModel.UserName,
 					FirstName = viewModel.FirstName,
 					LastName = viewModel.LastName,
 					BirthDate = viewModel.BirthDate,
 					Gender = viewModel.Gender,
 					IsVenueOwner = viewModel.IsVenueOwner,
-					Location = viewModel.Location
+					LocationId = viewModel.LocationId
 				};
 				var result = await UserManager.CreateAsync(user, viewModel.Password);
 				if (result.Succeeded)

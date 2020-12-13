@@ -42,5 +42,7 @@ namespace UberTappDeveloping.Controllers.API
 		}
 
 		#endregion
-	}
-}
+
+	} // public class ApplicationUsersController : ApiController END //
+
+} // namespace UberTappDeveloping.Controllers.API END //

@@ -1,13 +1,13 @@
 namespace UberTappDeveloping.Migrations
 {
     using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using UberTappDeveloping.Models;
+	using UberTappDeveloping.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<UberTappDeveloping.DAL.ApplicationDbContext>
+	internal sealed class Configuration : DbMigrationsConfiguration<UberTappDeveloping.DAL.ApplicationDbContext>
     {
         public Configuration()
         {
@@ -46,23 +46,8 @@ namespace UberTappDeveloping.Migrations
             };
 
 
-            //beers.ForEach(b => context.Beers.AddOrUpdate(kv => kv.Name, b));
-            //context.SaveChanges();
-
-
-
-
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
-
-            //var beers = new List<Beer>
-            //{
-                
-            //};
-            //beers.ForEach(s => context.Beers.AddOrUpdate(p => p.Name, s));
-            //context.SaveChanges();
+            beers.ForEach(b => context.Beers.AddOrUpdate(kv => kv.Name, b));
+            context.SaveChanges();
         }
     }
 }

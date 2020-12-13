@@ -9,23 +9,23 @@ namespace UberTappDeveloping.Models
 	public class Location
 	{
 		public int Id { get; set; }
-
-		[Required]
-		public string Country { get; set; }
-
-		[Required]
-		public string City { get; set; }
-
-		[Required]
-		public string AddressLine1 { get; set; }
-		public string AddressLine2 { get; set; }
-
-		[Required]
-		public string AddressNumber { get; set; }
 		public int PostalCode { get; set; }
 
+		public string Territory { get; set; }
 
-        public ICollection<ApplicationUser> UserLocations { get; set; }
+		public decimal Latitude { get; set; }
+
+		public decimal Longitude { get; set; }
+
+		public string Display
+		{
+			get
+			{
+				return PostalCode + " - " + Territory;
+			}
+		}
+
+		public ICollection<ApplicationUser> UserLocations { get; set; }
         public ICollection<Venue> VenueLocations { get; set; }
 
     }

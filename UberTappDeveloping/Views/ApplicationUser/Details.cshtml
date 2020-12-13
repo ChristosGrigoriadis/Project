@@ -1,0 +1,117 @@
+﻿@model UberTappDeveloping.Models.ApplicationUser
+@using Microsoft.AspNet.Identity
+
+@*<style></style>*@
+
+@*<style></style>*@
+
+<body class="body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <h2>Profile Details</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-2">
+                <button class="btn btn-sm btn-primary">@Html.ActionLink("Back", "Index", "Home", null, new { title = "Home" })</button>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <td>First Name</td>
+                    @if (Model.FirstName == null)
+                    {
+                        <td><i>First Name not assigned</i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayFor(model => model.FirstName)</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    @if (Model.LastName == null)
+                    {
+                        <td><i>Last Name not assigned</i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayFor(model => model.LastName)</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Date Of Birth</td>
+                    @if (Model.BirthDate == null)
+                    {
+                        <td><i>Date Of Birth not assigned</i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayFor(model => model.BirthDate)</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    @if (Model.Gender == null)
+                    {
+                        <td><i>Gender not assigned</i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayFor(model => model.Gender)</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td>@Html.DisplayFor(model => model.Location.Display)</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>@Html.DisplayFor(model => model.UserName)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                @if (User.IsInRole("Admin"))
+                {
+                    <button class="btn btn-sm btn-info">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
+                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-primary">@Html.ActionLink("Contact", "EmailForm", "Home", new { Id = User.Identity.GetUserId() }, new { title = "Contact Us" })</button>
+                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
+                    <button id="deleteBtn" class="btn btn-sm btn-danger" title="Delete Profile">Delete</button>
+                }
+
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts
+{
+
+    <script>
+
+        $(document).ready(function () {
+            $("#deleteBtn").on("click", function () {
+                bootbox.alert('You cannot delete your profile! If you wish to unsubscribe' +
+                    ' from UberTapp please click on "Contact" and submit a request!');
+            });
+        });
+
+    </script>
+
+}
+

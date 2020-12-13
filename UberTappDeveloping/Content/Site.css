@@ -23,14 +23,22 @@ textarea {
     max-width: 280px;
 }
 
-/*Custom CSS*/
+/*BootStrap Overrides*/
 
-.field-validation-error {
-    color:red;
-    font-weight:bold;
+footer {
+    border-top: solid;
+    margin-top: 10%;
+    padding: 10px;
 }
 
-/*.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
-    background-color: #ffffff;
-    opacity: 1;
-}*/
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error {
+    border: 2px solid red;
+}
+
+input, select, textarea {
+    max-width: 95%;
+}
