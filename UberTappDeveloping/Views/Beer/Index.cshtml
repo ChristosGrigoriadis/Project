@@ -18,10 +18,11 @@
 
 @using (Html.BeginForm("Index", "Beer", FormMethod.Get))
 {
-    <p>
-        @*Find By Name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)*@
-        <input id="myInput" type="text" placeholder="Search..." />
-    </p>
+<p>
+    Find By Name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+    <input type="submit" value="Search" />
+    @*<input id="myInput" type="text" placeholder="Search..." />*@
+</p>
 }
 
 <table class="table">
