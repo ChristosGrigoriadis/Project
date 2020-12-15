@@ -8,6 +8,7 @@ using UberTappDeveloping.DAL;
 using UberTappDeveloping.Models;
 using UberTappDeveloping.ViewModels;
 using System.Data.Entity;
+using UberTappDeveloping.Helper.Roles;
 
 namespace UberTappDeveloping.Controllers
 {
@@ -25,7 +26,6 @@ namespace UberTappDeveloping.Controllers
             base.Dispose(disposing);
         }
 
-
         public ActionResult VenueBeers()
         {
             var viewModel = new VenueBeersViewModel
@@ -42,9 +42,9 @@ namespace UberTappDeveloping.Controllers
             return View();
         }
 
-        //Get: Edit/id
-        [Authorize(Roles = "Venue Owner")]
-        public ActionResult Edit(int id)
+		//Get: Edit/id
+		[Authorize(Roles = RoleNames.Admin + "," + RoleNames.VenueOwner)]
+		public ActionResult Edit(int id)
         {
             var venue = context.Venues.SingleOrDefault(v => v.Id == id);
 
@@ -59,7 +59,7 @@ namespace UberTappDeveloping.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Venue Owner")]
+        [Authorize(Roles = RoleNames.Admin + "," + RoleNames.VenueOwner)]
         public ActionResult Update(Venue venue)
         {
             if (venue == null)
@@ -91,7 +91,7 @@ namespace UberTappDeveloping.Controllers
             return RedirectToAction("Index", "home");
         }
 
-        [Authorize(Roles = "Venue Owner")]
+        [Authorize(Roles = RoleNames.Admin + "," + RoleNames.VenueOwner)]
         public ActionResult UserVenues()
         {
             var userId = User.Identity.GetUserId();
@@ -117,7 +117,7 @@ namespace UberTappDeveloping.Controllers
         }
 
         //GET : venue/new
-        [Authorize(Roles = "Venue Owner")]
+        [Authorize(Roles = RoleNames.Admin + "," + RoleNames.VenueOwner)]
         public ActionResult New()
         {
             
@@ -133,7 +133,7 @@ namespace UberTappDeveloping.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Venue Owner")]
+        [Authorize(Roles = RoleNames.Admin + "," + RoleNames.VenueOwner)]
         public ActionResult New(Venue venue)
         {
             if (!ModelState.IsValid)

@@ -1,17 +1,40 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@using Microsoft.AspNet.Identity
+@*<style></style>*@
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@*<style></style>*@
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<body class="body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-md-3">
+                <h2>Contact</h2>
+            </div>
+        </div>
+
+        <address class="address">
+            <strong>Support and Information:</strong> <a href="mailto:ubertappcb11@gmail.com">ubertappcb11@gmail.com</a><br />
+            <br />
+            <strong>Marketing:</strong> <a href="mailto:akisrepanas135@gmail.com">akisrepanas135@gmail.com</a><br />
+            <br />
+
+            <br />
+            <strong><u>Development Team:</u></strong><br />
+            <br />
+
+            <strong>Pavlos Antonakos:</strong> <a href="mailto:pauladonak@gmail.com">pauladonak@gmail.com</a><br />
+            <br />
+            <strong>Konstantinos Chatzis:</strong> <a href="mailto:kmchatzis@gmail.com">kmchatzis@gmail.com</a><br />
+            <br />
+            <strong>Christos Grigoriadis:</strong> <a href="mailto:chrisgrig33@gmail.com">chrisgrig33@gmail.com</a><br />
+            <br />
+            <strong>Lambros Mazis:</strong> <a href="mailto:lambrosmazis@yahoo.com">lambrosmazis@yahoo.com</a><br />
+            <br />
+            <strong>Athanasios Repanas:</strong> <a href="mailto:akisrepanas135@gmail.com">akisrepanas135@gmail.com</a><br />
+            <br />
+        </address>
+
+        <div class="button">
+            <button class="btn btn-sm btn-primary">@Html.ActionLink("Contact", "EmailForm", "Home", new { Id = User.Identity.GetUserId() }, new { title = "Contact Us" })</button>
+        </div>
+    </div>
+</body>

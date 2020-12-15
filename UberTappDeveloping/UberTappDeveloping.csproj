@@ -179,6 +179,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\ApplicationUsersController.cs" />
+    <Compile Include="Controllers\API\EmailsController.cs" />
     <Compile Include="Controllers\API\TestsController.cs" />
     <Compile Include="Controllers\ApplicationUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -188,6 +189,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Enums\Gender.cs" />
+    <Compile Include="Helper\Enums\SupportCategory.cs" />
     <Compile Include="Helper\Roles\RoleNames.cs" />
     <Compile Include="Migrations\202012021308307_Initial.cs" />
     <Compile Include="Migrations\202012021308307_Initial.Designer.cs">
@@ -231,6 +233,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\UserBeer.cs" />
     <Compile Include="Models\Venue.cs" />
@@ -546,6 +549,7 @@
     <Content Include="Views\Venue\VenueForm.cshtml" />
     <Content Include="Views\Venue\UserVenues.cshtml" />
     <Content Include="Views\Venue\VenueBeers.cshtml" />
+    <Content Include="Views\Home\EmailForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
