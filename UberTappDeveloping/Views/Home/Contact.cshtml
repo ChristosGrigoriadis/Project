@@ -1,13 +1,13 @@
 ﻿@using Microsoft.AspNet.Identity
 @*<style></style>*@
-
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
 
 <body class="body">
     <div class="container-fluid">
         <div class="row">
-            <div class="form-group col-md-3">
-                <h2>Contact</h2>
+            <div class="form-group col-md-4">
+                <h2>Contact...</h2>
             </div>
         </div>
 
@@ -33,8 +33,8 @@
             <br />
         </address>
 
-        <div class="button">
-            <button class="btn btn-sm btn-primary">@Html.ActionLink("Contact", "EmailForm", "Home", new { Id = User.Identity.GetUserId() }, new { title = "Contact Us" })</button>
+        <div class="button form-group col-md-4">
+            <button class="btn btn-sm btn-primary">@Html.ActionLink("Report An Issue", "EmailForm", "Home", new { Id = User.Identity.GetUserId() }, new { title = "Contact Us" })</button>
         </div>
     </div>
 </body>

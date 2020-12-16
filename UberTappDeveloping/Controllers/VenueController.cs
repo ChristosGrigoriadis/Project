@@ -155,6 +155,9 @@ namespace UberTappDeveloping.Controllers
             context.SaveChanges();
 
             return RedirectToAction("Index", "home");
+    
         }
-    }
-}
+
+    } // public class VenueController : Controller END //
+
+} // namespace UberTappDeveloping.Controllers END //

@@ -1,0 +1,46 @@
+﻿
+/*Login.cshtml*/
+
+.body .container-fluid .row .form-group h2 {
+    padding: 5px 10px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: left;
+    border-bottom: solid;
+}
+
+.body .container-fluid #loginbtnRow {
+    padding: 5px 10px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+}
+
+/*About.cshtml*/
+
+.body .container-fluid .row .form-group h2 {
+    padding: 5px 10px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: left;
+    border-bottom: solid;
+}
+
+/*Contact.cshtml*/
+
+.body .container-fluid .row .form-group h2 {
+    padding: 5px 10px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: left;
+    border-bottom: solid;
+}
+
+.body .container-fluid .button{
+    text-align:center;
+}
+
+.body .container-fluid .button a {
+    color: white;
+    text-decoration: none;
+}
