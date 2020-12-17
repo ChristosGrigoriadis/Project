@@ -1,4 +1,34 @@
 ﻿
+/*Register.cshtml*/
+
+.body .container-fluid .row .form-group h2 {
+    padding: 5px 10px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: left;
+    border-bottom: solid;
+}
+
+.body .container-fluid #btnRow {
+    padding: 10px 15px;
+    text-align: center;
+    margin-top: 5%;
+}
+
+    .body .container-fluid #btnRow .btn-primary {
+        color: white;
+        text-decoration: none;
+    }
+
+.body .container-fluid .row .form-group h4 {
+    padding: 5px 10px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    border-bottom: solid;
+    font-weight: bold;
+}
+
 /*Login.cshtml*/
 
 .body .container-fluid .row .form-group h2 {
@@ -36,11 +66,21 @@
     border-bottom: solid;
 }
 
-.body .container-fluid .button{
-    text-align:center;
+/*EmailForm.cshtml*/
+
+.body .container-fluid .row .form-group h2 {
+    padding: 5px 10px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: left;
+    border-bottom: solid;
 }
 
-.body .container-fluid .button a {
-    color: white;
-    text-decoration: none;
+.body .container-fluid form #btnRow {
+    text-align: center;
 }
+
+    .body .container-fluid form #btnRow .btn-success {
+        color: white;
+        text-decoration: none;
+    }

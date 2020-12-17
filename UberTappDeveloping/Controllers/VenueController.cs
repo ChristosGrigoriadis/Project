@@ -83,10 +83,7 @@ namespace UberTappDeveloping.Controllers
             venueDb.Manager = venue.Manager;
             venueDb.LocationId = venue.LocationId;
 
-
-
             context.SaveChanges();
-
 
             return RedirectToAction("Index", "home");
         }

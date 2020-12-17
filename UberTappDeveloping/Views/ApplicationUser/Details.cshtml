@@ -13,12 +13,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="form-group col-md-2">
-                <button class="btn btn-sm btn-primary">@Html.ActionLink("Back", "Index", "Home", null, new { title = "Home" })</button>
-            </div>
-        </div>
-
         <table class="table table-hover">
             <tbody>
                 <tr>
@@ -89,7 +83,6 @@
                 }
                 else
                 {
-                    <button class="btn btn-sm btn-primary">@Html.ActionLink("Contact", "EmailForm", "Home", new { Id = User.Identity.GetUserId() }, new { title = "Contact Us" })</button>
                     <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
                     <button id="deleteBtn" class="btn btn-sm btn-danger" title="Delete Profile">Delete</button>
                 }
@@ -107,7 +100,7 @@
         $(document).ready(function () {
             $("#deleteBtn").on("click", function () {
                 bootbox.alert('You cannot delete your profile! If you wish to unsubscribe' +
-                    ' from UberTapp please click on "Contact" and submit a request!');
+                    ' from UberTapp please click on "Contact --> Report An Isuue" and submit a request!');
             });
         });
 

@@ -1,23 +1,28 @@
 ﻿@model UberTappDeveloping.ViewModels.RegisterViewModel
 
-@{
-    ViewBag.Title = "Register";
-}
-
 @*<style></style>*@
-<link href="~/Content/CustomDisplay.css" rel="stylesheet" />
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
 
 <body class="body">
     <div class="container-fluid">
-        <h2>Create a new account (the boring stuff...)</h2>
-        <h6>Fields with (*) are required...</h6>
+
+        <div class="row">
+            <div class="form-group col-md-8">
+                <h2>Create a new account (the boring stuff...)</h2>
+                <h6>Fields with (*) are required...</h6>
+            </div>
+        </div>
 
         @using (Html.BeginForm("Register", "Account", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
 
-            <h4>Login Details</h4>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <h4>Login Details</h4>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="form-group col-md-6">
@@ -45,7 +50,11 @@
                 </div>
             </div>
 
-            <h4>Personal Details</h4>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <h4>Personal Details</h4>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="form-group col-md-6">
@@ -72,8 +81,12 @@
                 </div>
             </div>
 
-            <h4>Location Details</h4>
-
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <h4>Location Details</h4>
+                </div>
+            </div>
+            
             <div class="row">
                 <div class="form-group col-md-6">
                     @Html.LabelFor(u => u.LocationId)*
@@ -93,6 +106,7 @@
             </div>
 
         }
+
     </div>
 </body>
 

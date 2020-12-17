@@ -2,20 +2,15 @@
 @using UberTappDeveloping.Helper.Enums
 
 @*<style></style>*@
-
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
 
 <body class="body">
     <div class="container-fluid">
+
         <div class="row">
             <div class="form-group col-md-4">
                 <h2>How can we help?</h2>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="form-group col-md-2">
-                <button class="btn btn-sm btn-primary">@Html.ActionLink("Profile", "Details", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "View Profile" })</button>
             </div>
         </div>
 
@@ -30,7 +25,7 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Body:</label>
-                    <textarea id="body" type="text" name="body" rows="10" cols="50" class="form-control"></textarea>
+                    <textarea id="body" type="text" name="body" rows="10" cols="50" class="form-control" required></textarea>
                 </div>
             </div>
 
@@ -46,13 +41,16 @@
 
 @section Scripts
 {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
     <script>
 
         $(document).ready(function () {
 
             let viewModel = {};
             function reloadPage() {
-                let reload = window.location.replace("/Home/Contact");
+                let reload = window.location.replace("/Home/Index");
             }
 
             $("#newEmail").submit(function (e) {
@@ -68,7 +66,7 @@
                 })
                     .done(function () {
                         bootbox.alert("Email successfully sent!");
-                        setTimeout(reloadPage, 5000);
+                        setTimeout(reloadPage, 4000);
                     })
                     .fail(function () {
                         bootbox.alert("Ooops something went wrong!");
