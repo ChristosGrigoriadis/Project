@@ -9,13 +9,13 @@
     border-bottom: solid;
 }
 
-.body .container-fluid #btnRow {
+.body .container-fluid #registerBtnRow {
     padding: 10px 15px;
     text-align: center;
     margin-top: 5%;
 }
 
-    .body .container-fluid #btnRow .btn-primary {
+    .body .container-fluid #registerBtnRow .btn-primary {
         color: white;
         text-decoration: none;
     }
@@ -76,11 +76,11 @@
     border-bottom: solid;
 }
 
-.body .container-fluid form #btnRow {
+.body .container-fluid form #EmailBtnRow {
     text-align: center;
 }
 
-    .body .container-fluid form #btnRow .btn-success {
+    .body .container-fluid form #EmailBtnRow .btn-success {
         color: white;
         text-decoration: none;
     }
