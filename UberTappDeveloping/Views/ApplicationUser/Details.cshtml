@@ -2,14 +2,31 @@
 @using Microsoft.AspNet.Identity
 
 @*<style></style>*@
-
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
 
 <body class="body">
     <div class="container-fluid">
+
         <div class="row">
             <div class="form-group col-md-4">
                 <h2>Profile Details</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="profileDetBtn" class="form-group col-md-6">
+                @if (User.IsInRole("Admin"))
+                {
+                    <button class="btn btn-sm btn-info">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
+                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
+                    <button id="deleteBtn" class="btn btn-sm btn-danger" title="Delete Profile">Delete</button>
+                }
+
             </div>
         </div>
 
@@ -74,21 +91,6 @@
             </tbody>
         </table>
 
-        <div class="row">
-            <div class="form-group col-md-6">
-                @if (User.IsInRole("Admin"))
-                {
-                    <button class="btn btn-sm btn-info">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
-                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
-                }
-                else
-                {
-                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
-                    <button id="deleteBtn" class="btn btn-sm btn-danger" title="Delete Profile">Delete</button>
-                }
-
-            </div>
-        </div>
     </div>
 </body>
 
@@ -100,7 +102,7 @@
         $(document).ready(function () {
             $("#deleteBtn").on("click", function () {
                 bootbox.alert('You cannot delete your profile! If you wish to unsubscribe' +
-                    ' from UberTapp please click on "Contact --> Report An Isuue" and submit a request!');
+                    ' from UberTapp please click on "Contact => Report An Issue" and submit a request!');
             });
         });
 

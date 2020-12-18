@@ -84,3 +84,94 @@
         color: white;
         text-decoration: none;
     }
+
+/*AllUsers.cshtml*/
+
+.body .container-fluid .row .form-group h2 {
+    padding: 5px 10px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: left;
+    border-bottom: solid;
+}
+
+.body .container-fluid .row .form-group #myProfile {
+    padding: 5px 10px;
+    text-align: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+    .body .container-fluid .row .form-group #myProfile a {
+        color: white;
+        text-decoration: none;
+    }
+
+.body .container-fluid #users tbody tr .buttons .btn {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+    .body .container-fluid #users tbody tr .buttons .btn a {
+        color: white;
+        text-decoration: none;
+    }
+
+/*Details.cshtml*/
+
+.body .container-fluid .row .form-group h2 {
+    padding: 5px 10px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: left;
+    border-bottom: solid;
+}
+
+.body .container-fluid .row #profileDetBtn .btn {
+    margin-right: 1%;
+}
+
+    .body .container-fluid .row #profileDetBtn .btn a {
+        color: white;
+        text-decoration: none;
+    }
+
+/*UserForm.cshtml*/
+
+.body .container-fluid .row .form-group h2 {
+    padding: 5px 10px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    text-align: left;
+    border-bottom: solid;
+}
+
+.body .container-fluid .row #backToDetails .btn {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+    .body .container-fluid .row #backToDetails .btn a {
+        color: white;
+        text-decoration: none;
+    }
+
+.body .container-fluid .row .form-group h4 {
+    padding: 5px 10px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    border-bottom: solid;
+    font-weight: bold;
+}
+
+.body .container-fluid #updateBtn {
+    padding: 10px 15px;
+    text-align: center;
+    margin-top: 3%;
+}
+
+    .body .container-fluid #updateBtn .btn-primary {
+        color: white;
+        text-decoration: none;
+    }

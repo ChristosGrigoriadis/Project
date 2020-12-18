@@ -2,20 +2,21 @@
 @using Microsoft.AspNet.Identity
 
 @*<style></style>*@
-
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
 
 <body class="body">
     <div class="container-fluid">
+
         <div class="row">
-            <div class="form-group col-md-6">
-                <h2>@Html.ActionLink("Welcome " + User.Identity.GetUserName() + "...", "Edit", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</h2>
+            <div class="form-group col-md-4">
+                <h2>All Users</h2>
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-md-2">
-                <button class="btn btn-sm btn-primary">@Html.ActionLink("My Profile", "Details", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "View Profile" })</button>
+                <button id="myProfile" class="btn btn-sm btn-primary">@Html.ActionLink("My Profile", "Details", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "View Profile" })</button>
             </div>
         </div>
 
