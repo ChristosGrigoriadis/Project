@@ -175,3 +175,17 @@
         color: white;
         text-decoration: none;
     }
+
+
+
+
+/* MapCSS*/
+#map {
+    height: 444px;
+    width: 100%;
+}
+
+
+#latlng {
+    width: 100px;
+}

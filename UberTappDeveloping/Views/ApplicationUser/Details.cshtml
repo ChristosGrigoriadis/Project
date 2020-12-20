@@ -19,7 +19,6 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <button class="btn btn-sm btn-info">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
-                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
                 }
                 else
                 {
@@ -78,7 +77,11 @@
                 </tr>
                 <tr>
                     <td>Location</td>
-                    <td>@Html.DisplayFor(model => model.Location.Display)</td>
+                    <td>
+                        @Html.DisplayFor(model => model.Location.Display)
+                        <input id="submit" type="button" value="View Location" />
+                        <input id="latlng" type="text" value="@Model.Location.Latitude,@Model.Location.Longitude" hidden />
+                    </td>
                 </tr>
                 <tr>
                     <td>Email</td>
@@ -90,6 +93,12 @@
                 </tr>
             </tbody>
         </table>
+
+        <div id="floating-panel">
+
+
+        </div>
+        <div id="map"></div>
 
     </div>
 </body>
@@ -105,6 +114,51 @@
                     ' from UberTapp please click on "Contact => Report An Issue" and submit a request!');
             });
         });
+
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpBZayreKhUYLqBhdUADi20brDXGV3EUU&callback=initMap&libraries=&v=weekly" defer></script>
+
+    <script>
+
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 6,
+                center: { lat: 39.0742, lng: 21.8243 },
+            });
+            const geocoder = new google.maps.Geocoder();
+            const infowindow = new google.maps.InfoWindow();
+            document.getElementById("submit").addEventListener("click", () => {
+                geocodeLatLng(geocoder, map, infowindow);
+            });
+        }
+
+        function geocodeLatLng(geocoder, map, infowindow) {
+            const input = document.getElementById("latlng").value;
+            const latlngStr = input.split(",", 2);
+            const latlng = {
+                lat: parseFloat(latlngStr[0]),
+                lng: parseFloat(latlngStr[1]),
+            };
+            geocoder.geocode({ location: latlng }, (results, status) => {
+                if (status === "OK") {
+                    if (results[0]) {
+                        map.setZoom(10);
+                        const marker = new google.maps.Marker({
+                            position: latlng,
+                            map: map
+                        });
+                        infowindow.setContent(results[0].formatted_address);
+                        infowindow.open(map, marker);
+                    } else {
+                        bootbox.alert("No results found");
+                    }
+                } else {
+                    bootbox.alert("Geocoder failed due to: " + status);
+                }
+            });
+        }
 
     </script>
 
