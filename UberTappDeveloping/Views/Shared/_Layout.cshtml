@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+@using UberTappDeveloping.Helper.Roles;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -38,11 +41,17 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="@Url.Action("New", "Venue")">Create Venue</a></li>
-                            <li><a href="@Url.Action("UserVenues", "Venue")">My Venues</a></li>
-                            @*<li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>*@
+                            @if (User.IsInRole(RoleNames.BeerEnthusiast))
+                            {
+                                <li><a href="@Url.Action("AllVenues", "Venue")">All Venues</a></li>
+                                <li><a href="@Url.Action("UserVenues", "Venue")">My Venues</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("AllVenues", "Venue")">All Venues</a></li>
+                                <li><a href="@Url.Action("UserVenues", "Venue")">My Venues</a></li>
+                                <li><a href="@Url.Action("New", "Venue")">Create Venue</a></li>
+                            }
                         </ul>
                     </li>
                 </ul>

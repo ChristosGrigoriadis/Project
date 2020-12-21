@@ -1,5 +1,6 @@
 ﻿@model UberTappDeveloping.Models.ApplicationUser
 @using Microsoft.AspNet.Identity
+@using UberTappDeveloping.Helper.Roles;
 
 @*<style></style>*@
 <link href="~/Content/KotsDisplay.css" rel="stylesheet" />
@@ -16,7 +17,7 @@
 
         <div class="row">
             <div id="profileDetBtn" class="form-group col-md-6">
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole(RoleNames.Admin))
                 {
                     <button class="btn btn-sm btn-info">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
                 }
@@ -94,10 +95,6 @@
             </tbody>
         </table>
 
-        <div id="floating-panel">
-
-
-        </div>
         <div id="map"></div>
 
     </div>
@@ -147,7 +144,8 @@
                         map.setZoom(10);
                         const marker = new google.maps.Marker({
                             position: latlng,
-                            map: map
+                            map: map,
+                            center:  latlng 
                         });
                         infowindow.setContent(results[0].formatted_address);
                         infowindow.open(map, marker);

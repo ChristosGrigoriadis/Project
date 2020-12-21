@@ -42,3 +42,15 @@ footer {
 input, select, textarea {
     max-width: 95%;
 }
+
+/* MapCSS*/
+
+#map {
+    height: 444px;
+    width: 100%;
+}
+
+#latlng {
+    width: 100px;
+}
+

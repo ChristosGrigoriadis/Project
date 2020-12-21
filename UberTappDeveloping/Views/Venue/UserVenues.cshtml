@@ -3,9 +3,9 @@
     ViewBag.Title = "UserVenues";
 }
 
-<h2>UserVenues</h2>
+<h2>User Venues</h2>
 
-<table class="table table-bordered">
+<table id="venues" class="table table-bordered">
     <tr>
         <th>Venue Name</th>
         <th>Date Founded</th>
@@ -23,3 +23,17 @@
     }
 
 </table>
+
+@section Scripts{
+
+    <script>
+
+        $(document).ready(function () {
+
+            let venueTable = $("#venues").DataTable({});
+
+        });
+
+    </script>
+
+}
