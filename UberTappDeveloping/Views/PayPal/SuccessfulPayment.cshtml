@@ -1,0 +1,10 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "SuccessfulPayment";
+}
+
+<h2>SuccessfulPayment</h2>
+
+<div>
+    @Html.ActionLink("Back to your profile " + User.Identity.GetUserName() + "?", "Details", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "View Profile" })
+</div>
