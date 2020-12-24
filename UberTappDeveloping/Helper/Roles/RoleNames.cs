@@ -10,5 +10,7 @@ namespace UberTappDeveloping.Helper.Roles
 		public const string Admin = "Admin";
 		public const string VenueOwner = "Venue Owner";
 		public const string BeerEnthusiast = "Beer Enthusiast";
-	}
-}
+
+	} // public class RoleNames END //
+
+} // namespace UberTappDeveloping.Helper.Roles END //
