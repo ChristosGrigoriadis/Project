@@ -235,6 +235,10 @@
     <Compile Include="Migrations\202012071206437_FixLocationANDBeerModels.Designer.cs">
       <DependentUpon>202012071206437_FixLocationANDBeerModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012271141371_IsPremiumUser.cs" />
+    <Compile Include="Migrations\202012271141371_IsPremiumUser.Designer.cs">
+      <DependentUpon>202012271141371_IsPremiumUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\Email.cs" />
@@ -420,6 +424,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Helper\Images\Premium User.jpg" />
+    <Content Include="Scripts\app\controllers\adminDelete.js" />
+    <Content Include="Scripts\app\controllers\deleteProfile.js" />
+    <Content Include="Scripts\app\controllers\mapLocations.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -565,7 +573,6 @@
     <Folder Include="DAL\Repositories\" />
     <Folder Include="Helper\CustomDA\" />
     <Folder Include="Models\ModelDTOs\" />
-    <Folder Include="Scripts\app\controllers\" />
     <Folder Include="Scripts\app\services\" />
   </ItemGroup>
   <ItemGroup>
@@ -611,6 +618,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012071206437_FixLocationANDBeerModels.resx">
       <DependentUpon>202012071206437_FixLocationANDBeerModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012271141371_IsPremiumUser.resx">
+      <DependentUpon>202012271141371_IsPremiumUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

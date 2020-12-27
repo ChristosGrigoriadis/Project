@@ -21,7 +21,10 @@ namespace UberTappDeveloping.Helper.Enums
 		Technical_Issue,
 
 		[Display(Name = "Delete Your Account")]
-		Delete_Your_Account
+		Delete_Your_Account,
+		
+		[Display(Name = "Other")]
+		Other
 
 	} // public enum SupportCategory END //
 

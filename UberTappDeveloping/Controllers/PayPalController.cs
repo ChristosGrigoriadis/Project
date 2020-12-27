@@ -10,8 +10,8 @@ using UberTappDeveloping.Models;
 
 namespace UberTappDeveloping.Controllers
 {
-    public class PayPalController : Controller
-    {
+	public class PayPalController : Controller
+	{
 		private PayPal.Api.Payment payment;
 		private ApplicationDbContext context;
 
@@ -36,7 +36,22 @@ namespace UberTappDeveloping.Controllers
 				return HttpNotFound();
 
 			return View("ViewPermiumOffer", applicationUser);
-		}
+
+		} // public ActionResult ViewPermiumOffer(string id) END //
+
+		[Authorize(Roles = RoleNames.BeerEnthusiast)]
+		public ActionResult SuccessfulPayment()
+		{
+			return View("SuccessfulPayment");
+
+		} // public ActionResult SuccessfulPayment END //
+
+		[Authorize(Roles = RoleNames.BeerEnthusiast)]
+		public ActionResult FailedPayment(string id)
+		{
+			return View("FailedPayment");
+
+		} // public ActionResult FailedPayment END //
 
 		#endregion
 

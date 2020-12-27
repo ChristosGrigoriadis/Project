@@ -1,10 +1,22 @@
 ﻿@using Microsoft.AspNet.Identity
-@{
-    ViewBag.Title = "SuccessfulPayment";
-}
 
-<h2>SuccessfulPayment</h2>
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
 
-<div>
-    @Html.ActionLink("Back to your profile " + User.Identity.GetUserName() + "?", "Details", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "View Profile" })
-</div>
+<body class="body">
+    <div class="container-fluid">
+        <div class="row">
+            <img id="premId" src="~/Helper/Images/Premium User.jpg" />
+        </div>
+        <div class="row">
+            <button id="premBtn" class="btn btn-primary">
+                @Html.ActionLink("Back to your profile " + User.Identity.GetUserName() + "?", "Details", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "View Profile" })
+            </button>
+        </div>
+    </div>
+</body>
+
+
+
+

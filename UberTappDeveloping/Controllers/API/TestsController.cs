@@ -10,13 +10,13 @@ namespace UberTappDeveloping.Controllers.API
     public class TestsController : ApiController
     {
 
-        [HttpPost]
-        public IHttpActionResult Test([FromBody] object obj)
-        {
+        //[HttpPost]
+        //public IHttpActionResult Test([FromBody] object obj)
+        //{
 
 
-            return Ok(obj);
-        }
+        //    return Ok(obj);
+        //}
 
     }
 }
