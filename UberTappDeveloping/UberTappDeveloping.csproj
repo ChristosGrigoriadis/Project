@@ -179,7 +179,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\ApplicationUsersController.cs" />
-    <Compile Include="Controllers\API\TestsController.cs" />
+    <Compile Include="Controllers\API\VenuesController.cs" />
     <Compile Include="Controllers\ApplicationUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -229,9 +229,15 @@
     <Compile Include="Migrations\202012071206437_FixLocationANDBeerModels.Designer.cs">
       <DependentUpon>202012071206437_FixLocationANDBeerModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012272335366_AddVenueBeerPriceColumn.cs" />
+    <Compile Include="Migrations\202012272335366_AddVenueBeerPriceColumn.Designer.cs">
+      <DependentUpon>202012272335366_AddVenueBeerPriceColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\ModelDtos\VenueBeersDto.cs" />
+    <Compile Include="Models\ModelDtos\BeerDto.cs" />
     <Compile Include="Models\UserBeer.cs" />
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Models\VenueBeer.cs" />
@@ -250,6 +256,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom.css" />
     <Content Include="Content\CustomDisplay.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
@@ -400,6 +407,11 @@
     <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
     <Content Include="Content\DataTables\css\select.semanticui.css" />
     <Content Include="Content\DataTables\css\select.semanticui.min.css" />
+    <Content Include="Content\DataTables\images\bck-image-1.jpg" />
+    <Content Include="Content\DataTables\images\bck-image-2.jpg" />
+    <Content Include="Content\DataTables\images\beer-logo-1.jpg" />
+    <Content Include="Content\DataTables\images\beer-logo-2.jpg" />
+    <Content Include="Content\DataTables\images\beers-background-image.jpg" />
     <Content Include="Content\DataTables\images\details_close.png" />
     <Content Include="Content\DataTables\images\details_open.png" />
     <Content Include="Content\DataTables\images\sort_asc.png" />
@@ -408,7 +420,10 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -419,6 +434,11 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -552,7 +572,6 @@
     <Folder Include="DAL\Persistence\" />
     <Folder Include="DAL\Repositories\" />
     <Folder Include="Helper\CustomDA\" />
-    <Folder Include="Models\ModelDTOs\" />
     <Folder Include="Scripts\app\controllers\" />
     <Folder Include="Scripts\app\services\" />
   </ItemGroup>
@@ -599,6 +618,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012071206437_FixLocationANDBeerModels.resx">
       <DependentUpon>202012071206437_FixLocationANDBeerModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012272335366_AddVenueBeerPriceColumn.resx">
+      <DependentUpon>202012272335366_AddVenueBeerPriceColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -2,54 +2,53 @@
 @{
     ViewBag.Title = "VenueBeers";
     @Styles.Render("~/Content/Custom.css");
+
 }
 
-<h2>VenueBeers</h2>
+<h1 id="title">My Venues Beers</h1>
 
 
 
-<div class="container">
+<div class="container-main">
     <div class="venues">
-        Venues
+        <h1>My Venues</h1>
         <div class="myVenues">
+
+            @foreach (var venue in Model.MyVenues)
+            {
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="venue" value="@venue.Id" class="venue-input">
+                        @venue.Name
+                    </label>
+                </div>
+            }
 
         </div>
     </div>
 
     <div class="origin">
-        All
+        <h1>All Beers</h1>
         <div class="all dropzone">
-            @foreach (var item in Model.AllBeers)
+
+            @foreach (var beer in Model.AllBeers)
             {
                 <div class="box">
-                    <span>@item.Name</span>
+                    <img src="~/Content/DataTables/images/beer-logo-1.jpg" alt="@beer.Name" />
+                    <span>@beer.Name</span>
+                    <input type="hidden" name="beer" value="@beer.Id" />
+                    <input type="number" name="price" value="" min="0" class="price" />
+                    <i class="fa fa-eur"></i>
                 </div>
             }
 
-            <div class="box">
-                <span>A</span>
-            </div>
-            <div class="box">
-                <span>B</span>
-            </div>
-            <div class="box">
-                <span>C</span>
-            </div>
-            <div class="box">
-                <span>D</span>
-            </div>
-            <div class="box">
-                <span>E</span>
-            </div>
-            <div class="box">
-                <span>F</span>
-            </div>
+
         </div>
 
     </div>
 
     <div class="destination">
-        Available
+        <h1>Available Beers</h1>
         <div class="selected dropzone">
 
         </div>
@@ -57,10 +56,11 @@
 
     <form>
 
-        <input id="submit" type="submit" value="Save" />
+        <input class="bg-primary" id="submit" type="submit" value="Save" />
     </form>
-
 </div>
+
+
 
 
 @section scripts
@@ -71,12 +71,15 @@
 
         $(document).ready(function () {
 
+            $(".body-content").removeClass("container");//remove page bootstrap
+            $("hr").remove(); //remove page hr
+
             let dragged;
-            let items = document.querySelectorAll('.container .box');
+            let items = document.querySelectorAll('.box');
             items.forEach(function (item) {
                 console.log(item);
 
-                $(item).attr("draggable", "true");
+                $(item).attr("draggable", "true");//make divs draggable
 
 
 
@@ -90,6 +93,8 @@
                 console.log(event.target);
                 // make it half transparent
                 event.target.style.opacity = 0.5;
+
+
             }, false);
 
             document.addEventListener("dragend", function (event) {
@@ -100,10 +105,14 @@
             document.addEventListener("dragenter", function (event) {
                 // highlight potential drop target when the draggable element enters it
                 console.log(event.target.classList.value);
-                if (event.target.classList.contains("dropzone")) {
-                    event.target.style.background = "purple";
-                }
 
+                if (event.target.classList.contains("dropzone")) {
+                    event.target.style.background = "coral";
+                    $(event.target).css("border-color", "#ff6b66");
+                    console.log($(event.target).parents(".origin").children("h1"));
+                    $(event.target).parents(".origin").children("h1").css("color", "coral");
+                    $(event.target).parents(".destination").children("h1").css("color", "coral");
+                }
             }, false);
 
 
@@ -111,6 +120,9 @@
                 // reset background of potential drop target when the draggable element leaves it
                 if (event.target.classList.contains("dropzone")) {
                     event.target.style.background = "";
+                    event.target.style.borderColor = "";
+                    $(event.target).parents(".origin").children("h1").css("color", "black");
+                    $(event.target).parents(".destination").children("h1").css("color", "black");
                 }
 
             }, false);
@@ -125,54 +137,156 @@
             document.addEventListener("drop", function (event) {
                 // prevent default action (open as link for some elements)
                 event.preventDefault();
+                console.log($(event.target).parent());
 
-                for (let i = 0; i < event.srcElement.children.length; i++) {
-                    console.log(event.srcElement.children[i]);
-                }
-
-
-                console.log(event.srcElement.children);
-                // move dragged elem to the selected drop target
+               // move dragged elem to the selected drop target
                 if (event.target.classList.contains('dropzone')) {
 
                     event.target.style.background = "";
+                    event.target.style.borderColor = "";
+                    $(event.target).parents(".origin").children("h1").css("color", "black");
+                    $(event.target).parents(".destination").children("h1").css("color", "black");
                     dragged.parentNode.removeChild(dragged);
                     event.target.appendChild(dragged);
                 }
             }, false);
 
-            var letters = [];
 
+            //submit form
             $("form").submit(function (e) {
                 e.preventDefault();
-                console.log($(".selected span").text());
-
-                var elements = $(".selected span").text();
-                letters = [];
 
 
-                for (var i = 0; i < elements.length; i++) {
-                    console.log(elements[i]);
-                    letters.push(elements[i]);
+                var radioVal = $("input[type='radio']:checked").val();
+                console.log(radioVal);
+
+                var beerIds = $(".selected input[name='beer']");
+                console.log(beerIds);
+
+                var beerArr = [];
+
+                for (var i = 0; i < beerIds.length; i++) {
+                    console.log(beerIds[i].value);
+                    beerArr.push(beerIds[i].value);
                 }
-                console.log(letters);
 
-                var obj = { };
-                obj = letters;
+                var pricesHtml = $(".selected .price");
 
-                fetch('https://localhost:44380/api/tests', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        obj
-                    }),
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8',
-                    },
+                var pricesArr = [];
+
+                for (var price of pricesHtml) {
+                    console.log(price.value);
+                    pricesArr.push(price.value);
+                }
+
+                console.log(pricesArr);
+                console.log(beerArr.map(Number));
+
+                var model = {
+                    beersArray: beerArr.map(Number),
+                    venueId: parseInt(radioVal),
+                    pricesArray: pricesArr.map(Number)
+                };
+
+                console.log(model);
+
+                $.ajax({
+                    url: "/api/Venues",
+                    method: "POST",
+                    data: model,
                 })
-                    .then((response) => response.json())
-                    .then((json) => console.log(json))
+                    .done(function (response) {
+                        bootbox.alert({
+                            message: "Beers Saved Succesfully!",
+                            size: 'small'
+                        });
+                    })
+                    .fail(function (e) {
+                        console.log(e);
+                        bootbox.alert(e.responseJSON.message);
+                    });
 
             });
+
+            let allBeers;
+            $.get("/api/Venues/", function (allBeers) {//get all beers and save them to session storage
+                sessionStorage.setItem("allBeers", JSON.stringify(allBeers));
+                console.log("mpika");
+            })
+                .done(function () {
+                    allBeers = JSON.parse(sessionStorage.getItem("allBeers"));
+                    VenueClick();
+                });
+
+            function VenueClick() {
+
+
+                //show available beers when clicking on Venue
+                $(".myVenues").on("click", ".venue-input", function (e) {
+                    console.log(e);
+                    console.log($("input[type='radio']:checked").val())
+                    console.log($("input[type='radio']:checked").parent());
+                    console.log($(".radio label"));
+                    for (var label of $(".radio label")) {//make venues color black
+                        label.style.color = "black";
+                    }
+                    $("input[type='radio']:checked").parent().css("color", "#0410B8"); //make selected venue color blue
+
+                    $(".all").text(" "); //empty .all beers
+
+                    allBeers.forEach(function (beer) {//append all beers to .all
+                        var div = `<div draggable="true" class="box">
+                                                      <img src="/Content/DataTables/images/beer-logo-1.jpg"  alt=${beer.name} />
+                                                      <span>${beer.name}</span>
+                                                      <input type="hidden" name="beer" value="${beer.id}" />
+                                                      <input type="number" name="price" value="" min="0" class="price" />
+                                                      <i class="fa fa-eur"></i>
+                                             </div>`;
+                        $(".all").append(div);
+                    });
+
+
+                    $.get("/api/Venues/" + $("input[type='radio']:checked").val(), function (venueBeers) {//get available venue beers
+                        console.log(venueBeers);
+
+                        if (venueBeers.length != 0) {//if available beers exist remove them from all beers
+                            let availableBeersId = [];
+
+                            for (var beer of venueBeers) {
+                                availableBeersId.push(beer.id.toString());
+                            }
+                            console.log(availableBeersId);
+                            console.log($(".all").children());
+                            for (var div of $(".all").children()) {
+
+                                let inputValue = $(div).children("input").val();
+
+                                if (availableBeersId.includes(inputValue.toString())) {
+                                    $(div).remove(); //remove available beers from all beers
+                                };
+
+
+                            };
+                        };
+
+                        $(".selected").text(" ");//empty .selected beers
+                        venueBeers.forEach(ViewBeer); //add available beers from DB to .selected
+
+                    })
+                });
+            }
+
+            function ViewBeer(beer) {
+                var div = `<div draggable="true" class="box">
+                                                <img src="/Content/DataTables/images/beer-logo-1.jpg"  alt=${beer.name} />
+                                                <span>${beer.name}</span>
+                                                <input type="hidden" name="beer" value="${beer.id}" />
+                                                <input type="number" name="price" value="${beer.price}" min="0" class="price" />
+                                                <i class="fa fa-eur"></i>
+                                  </div>`;
+
+                $(".selected").append(div);
+            }
 
 
 

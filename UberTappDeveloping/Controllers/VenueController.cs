@@ -25,12 +25,15 @@ namespace UberTappDeveloping.Controllers
             base.Dispose(disposing);
         }
 
-
+        //Get venue/venueBeers
+        [Authorize(Roles = "Venue Owner")]
         public ActionResult VenueBeers()
         {
+            var userId = User.Identity.GetUserId();
             var viewModel = new VenueBeersViewModel
             {
-                AllBeers = context.Beers
+                AllBeers = context.Beers,
+                MyVenues = context.Venues.Where(v => v.OwnerId == userId)
             };
 
             return View(viewModel);

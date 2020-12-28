@@ -9,7 +9,7 @@ namespace UberTappDeveloping.ViewModels
     public class VenueBeersViewModel
     {
         public IEnumerable<Beer> AllBeers { get; set; }
-        public IEnumerable<VenueBeer> VenueBeers { get; set; }
-
+        
+        public IEnumerable<Venue> MyVenues { get; set; }
     }
 }
