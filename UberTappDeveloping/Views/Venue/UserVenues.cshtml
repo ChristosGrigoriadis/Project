@@ -18,7 +18,10 @@
             <td>@venue.Name</td>
             <td>@venue.DateOpened</td>
             <td>@venue.Location.Display</td>
-            <td><a href="@Url.Action("edit","venue",new {id = venue.Id })">Edit</a></td>
+            <td>
+                <a href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a> |
+                <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })">Profile</a>
+            </td>
         </tr>
     }
 

@@ -8,9 +8,11 @@ using UberTappDeveloping.DAL;
 using UberTappDeveloping.Models;
 using UberTappDeveloping.Models.ModelDtos;
 using System.Data.Entity;
+using UberTappDeveloping.Helper.Roles;
 
 namespace UberTappDeveloping.Controllers.API
 {
+    [Authorize(Roles = RoleNames.VenueOwner)]
     public class VenuesController : ApiController
     {
         private ApplicationDbContext context;
@@ -18,6 +20,22 @@ namespace UberTappDeveloping.Controllers.API
         public VenuesController()
         {
             context = new ApplicationDbContext();
+        }
+
+        [HttpDelete]
+        [Route("api/venues/image/{imageId}")]
+        public IHttpActionResult DeleteVenueImage(int imageId)
+        {
+            var image = context.VenueImages.SingleOrDefault(vi => vi.Id == imageId);
+
+            if (image == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            context.VenueImages.Remove(image);
+            context.SaveChanges();
+
+
+            return Ok();
         }
 
         [HttpPost]

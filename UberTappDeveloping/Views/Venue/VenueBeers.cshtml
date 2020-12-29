@@ -34,7 +34,7 @@
             @foreach (var beer in Model.AllBeers)
             {
                 <div class="box">
-                    <img src="~/Content/DataTables/images/beer-logo-1.jpg" alt="@beer.Name" />
+                    <img src="~/Content/Images/beer-logo-1.jpg" alt="@beer.Name" />
                     <span>@beer.Name</span>
                     <input type="hidden" name="beer" value="@beer.Id" />
                     <input type="number" name="price" value="" min="0" class="price" />
@@ -236,7 +236,7 @@
 
                     allBeers.forEach(function (beer) {//append all beers to .all
                         var div = `<div draggable="true" class="box">
-                                                      <img src="/Content/DataTables/images/beer-logo-1.jpg"  alt=${beer.name} />
+                                                      <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
                                                       <span>${beer.name}</span>
                                                       <input type="hidden" name="beer" value="${beer.id}" />
                                                       <input type="number" name="price" value="" min="0" class="price" />
@@ -278,7 +278,7 @@
 
             function ViewBeer(beer) {
                 var div = `<div draggable="true" class="box">
-                                                <img src="/Content/DataTables/images/beer-logo-1.jpg"  alt=${beer.name} />
+                                                <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
                                                 <span>${beer.name}</span>
                                                 <input type="hidden" name="beer" value="${beer.id}" />
                                                 <input type="number" name="price" value="${beer.price}" min="0" class="price" />

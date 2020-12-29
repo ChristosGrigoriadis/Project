@@ -32,6 +32,9 @@ namespace UberTappDeveloping.Models
         public int LocationId { get; set; }
         public Location Location { get; set; }
 
+        public ICollection<VenueImage> VenueImages { get; set; }
+        public VenueProfileImage ProfileImage { get; set; }
+
         //[Required]
         //[Display(Name = "Address")]
         //public int LocationId { get; set; }

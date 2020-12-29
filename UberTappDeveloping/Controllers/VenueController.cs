@@ -8,9 +8,13 @@ using UberTappDeveloping.DAL;
 using UberTappDeveloping.Models;
 using UberTappDeveloping.ViewModels;
 using System.Data.Entity;
+using UberTappDeveloping.Helper.Roles;
+using System.IO;
+using System.Data.Entity.Migrations;
 
 namespace UberTappDeveloping.Controllers
 {
+    [Authorize(Roles = RoleNames.VenueOwner)]
     public class VenueController : Controller
     {
         private ApplicationDbContext context;
@@ -25,8 +29,79 @@ namespace UberTappDeveloping.Controllers
             base.Dispose(disposing);
         }
 
+        byte[] ImageBytes(HttpPostedFileBase PostedImage)
+        {
+            byte[] imageBytes;
+            using (BinaryReader br = new BinaryReader(PostedImage.InputStream))
+            {
+                imageBytes = br.ReadBytes(PostedImage.ContentLength);
+            }
+
+            return imageBytes;
+        }
+
+        [HttpPost]
+        public ActionResult VenueProfileImage(VenueProfileImageViewModel viewModel)
+        {
+            if (viewModel.PostedImage == null)
+                return RedirectToAction("venueprofile", new { id = viewModel.VenueId });
+
+            var image = new VenueProfileImage
+            {
+                VenueId = viewModel.VenueId,
+                Name = viewModel.PostedImage.FileName,
+                Data = ImageBytes(viewModel.PostedImage)
+            };
+
+            context.VenueProfileImage.AddOrUpdate(image);
+            context.SaveChanges();
+
+            return RedirectToAction("venueprofile", new { id = viewModel.VenueId });
+        }
+
+        [HttpPost]
+        public ActionResult VenueProfile(VenueProfileViewModel viewModel)
+        {
+            if (viewModel.PostedImage == null)
+                return RedirectToAction("venueprofile", new { id = viewModel.VenueId });
+
+            var image = new VenueImage
+            {
+                VenueId = viewModel.VenueId,
+                Name = viewModel.PostedImage.FileName,
+                ContentType = viewModel.PostedImage.ContentType,
+                Data = ImageBytes(viewModel.PostedImage)
+            };
+
+            context.VenueImages.Add(image);
+            context.SaveChanges();
+
+            return RedirectToAction("venueprofile", new { id = viewModel.VenueId });
+        }
+
+        //Get: venue/VenueProfile/id
+        public ActionResult VenueProfile(int id)
+        {
+            var venue = context.Venues
+                .Include(v => v.VenueImages)
+                .Include(v => v.ProfileImage)
+                .Include(v => v.VenueBeers.Select(vb => vb.AvailableBeer))
+                .SingleOrDefault(v => v.Id == id);
+
+            var viewModel = new VenueProfileViewModel
+            {
+                VenueId = id,
+                Venue = venue,
+                GetImages = venue.VenueImages,
+                ProfileImage = venue.ProfileImage,
+                Beers = venue.VenueBeers.Select(vb => new BeerPriceViewModel { Name = vb.AvailableBeer.Name,Price = vb.Price}).OrderBy(vm => vm.Name)
+            };
+
+            return View(viewModel);
+        }
+
+
         //Get venue/venueBeers
-        [Authorize(Roles = "Venue Owner")]
         public ActionResult VenueBeers()
         {
             var userId = User.Identity.GetUserId();
@@ -40,13 +115,13 @@ namespace UberTappDeveloping.Controllers
         }
 
         // GET: Venue
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
         //Get: Edit/id
-        [Authorize(Roles = "Venue Owner")]
         public ActionResult Edit(int id)
         {
             var venue = context.Venues.SingleOrDefault(v => v.Id == id);
@@ -62,7 +137,6 @@ namespace UberTappDeveloping.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Venue Owner")]
         public ActionResult Update(Venue venue)
         {
             if (venue == null)
@@ -94,7 +168,6 @@ namespace UberTappDeveloping.Controllers
             return RedirectToAction("Index", "home");
         }
 
-        [Authorize(Roles = "Venue Owner")]
         public ActionResult UserVenues()
         {
             var userId = User.Identity.GetUserId();
@@ -120,7 +193,6 @@ namespace UberTappDeveloping.Controllers
         }
 
         //GET : venue/new
-        [Authorize(Roles = "Venue Owner")]
         public ActionResult New()
         {
             
@@ -136,7 +208,6 @@ namespace UberTappDeveloping.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Venue Owner")]
         public ActionResult New(Venue venue)
         {
             if (!ModelState.IsValid)
