@@ -182,7 +182,8 @@ namespace UberTappDeveloping.Controllers
 					BirthDate = viewModel.BirthDate,
 					Gender = viewModel.Gender,
 					IsVenueOwner = viewModel.IsVenueOwner,
-					LocationId = viewModel.LocationId
+					LocationId = viewModel.LocationId,
+					IsPremiumUser = viewModel.IsPremiumUser
 				};
 				var result = await UserManager.CreateAsync(user, viewModel.Password);
 				if (result.Succeeded)
