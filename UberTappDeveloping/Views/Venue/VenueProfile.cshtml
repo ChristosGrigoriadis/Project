@@ -1,9 +1,9 @@
 ﻿@model UberTappDeveloping.ViewModels.VenueProfileViewModel
 @{
     ViewBag.Title = "VenueProfile";
+
 }
-@using Microsoft.AspNet.Identity
-@using UberTappDeveloping.Helper.Roles
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,16 +16,13 @@
 
 
     <div id="ProfilePic">
-        @if (Model.Venue.OwnerId == User.Identity.GetUserId())
-        {
-            using (Html.BeginForm("VenueProfileImage", "Venue", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.HiddenFor(vm => vm.VenueId);
-                <input type="file" name="PostedImage" id="profileInput" class="bg-primary" />
-                <input type="submit" id="btnUpload" value="Upload" class="bg-primary" />
-            }
-        }
 
+        @using (Html.BeginForm("VenueProfileImage", "Venue", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(vm => vm.VenueId);
+            <input type="file" name="PostedImage" id="profileInput" class="bg-primary" />
+            <input type="submit" id="btnUpload" value="Upload" class="bg-primary" />
+        }
         <div>
             <h1 class="sign__word">@Model.Venue.Name</h1>
             @if (Model.ProfileImage != null)
@@ -36,16 +33,12 @@
         </div>
 
     </div>
-    @if (Model.Venue.OwnerId == User.Identity.GetUserId())
+    @using (Html.BeginForm("VenueProfile", "Venue", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        using (Html.BeginForm("VenueProfile", "Venue", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.HiddenFor(vm => vm.VenueId);
-            <input type="file" name="PostedImage" id="carouselInput" class="bg-primary" />
-            <input type="submit" id="btnUpload" value="Upload" class="bg-primary" />
-        }
+        @Html.HiddenFor(vm => vm.VenueId);
+        <input type="file" name="PostedImage" id="carouselInput" class="bg-primary" />
+        <input type="submit" id="btnUpload" value="Upload" class="bg-primary" />
     }
-
 
 
 
@@ -68,10 +61,8 @@
                     <img data-image-id=@image.Id data-image-name=@image.Name src="data:image/gif;base64,@Convert.ToBase64String(image.Data)" alt="@image.Name" />
                 </div>
             }
-            @if (Model.Venue.OwnerId == User.Identity.GetUserId())
-            {
-                <button class="bg-primary" id="delete-btn">Delete</button>
-            }
+
+            <button class="bg-primary" id="delete-btn">Delete</button>
         </div>
 
         <!-- Left and right controls -->
@@ -117,6 +108,9 @@
 
 
         $(document).ready(function () {
+
+            $(".body-content").removeClass("container");//remove page bootstrap
+            $("hr").remove(); //remove page hr
 
             $(".carousel-inner").children().first().addClass("active");//carousel active class added to work properly!
             $(".carousel-indicators").children().first().addClass("active");

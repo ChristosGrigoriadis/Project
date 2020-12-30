@@ -1,8 +1,8 @@
-﻿@model UberTappDeveloping.ViewModels.VenuesViewModel
+﻿@model IEnumerable<UberTappDeveloping.Models.Venue>
 @{
     ViewBag.Title = "UserVenues";
 }
-@using UberTappDeveloping.Helper.Roles
+
 <h2>UserVenues</h2>
 
 <table class="table table-bordered">
@@ -12,18 +12,14 @@
         <th>Location</th>
         <th></th>
     </tr>
-    @foreach (var venue in Model.Venues)
+    @foreach (var venue in Model)
     {
         <tr>
             <td>@venue.Name</td>
             <td>@venue.DateOpened</td>
             <td>@venue.Location.Display</td>
             <td>
-                @if ( !Model.IsIndexAction)
-                {
-                    <a href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a> 
-                }
-                
+                <a href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a> |
                 <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })">Profile</a>
             </td>
         </tr>
