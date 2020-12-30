@@ -185,6 +185,8 @@
     <Compile Include="Controllers\API\EmailsController.cs" />
     <Compile Include="Controllers\API\TestsController.cs" />
     <Compile Include="Controllers\ApplicationUserController.cs" />
+    <Compile Include="Controllers\BeerController.cs" />
+    <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PayPalController.cs" />
