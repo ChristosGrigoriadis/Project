@@ -1,5 +1,5 @@
 ﻿.container {
-    width:90%;
+    width: 90%;
 }
 
 body {
@@ -27,12 +27,12 @@ textarea {
     max-width: 280px;
 }
 
-/*BootStrap Overrides*/
+/*BootStrap Override*/
 
 footer {
     border-top: solid;
     margin-top: 10%;
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 .field-validation-error {
@@ -44,5 +44,17 @@ footer {
 }
 
 input, select, textarea {
-    max-width: 95%;
+    max-width: 100%;
 }
+
+/* MapCSS*/
+
+#map {
+    height: 444px;
+    width: 100%;
+}
+
+#latlng {
+    width: 100px;
+}
+
