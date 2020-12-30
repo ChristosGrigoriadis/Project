@@ -259,6 +259,7 @@
     <Compile Include="ViewModels\VenueFormViewModel.cs" />
     <Compile Include="ViewModels\VenueProfileViewModel.cs" />
     <Compile Include="ViewModels\VenueProfileImageViewModel.cs" />
+    <Compile Include="ViewModels\VenuesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -577,7 +578,7 @@
     <Content Include="Views\ApplicationUser\UserForm.cshtml" />
     <Content Include="Views\ApplicationUser\Details.cshtml" />
     <Content Include="Views\Venue\VenueForm.cshtml" />
-    <Content Include="Views\Venue\UserVenues.cshtml" />
+    <Content Include="Views\Venue\Venues.cshtml" />
     <Content Include="Views\Venue\VenueBeers.cshtml" />
     <Content Include="Views\Venue\VenueProfile.cshtml" />
   </ItemGroup>

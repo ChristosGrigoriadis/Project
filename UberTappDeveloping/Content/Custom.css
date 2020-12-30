@@ -50,7 +50,7 @@
 
     .box span {
         width: 60%;
-        font-size: 26px;
+        font-size: 22px;
         line-height:22px;
     }
 
@@ -84,8 +84,27 @@
     text-align: center;
 }
 
-    .origin h1 {
+.origin .searchBeers {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-around;
+}
+
+    .origin .searchBeers:hover input {
+        display: block;
+    }
+
+    .origin .searchBeers input {
+        height: 30px;
+        font-size: 18px;
+        width: 46%;
+        padding: 15px;
+        display: none;
+    }
+
+    .origin .searchBeers h1 {
         text-shadow: 4px 4px 3px #AB7449;
+        text-align:center;
     }
 
 .venues {
@@ -109,11 +128,30 @@
     flex-direction:column;
 }
 
-    .myVenues label {
-        font-size: 29px;
-        line-height: 22px;
-        border-bottom:medium solid black;
+    .myVenues .radio {
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
     }
+
+        .myVenues .radio a {
+            display:none;
+            margin-left:10px;
+        }
+
+            .myVenues .radio a:hover{
+                display:block;
+            }
+
+            .myVenues .radio:hover a {
+                display: block;
+            }
+
+        .myVenues label {
+            font-size: 29px;
+            line-height: 22px;
+            border-bottom: medium solid black;
+        }
 
     
 div {

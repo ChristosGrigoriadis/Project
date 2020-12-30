@@ -80,6 +80,7 @@ namespace UberTappDeveloping.Controllers
         }
 
         //Get: venue/VenueProfile/id
+        [AllowAnonymous]
         public ActionResult VenueProfile(int id)
         {
             var venue = context.Venues
@@ -118,7 +119,13 @@ namespace UberTappDeveloping.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new VenuesViewModel
+            {
+                IsIndexAction = true,
+                Venues = context.Venues.Include(v => v.Location)
+            };
+
+            return View("Venues",viewModel);
         }
 
         //Get: Edit/id
@@ -176,7 +183,13 @@ namespace UberTappDeveloping.Controllers
                 .Include(v => v.Location)
                 .Where(v => v.OwnerId == userId);
 
-            return View(userVenues);
+            var viewModel = new VenuesViewModel
+            {
+                Venues = userVenues,
+                IsIndexAction = false
+            };
+
+            return View("Venues", viewModel);
         }
 
         //private IEnumerable<object> GetLocations()
