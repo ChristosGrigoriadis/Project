@@ -21,7 +21,6 @@
                         <input type="radio" name="venue" value="@venue.Id" class="venue-input">
                         @venue.Name
                     </label>
-                    <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })" class="btn btn-primary">Profile</a>
                 </div>
             }
 
@@ -29,10 +28,7 @@
     </div>
 
     <div class="origin">
-        <div class="searchBeers">
-            <input type="text" value="" placeholder="Search by Beer Name" />
-            <h1>All Beers</h1>
-        </div>
+        <h1>All Beers</h1>
         <div class="all dropzone">
 
             @foreach (var beer in Model.AllBeers)
@@ -74,6 +70,9 @@
     <script>
 
         $(document).ready(function () {
+
+            $(".body-content").removeClass("container");//remove page bootstrap
+            $("hr").remove(); //remove page hr
 
             let dragged;
             let items = document.querySelectorAll('.box');
@@ -140,7 +139,7 @@
                 event.preventDefault();
                 console.log($(event.target).parent());
 
-                // move dragged elem to the selected drop target
+               // move dragged elem to the selected drop target
                 if (event.target.classList.contains('dropzone')) {
 
                     event.target.style.background = "";
@@ -217,10 +216,12 @@
                 .done(function () {
                     allBeers = JSON.parse(sessionStorage.getItem("allBeers"));
                     VenueClick();
-                    SearchBeers();
                 });
 
             function VenueClick() {
+
+
+                //show available beers when clicking on Venue
                 $(".myVenues").on("click", ".venue-input", function (e) {
                     console.log(e);
                     console.log($("input[type='radio']:checked").val())
@@ -235,12 +236,12 @@
 
                     allBeers.forEach(function (beer) {//append all beers to .all
                         var div = `<div draggable="true" class="box">
-                                             <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
-                                             <span>${beer.name}</span>
-                                             <input type="hidden" name="beer" value="${beer.id}" />
-                                             <input type="number" name="price" value="" min="0" class="price" />
-                                             <i class="fa fa-eur"></i>
-                                      </div>`;
+                                                      <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
+                                                      <span>${beer.name}</span>
+                                                      <input type="hidden" name="beer" value="${beer.id}" />
+                                                      <input type="number" name="price" value="" min="0" class="price" />
+                                                      <i class="fa fa-eur"></i>
+                                             </div>`;
                         $(".all").append(div);
                     });
 
@@ -277,31 +278,15 @@
 
             function ViewBeer(beer) {
                 var div = `<div draggable="true" class="box">
-                                     <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
-                                     <span>${beer.name}</span>
-                                     <input type="hidden" name="beer" value="${beer.id}" />
-                                     <input type="number" name="price" value="${beer.price}" min="0" class="price" />
-                                     <i class="fa fa-eur"></i>
-                              </div>`;
+                                                <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
+                                                <span>${beer.name}</span>
+                                                <input type="hidden" name="beer" value="${beer.id}" />
+                                                <input type="number" name="price" value="${beer.price}" min="0" class="price" />
+                                                <i class="fa fa-eur"></i>
+                                  </div>`;
 
                 $(".selected").append(div);
             }
-
-          
-            function SearchBeers() {//filter .all beers
-                $(".searchBeers input").on("keyup", function () {
-                    
-                    var value = $(this).val().toLowerCase();
-                    
-                    $($(".all .box span")).filter(function () {
-                        
-                        $(this).parent().toggle($(this).text().toLowerCase().includes(value));
-                        
-                    });
-                });
-            };
-
-            
 
 
 
