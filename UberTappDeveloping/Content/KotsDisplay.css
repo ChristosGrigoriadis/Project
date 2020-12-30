@@ -1,123 +1,181 @@
-﻿/*Register.cshtml*/
+﻿
+/*Register.cshtml*/
 
-.body .container-fluid .row .form-group h2 {
-    padding: 5px 10px;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    text-align: left;
-    border-bottom: solid;
+#RegisterView {
+    background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
 }
 
-.body .container-fluid #registerBtnRow {
-    padding: 10px 15px;
-    text-align: center;
-    margin-top: 5%;
-}
-
-    .body .container-fluid #registerBtnRow .btn-primary {
-        color: white;
-        text-decoration: none;
+    #RegisterView .container-fluid .row .form-group #CreateANewAccountImg {
+        padding: 10px 15px;
+        margin-top: 1%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-.body .container-fluid .row .form-group h4 {
-    padding: 5px 10px;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    text-align: center;
-    border-bottom: solid;
-    font-weight: bold;
-}
+    #RegisterView .container-fluid #registerBtnRow {
+        padding: 10px 15px;
+        text-align: center;
+        margin-top: 5%;
+    }
+
+        #RegisterView .container-fluid #registerBtnRow .btn-primary {
+            color: white;
+            text-decoration: none;
+        }
+
+    #RegisterView .container-fluid .row .form-group h4 {
+        padding: 5px 10px;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        text-align: center;
+        border-bottom: solid;
+        font-weight: bold;
+    }
 
 /*Login.cshtml*/
 
-.body .container-fluid .row .form-group h2 {
-    padding: 5px 10px;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    text-align: left;
-    border-bottom: solid;
+#LoginView {
+    background: url('../Helper/Images/RedMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
 }
 
-.body .container-fluid #loginbtnRow {
-    padding: 5px 10px;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    text-align: center;
-}
+    #LoginView .container-fluid .row .form-group #WelcomeBackImg {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 75%;
+        display: block;
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    #LoginView .container-fluid #loginbtnRow {
+        padding: 0px 5px;
+        margin-top: 0.5%;
+        margin-bottom: 1%;
+        text-align: center;
+    }
 
 /*About.cshtml*/
 
-.body .container-fluid .row .form-group h2 {
-    padding: 5px 10px;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    text-align: left;
-    border-bottom: solid;
+#AboutView {
+    background: url('../Helper/Images/RedMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
 }
+
+    #AboutView .container-fluid .row .form-group #AboutUs {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 60%;
+        display: block;
+        margin-left: 0;
+        margin-right: auto;
+    }
 
 /*Contact.cshtml*/
 
-.body .container-fluid .row .form-group h2 {
-    padding: 5px 10px;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    text-align: left;
-    border-bottom: solid;
+#ContactView {
+    background: url('../Helper/Images/greyishMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
 }
+
+    #ContactView .container-fluid .row .form-group #ContactImg {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 55%;
+        display: block;
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    #ContactView .container-fluid .address a {
+        color: purple;
+    }
 
 /*EmailForm.cshtml*/
 
-.body .container-fluid .row .form-group h2 {
-    padding: 5px 10px;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    text-align: left;
-    border-bottom: solid;
+#EmailFormView {
+    background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
 }
 
-.body .container-fluid form #EmailBtnRow {
-    text-align: center;
-}
-
-    .body .container-fluid form #EmailBtnRow .btn-success {
-        color: white;
-        text-decoration: none;
+    #EmailFormView .container-fluid .row .form-group #HowCanWeHelpImg {
+        padding: 10px 15px;
+        margin-top: 4%;
+        width: 75%;
+        display: block;
+        margin-left: 0;
+        margin-right: auto;
     }
+
+    #EmailFormView .container-fluid form #EmailBtnRow {
+        text-align: center;
+    }
+
+        #EmailFormView .container-fluid form #EmailBtnRow .btn-success {
+            color: white;
+            text-decoration: none;
+        }
 
 /*AllUsers.cshtml*/
 
-.body .container-fluid .row .form-group h2 {
-    padding: 5px 10px;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    text-align: left;
-    border-bottom: solid;
+#AllUsersView {
+    background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
 }
 
-.body .container-fluid .row .form-group #myProfile {
-    padding: 5px 10px;
-    text-align: left;
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-    .body .container-fluid .row .form-group #myProfile a {
-        color: white;
-        text-decoration: none;
+    #AllUsersView .container-fluid .row .form-group #AllUsersImg {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 75%;
+        display: block;
+        margin-left: 0;
+        margin-right: auto;
     }
 
-.body .container-fluid #users tbody tr .buttons .btn {
-    margin-left: 2%;
-    margin-right: 2%;
-}
+    #AllUsersView .container-fluid .row .form-group #myProfile {
+        padding: 5px 10px;
+        text-align: left;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
 
-    .body .container-fluid #users tbody tr .buttons .btn a {
-        color: white;
-        text-decoration: none;
+        #AllUsersView .container-fluid .row .form-group #myProfile a {
+            color: white;
+            text-decoration: none;
+        }
+
+    #AllUsersView .container-fluid #users tbody tr .buttons .btn {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+        #AllUsersView .container-fluid #users tbody tr .buttons .btn a {
+            color: white;
+            text-decoration: none;
+        }
+
+    #AllUsersView .container-fluid #users tbody tr:hover {
+        color: black;
+        cursor: pointer;
+    }
+
+    #AllUsersView .container-fluid .row .form-group #UsersTranspImg {
+        position: fixed;
+        bottom: 0;
+        width: 25%;
+        padding-right: 10px;
+        padding-left: 0px;
     }
 
 /*Details.cshtml*/
-
 .body .container-fluid .row .form-group h2 {
     padding: 5px 10px;
     margin-top: 5%;
@@ -184,7 +242,7 @@
 }
 
 /*SuccessfulPayment.cshtml*/
-.body .container-fluid .row #premId {
+#SuccessfulPaymentView .container-fluid .row #PremUserId {
     display: block;
     padding: 10px 15px;
     margin-left: auto;
@@ -195,7 +253,7 @@
     border-radius: 7%;
 }
 
-.body .container-fluid .row #premBtn {
+#SuccessfulPaymentView .container-fluid .row #premBtn {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -204,7 +262,7 @@
     margin-bottom: 1%;
 }
 
-    .body .container-fluid .row #premBtn a {
+    #SuccessfulPaymentView .container-fluid .row #premBtn a {
         display: block;
         margin-left: auto;
         margin-right: auto;

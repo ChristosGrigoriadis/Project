@@ -5,12 +5,12 @@
 <link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
 
-<body class="body">
+<body id="AllUsersView" class="body">
     <div class="container-fluid">
 
         <div class="row">
-            <div class="form-group col-md-4">
-                <h2>All Users</h2>
+            <div class="form-group col-md-6">
+                <img id="AllUsersImg" src="~/Helper/Images/AllUsers.png" alt="Alternate Text" />
             </div>
         </div>
 
@@ -20,33 +20,40 @@
             </div>
         </div>
 
-        <table id="users" class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in Model)
-                {
-                    <tr>
-                        <td>@user.Email</td>
-                        <td>@user.UserName</td>
-                        <td>@user.FirstName</td>
-                        <td>@user.LastName</td>
-                        <td class="buttons">
-                            <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "ApplicationUser", new { Id = user.Id }, new { title = "View User's Profile" })</button>
-                            <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "ApplicationUser", new { Id = user.Id }, new { title = "Update User's Info" })</button>
-                            <button class="btn btn-sm btn-danger js-delete" data-user-id="@user.Id" title="Delete This User">Delete</button>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="form-group col-md-9">
+                <table id="users" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.Email</td>
+                                <td>@user.UserName</td>
+                                <td>@user.FirstName</td>
+                                <td>@user.LastName</td>
+                                <td class="buttons">
+                                    <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "ApplicationUser", new { Id = user.Id }, new { title = "View User's Profile" })</button>
+                                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "ApplicationUser", new { Id = user.Id }, new { title = "Update User's Info" })</button>
+                                    <button class="btn btn-sm btn-danger js-delete" data-user-id="@user.Id" title="Delete This User">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group col-md-3">
+                <img id="UsersTranspImg" src="~/Helper/Images/users_transp.png" alt="Alternate Text" />
+            </div>
+        </div>
     </div>
 </body>
 
