@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNet.Identity
+@using UberTappDeveloping.Helper.Enums
+
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
+
+<body class="body">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <h2>How can we help?</h2>
+            </div>
+        </div>
+
+        <form id="newEmail">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Subject:</label>
+                    @Html.DropDownList("SupportCategory", EnumHelper.GetSelectList(typeof(SupportCategory)), "Select a Support Category", new { @class = "form-control", id = "subject" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Body:</label>
+                    <textarea id="body" type="text" name="body" rows="10" cols="50" class="form-control" required></textarea>
+                </div>
+            </div>
+
+            <div id="EmailBtnRow" class="row">
+                <div class="form-group col-md-6">
+                    <button class="btn btn-success">Submit Request</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+@section Scripts
+{
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(document).ready(function () {
+
+            let viewModel = {};
+            function reloadPage() {
+                let reload = window.location.replace("/Home/Index");
+            }
+
+            $("#newEmail").submit(function (e) {
+                e.preventDefault();
+
+                viewModel.subject = $('#subject').val();
+                viewModel.body = $('#body').val();
+
+                $.ajax({
+                    url: "/api/emails",
+                    method: "post",
+                    data: viewModel
+                })
+                    .done(function () {
+                        bootbox.alert("Email successfully sent!");
+                        setTimeout(reloadPage, 4000);
+                    })
+                    .fail(function () {
+                        bootbox.alert("Ooops something went wrong!");
+                    });
+            });
+
+        });
+
+    </script>
+}

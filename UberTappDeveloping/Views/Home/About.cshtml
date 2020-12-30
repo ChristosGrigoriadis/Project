@@ -1,7 +1,22 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
+
+<body class="body">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <h2>About</h2>
+            </div>
+        </div>
+
+        <h3>@ViewBag.Message</h3>
+
+        <p>Use this area to provide additional information.</p>
+    </div>
+</body>

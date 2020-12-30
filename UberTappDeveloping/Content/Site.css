@@ -22,3 +22,35 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*BootStrap Override*/
+
+footer {
+    border-top: solid;
+    margin-top: 10%;
+    padding: 5px 10px;
+}
+
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error {
+    border: 2px solid red;
+}
+
+input, select, textarea {
+    max-width: 95%;
+}
+
+/* MapCSS*/
+
+#map {
+    height: 444px;
+    width: 100%;
+}
+
+#latlng {
+    width: 100px;
+}
+

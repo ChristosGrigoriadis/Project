@@ -86,7 +86,7 @@ namespace UberTappDeveloping.ViewModels
 		[Required]
 		[Display(Name = "Username")]
 		[StringLength(50, MinimumLength = 3, ErrorMessage = "Username should be 3-50 characters long")]
-		public string Username { get; set; }
+		public string UserName { get; set; }
 
 		[Display(Name = "First Name")]
 		[StringLength(50, MinimumLength = 3, ErrorMessage = "First Name should be 3-50 characters long")]
@@ -109,6 +109,7 @@ namespace UberTappDeveloping.ViewModels
 		[Display(Name = "Location")]
 		public int LocationId { get; set; }
 		public IEnumerable<Location> Locations { get; set; }
+		public bool IsPremiumUser { get; set; }
 	}
 
 	public class ResetPasswordViewModel

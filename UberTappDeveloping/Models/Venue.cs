@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -18,24 +19,19 @@ namespace UberTappDeveloping.Models
 		[StringLength(225)]
 		public string Manager { get; set; }
 
-		[Display(Name = "Date Opened")]
+		[Display(Name = "Date Founded")]
 		public DateTime? DateOpened { get; set; }
 
+        //[ForeignKey("ApplicationUser")]
         public string OwnerId { get; set; }
         public ApplicationUser Owner { get; set; }
 
         public ICollection<VenueBeer> VenueBeers { get; set; }
 
+        [Display(Name = "Venue Location")]
         public int LocationId { get; set; }
         public Location Location { get; set; }
 
-        //[Required]
-        //[Display(Name = "Address")]
-        //public int LocationId { get; set; }
-        //public Location Location { get; set; }
+	} // public class Venue END //
 
-        //public ICollection<Beer> AvailableBeers { get; set; }
-
-        //public ICollection<User> PeopleBeenHere { get; set; }
-    }
-}
+} // namespace UberTappDeveloping.Models END //

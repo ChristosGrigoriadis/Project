@@ -1,0 +1,119 @@
+﻿@model UberTappDeveloping.Models.ApplicationUser
+@using Microsoft.AspNet.Identity
+@using UberTappDeveloping.Helper.Roles;
+
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
+
+<body class="body">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <h2>Profile Details</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="profileDetBtn" class="form-group col-md-6">
+                @if (User.IsInRole(RoleNames.Admin))
+                {
+                    <button class="btn btn-sm btn-info">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
+                    <button id="deleteBtn" class="btn btn-sm btn-danger" title="Delete Profile">Delete</button>
+                    if (Model.IsPremiumUser == false)
+                    {
+                        <button class="btn btn-sm btn-primary">@Html.ActionLink("Become A Premium User", "ViewPermiumOffer", "PayPal", new { Id = User.Identity.GetUserId() }, new { title = "More Info" })</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-sm btn-primary">@Html.ActionLink("Check Your Membership Status", "SuccessfulPayment", "PayPal", new { Id = User.Identity.GetUserId() }, new { title = "Membership Status" })</button>
+                    }
+                }
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <td>First Name</td>
+                    @if (Model.FirstName == null)
+                    {
+                        <td><i>First Name not assigned</i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayFor(model => model.FirstName)</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    @if (Model.LastName == null)
+                    {
+                        <td><i>Last Name not assigned</i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayFor(model => model.LastName)</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Date Of Birth</td>
+                    @if (Model.BirthDate == null)
+                    {
+                        <td><i>Date Of Birth not assigned</i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayFor(model => model.BirthDate)</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    @if (Model.Gender == null)
+                    {
+                        <td><i>Gender not assigned</i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.DisplayFor(model => model.Gender)</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td>
+                        @Html.DisplayFor(model => model.Location.Display)
+                        <input id="submit" type="button" value="View Location" />
+                        <input id="latlng" type="text" value="@Model.Location.Latitude,@Model.Location.Longitude" hidden />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>@Html.DisplayFor(model => model.UserName)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="map"></div>
+
+    </div>
+</body>
+
+@section Scripts
+{
+
+    <script src="~/Scripts/app/controllers/deleteProfile.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpBZayreKhUYLqBhdUADi20brDXGV3EUU&callback=initMap&libraries=&v=weekly" defer></script>
+    <script src="~/Scripts/app/controllers/mapLocations.js"></script>
+
+}
+

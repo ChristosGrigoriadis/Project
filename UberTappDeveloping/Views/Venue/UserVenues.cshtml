@@ -1,0 +1,39 @@
+﻿@model IEnumerable<UberTappDeveloping.Models.Venue>
+@{
+    ViewBag.Title = "UserVenues";
+}
+
+<h2>User Venues</h2>
+
+<table id="venues" class="table table-bordered">
+    <tr>
+        <th>Venue Name</th>
+        <th>Date Founded</th>
+        <th>Location</th>
+        <th></th>
+    </tr>
+    @foreach (var venue in Model)
+    {
+        <tr>
+            <td>@venue.Name</td>
+            <td>@venue.DateOpened</td>
+            <td>@venue.Location.Display</td>
+            <td><a href="@Url.Action("edit","venue",new {id = venue.Id })">Edit</a></td>
+        </tr>
+    }
+
+</table>
+
+@section Scripts{
+
+    <script>
+
+        $(document).ready(function () {
+
+            let venueTable = $("#venues").DataTable({});
+
+        });
+
+    </script>
+
+}

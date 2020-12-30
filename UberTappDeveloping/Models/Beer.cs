@@ -12,6 +12,8 @@ namespace UberTappDeveloping.Models
 
         [Required]
         public string Name { get; set; }
+
+        
         public int? EBC { get; set; } // European Brewery Convention -Colour-
         public double? ABV { get; set; } // Alcohol By Volume 3% - 13% for beers
         public int? IBU { get; set; } // International Bitterness Units

@@ -8,6 +8,12 @@ namespace UberTappDeveloping.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
+        public ActionResult EmailForm()
+        {
+            return View("EmailForm");
+        }
+
         public ActionResult Index()
         {
             return View();

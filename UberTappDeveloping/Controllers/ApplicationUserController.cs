@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using UberTappDeveloping.DAL;
 using UberTappDeveloping.Helper.Roles;
 using UberTappDeveloping.Models;
+using System.Data.Entity;
+using UberTappDeveloping.ViewModels;
 
 namespace UberTappDeveloping.Controllers
 {
@@ -25,12 +27,12 @@ namespace UberTappDeveloping.Controllers
 
 		#region GET
 
-		// GET: All ApplicationUsers
+		// GET: All ApplicationUsers (Admin)
 		[Authorize(Roles = RoleNames.Admin)]
-		public ActionResult Index()
+		public ActionResult AllUsers()
 		{
 			var applicationUsers = context.Users.ToList();
-			return View("Index", applicationUsers);
+			return View("AllUsers", applicationUsers);
 		}
 
 		// GET: An ApplicationUser
@@ -42,14 +44,30 @@ namespace UberTappDeveloping.Controllers
 			if (applicationUser == null)
 				return HttpNotFound();
 
-			return View("UserForm", applicationUser);
+			var viewModel = new UserFormViewModel 
+			{
+				Id = applicationUser.Id,
+				Email = applicationUser.Email,
+				UserName = applicationUser.UserName,
+				FirstName = applicationUser.FirstName,
+				LastName=applicationUser.LastName,
+				BirthDate = applicationUser.BirthDate,
+				Gender =applicationUser.Gender,
+				IsVenueOwner = applicationUser.IsVenueOwner,
+				LocationId = applicationUser.LocationId,
+				Locations = context.Locations
+			};
+
+			return View("UserForm", viewModel);
 		}
 
 		// GET: ApplicationUser Details
 		[Authorize]
 		public ActionResult Details(string id)
 		{
-			var applicationUser = context.Users.SingleOrDefault(u => u.Id == id);
+			var applicationUser = context.Users
+				.Include(u => u.Location)
+				.SingleOrDefault(u => u.Id == id);
 
 			if (applicationUser == null)
 				return HttpNotFound();
@@ -81,6 +99,7 @@ namespace UberTappDeveloping.Controllers
 			userDb.LastName = applicationUser.LastName;
 			userDb.BirthDate = applicationUser.BirthDate;
 			userDb.Gender = applicationUser.Gender;
+			userDb.LocationId = applicationUser.LocationId;
 
 			context.SaveChanges();
 
@@ -89,5 +108,6 @@ namespace UberTappDeveloping.Controllers
 
 		#endregion
 
-	}
-}
+	} // public class ApplicationUserController : Controller END //
+
+} // namespace UberTappDeveloping.Controllers END //
