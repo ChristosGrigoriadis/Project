@@ -1,0 +1,49 @@
+﻿@model IEnumerable<UberTappDeveloping.Models.Beer>
+
+
+
+<h2>Beers</h2>
+
+<body class="body">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <h2>All Beers</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <button class="btn btn-sm">@Html.ActionLink("Add a New Beer", "Create", "Beer", new { title = "View Beer Details" })</button>
+            </div>
+        </div>
+
+        <table id="beers" class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>EBC</th>
+                    <th>IBU</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var beer in Model)
+                {
+                    <tr>
+                        <td>@beer.Name</td>
+                        <td>@beer.EBC</td>
+                        <td>@beer.IBU</td>
+                        <td>@beer.Description</td>
+                        <td class="buttons">
+                            <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "Beer", new { Id = beer.Id }, new { title = "View Beer Details" })</button>
+                            <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "Beer", new { Id = beer.Id }, new { title = "Update Beer Info" })</button>
+                            <button class="btn btn-sm btn-danger js-delete" data-user-id="@beer.Id" title="Delete This beer">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
