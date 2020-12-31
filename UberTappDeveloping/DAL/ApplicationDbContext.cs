@@ -42,6 +42,11 @@ namespace UberTappDeveloping.DAL
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>()
+                .HasRequired(u=>u.Location)
+                .WithMany(l=>l.UserLocations)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.UserBeers)
                 .WithRequired(b => b.BeerEnthusiast)
                 .WillCascadeOnDelete(false);

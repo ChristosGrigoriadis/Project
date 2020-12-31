@@ -109,6 +109,7 @@ namespace UberTappDeveloping.ViewModels
 		[Display(Name = "Location")]
 		public int LocationId { get; set; }
 		public IEnumerable<Location> Locations { get; set; }
+		public bool IsPremiumUser { get; set; }
 	}
 
 	public class ResetPasswordViewModel

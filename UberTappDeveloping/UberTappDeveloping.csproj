@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -179,15 +182,19 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\ApplicationUsersController.cs" />
+    <Compile Include="Controllers\API\EmailsController.cs" />
+    <Compile Include="Controllers\API\TestsController.cs" />
     <Compile Include="Controllers\API\VenuesController.cs" />
     <Compile Include="Controllers\ApplicationUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\VenueController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Enums\Gender.cs" />
+    <Compile Include="Helper\Enums\SupportCategory.cs" />
     <Compile Include="Helper\Roles\RoleNames.cs" />
     <Compile Include="Migrations\202012021308307_Initial.cs" />
     <Compile Include="Migrations\202012021308307_Initial.Designer.cs">
@@ -237,9 +244,15 @@
     <Compile Include="Migrations\202012281735248_AddImageAndProfileImageModels.Designer.cs">
       <DependentUpon>202012281735248_AddImageAndProfileImageModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012271141371_IsPremiumUser.cs" />
+    <Compile Include="Migrations\202012271141371_IsPremiumUser.Designer.cs">
+      <DependentUpon>202012271141371_IsPremiumUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\ModelDtos\VenueBeersDto.cs" />
     <Compile Include="Models\ModelDtos\BeerDto.cs" />
     <Compile Include="Models\UserBeer.cs" />
@@ -266,6 +279,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\KotsDisplay.css" />
     <Content Include="Content\Custom.css" />
     <Content Include="Content\CustomDisplay.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -439,6 +453,36 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Helper\Images\about_us.png" />
+    <Content Include="Helper\Images\Add_a_new_Venue.png" />
+    <Content Include="Helper\Images\AllUsers.png" />
+    <Content Include="Helper\Images\Available_Beers.png" />
+    <Content Include="Helper\Images\Beerpedia.png" />
+    <Content Include="Helper\Images\Beers.png" />
+    <Content Include="Helper\Images\beers_transp.png" />
+    <Content Include="Helper\Images\contact.png" />
+    <Content Include="Helper\Images\Create_a_new_Account.png" />
+    <Content Include="Helper\Images\error.gif" />
+    <Content Include="Helper\Images\greyishMovBcg.gif" />
+    <Content Include="Helper\Images\How_can_we_help.png" />
+    <Content Include="Helper\Images\main_bottom_transp.png" />
+    <Content Include="Helper\Images\My_Venues.png" />
+    <Content Include="Helper\Images\PremiumUser.jpg" />
+    <Content Include="Helper\Images\Profile_Details.png" />
+    <Content Include="Helper\Images\Purple.jpg" />
+    <Content Include="Helper\Images\purpleMovBcg.gif" />
+    <Content Include="Helper\Images\RedMovBcg.gif" />
+    <Content Include="Helper\Images\Selected_Beers.png" />
+    <Content Include="Helper\Images\Update_Profile.png" />
+    <Content Include="Helper\Images\users_transp.png" />
+    <Content Include="Helper\Images\Venues.png" />
+    <Content Include="Helper\Images\venues_transp.png" />
+    <Content Include="Helper\Images\Welcome_Back.png" />
+    <Content Include="Helper\Images\Yellow.jpg" />
+    <Content Include="Helper\Images\YellowMovBcg.gif" />
+    <Content Include="Scripts\app\controllers\adminDelete.js" />
+    <Content Include="Scripts\app\controllers\deleteProfile.js" />
+    <Content Include="Scripts\app\controllers\mapLocations.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -581,12 +625,19 @@
     <Content Include="Views\Venue\Venues.cshtml" />
     <Content Include="Views\Venue\VenueBeers.cshtml" />
     <Content Include="Views\Venue\VenueProfile.cshtml" />
+    <Content Include="Views\Home\EmailForm.cshtml" />
+    <Content Include="Views\PayPal\ViewPermiumOffer.cshtml" />
+    <Content Include="Views\PayPal\FailedPayment.cshtml" />
+    <Content Include="Views\PayPal\SuccessfulPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DAL\Persistence\" />
     <Folder Include="DAL\Repositories\" />
     <Folder Include="Helper\CustomDA\" />
+    <Folder Include="Scripts\app\controllers\" />
+    <Folder Include="Scripts\app\controllers\" />
+    <Folder Include="Scripts\app\controllers\" />
     <Folder Include="Scripts\app\controllers\" />
     <Folder Include="Scripts\app\services\" />
   </ItemGroup>
@@ -629,14 +680,17 @@
     <EmbeddedResource Include="Migrations\202012031156558_LocationRelationshipWithUsersAndVenues.resx">
       <DependentUpon>202012031156558_LocationRelationshipWithUsersAndVenues.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012071206437_FixLocationANDBeerModels.resx">
-      <DependentUpon>202012071206437_FixLocationANDBeerModels.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012272335366_AddVenueBeerPriceColumn.resx">
       <DependentUpon>202012272335366_AddVenueBeerPriceColumn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012281735248_AddImageAndProfileImageModels.resx">
       <DependentUpon>202012281735248_AddImageAndProfileImageModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012271141371_IsPremiumUser.resx">
+      <DependentUpon>202012271141371_IsPremiumUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012071206437_FixLocationANDBeerModels.resx">
+      <DependentUpon>202012071206437_FixLocationANDBeerModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

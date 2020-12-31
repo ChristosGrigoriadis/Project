@@ -26,8 +26,8 @@ namespace UberTappDeveloping.Controllers.API
 		#region DELETE
 
 		// DELETE: /api/applicationusers/id
-		[Authorize(Roles = RoleNames.Admin)]
-		[HttpDelete]
+		[HttpPost]
+		[Authorize(Roles = RoleNames.Admin)]		
 		public IHttpActionResult Delete(string id)
 		{
 			var userDB = context.Users.SingleOrDefault(u => u.Id == id);
