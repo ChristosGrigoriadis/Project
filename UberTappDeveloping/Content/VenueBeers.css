@@ -3,10 +3,11 @@
 
 .body-content {
     font-family: 'Hanalei Fill', cursive;
-    background-image: url("DataTables/images/bck-image-2.jpg");
+    background-image: url("");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
+    
 }
 .container-main {
     display: flex;

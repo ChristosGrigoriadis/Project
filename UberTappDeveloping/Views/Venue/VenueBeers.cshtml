@@ -1,7 +1,7 @@
 ﻿@model UberTappDeveloping.ViewModels.VenueBeersViewModel
 @{
     ViewBag.Title = "VenueBeers";
-    @Styles.Render("~/Content/Custom.css");
+    @Styles.Render("~/Content/VenueBeers.css");
 
 }
 
@@ -295,7 +295,7 @@
                     
                     $($(".all .box span")).filter(function () {
                         
-                        $(this).parent().toggle($(this).text().toLowerCase().includes(value));
+                        $(this).parent().toggle($(this).text().toLowerCase().indexOf(value) > -1);
                         
                     });
                 });

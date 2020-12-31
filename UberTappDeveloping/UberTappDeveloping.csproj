@@ -279,8 +279,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\KotsDisplay.css" />
-    <Content Include="Content\Custom.css" />
-    <Content Include="Content\CustomDisplay.css" />
+    <Content Include="Content\VenueBeers.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />

@@ -43,14 +43,15 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             @if (User.IsInRole(RoleNames.BeerEnthusiast))
                             {
-                                <li><a href="@Url.Action("AllVenues", "Venue")">All Venues</a></li>
-                                <li><a href="@Url.Action("UserVenues", "Venue")">My Venues</a></li>
+                                <li><a href="@Url.Action("Index", "Venue")">All Venues</a></li>
+                                @*<li><a href="@Url.Action("UserVenues", "Venue")">My Venues</a></li>*@
                             }
                             else
                             {
-                                <li><a href="@Url.Action("AllVenues", "Venue")">All Venues</a></li>
+                                <li><a href="@Url.Action("Index", "Venue")">All Venues</a></li>
                                 <li><a href="@Url.Action("UserVenues", "Venue")">My Venues</a></li>
                                 <li><a href="@Url.Action("New", "Venue")">Create Venue</a></li>
+                                <li><a href="@Url.Action("VenueBeers", "Venue")">Add Beers to Venues</a></li>
                             }
                         </ul>
                     </li>
