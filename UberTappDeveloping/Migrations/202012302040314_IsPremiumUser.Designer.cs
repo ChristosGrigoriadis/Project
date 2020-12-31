@@ -13,7 +13,7 @@ namespace UberTappDeveloping.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202012271141371_IsPremiumUser"; }
+            get { return "202012302040314_IsPremiumUser"; }
         }
         
         string IMigrationMetadata.Source

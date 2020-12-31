@@ -183,7 +183,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\ApplicationUsersController.cs" />
     <Compile Include="Controllers\API\EmailsController.cs" />
-    <Compile Include="Controllers\API\TestsController.cs" />
     <Compile Include="Controllers\API\VenuesController.cs" />
     <Compile Include="Controllers\ApplicationUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -244,9 +243,9 @@
     <Compile Include="Migrations\202012281735248_AddImageAndProfileImageModels.Designer.cs">
       <DependentUpon>202012281735248_AddImageAndProfileImageModels.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012271141371_IsPremiumUser.cs" />
-    <Compile Include="Migrations\202012271141371_IsPremiumUser.Designer.cs">
-      <DependentUpon>202012271141371_IsPremiumUser.cs</DependentUpon>
+    <Compile Include="Migrations\202012302040314_IsPremiumUser.cs" />
+    <Compile Include="Migrations\202012302040314_IsPremiumUser.Designer.cs">
+      <DependentUpon>202012302040314_IsPremiumUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
@@ -280,7 +279,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\KotsDisplay.css" />
     <Content Include="Content\Custom.css" />
-    <Content Include="Content\CustomDisplay.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
@@ -634,19 +632,6 @@
     <Folder Include="DAL\Persistence\" />
     <Folder Include="DAL\Repositories\" />
     <Folder Include="Helper\CustomDA\" />
-    <Folder Include="Models\ModelDTOs\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
-    <Folder Include="Scripts\app\controllers\" />
     <Folder Include="Scripts\app\services\" />
   </ItemGroup>
   <ItemGroup>
@@ -685,9 +670,6 @@
     <EmbeddedResource Include="Migrations\202012281735248_AddImageAndProfileImageModels.resx">
       <DependentUpon>202012281735248_AddImageAndProfileImageModels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012271141371_IsPremiumUser.resx">
-      <DependentUpon>202012271141371_IsPremiumUser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012021956053_AddFavouriteBeersRelationship.resx">
       <DependentUpon>202012021956053_AddFavouriteBeersRelationship.cs</DependentUpon>
     </EmbeddedResource>
@@ -699,6 +681,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012071206437_FixLocationANDBeerModels.resx">
       <DependentUpon>202012071206437_FixLocationANDBeerModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012302040314_IsPremiumUser.resx">
+      <DependentUpon>202012302040314_IsPremiumUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
