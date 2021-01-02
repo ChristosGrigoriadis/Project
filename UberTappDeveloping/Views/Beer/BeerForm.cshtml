@@ -1,0 +1,44 @@
+﻿@model UberTappDeveloping.ViewModels.BeerViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>@Model.Name</h2>
+
+@using (Html.BeginForm("Save", "Beer"))
+{
+    @Html.HiddenFor(b => b.Id)
+    <div class="form-group">
+        @Html.LabelFor(b => b.Name)
+        @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(b => b.EBC)
+        @Html.TextBoxFor(b => b.EBC, new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(b => b.ABV)
+        @Html.TextBoxFor(b => b.ABV, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(b => b.IBU)
+        @Html.TextBoxFor(b => b.IBU, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(b => b.Description)
+        @Html.TextAreaFor(b => b.Description, new { @class = "form-control" })
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Beers", "Beer")
+</p>
