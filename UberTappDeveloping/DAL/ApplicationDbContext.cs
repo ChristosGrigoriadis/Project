@@ -17,7 +17,8 @@ namespace UberTappDeveloping.DAL
         public DbSet<Location> Locations { get; set; }
         public DbSet<UserBeer> UserBeers { get; set; }
         public DbSet<VenueBeer> VenueBeers { get; set; }
-
+        public DbSet<VenueProfileImage> VenueProfileImage { get; set; }
+        public DbSet<VenueImage> VenueImages { get; set; }
         public ApplicationDbContext()
             : base("UberTappDevelopingContext", throwIfV1Schema: false)
         {
@@ -64,6 +65,10 @@ namespace UberTappDeveloping.DAL
                 .HasMany(b => b.VenueBeers)
                 .WithRequired(v => v.AvailableBeer)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<VenueProfileImage>()
+                .HasRequired(vp => vp.Venue)
+                .WithOptional(v => v.ProfileImage);
 
 
             base.OnModelCreating(modelBuilder);

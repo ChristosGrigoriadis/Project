@@ -32,6 +32,16 @@ namespace UberTappDeveloping.Models
         public int LocationId { get; set; }
         public Location Location { get; set; }
 
-	} // public class Venue END //
+        public ICollection<VenueImage> VenueImages { get; set; }
+        public VenueProfileImage ProfileImage { get; set; }
 
-} // namespace UberTappDeveloping.Models END //
+        //[Required]
+        //[Display(Name = "Address")]
+        //public int LocationId { get; set; }
+        //public Location Location { get; set; }
+
+        //public ICollection<Beer> AvailableBeers { get; set; }
+
+        //public ICollection<User> PeopleBeenHere { get; set; }
+    }
+}

@@ -9,161 +9,239 @@ using UberTappDeveloping.Models;
 using UberTappDeveloping.ViewModels;
 using System.Data.Entity;
 using UberTappDeveloping.Helper.Roles;
+using System.IO;
+using System.Data.Entity.Migrations;
 
 namespace UberTappDeveloping.Controllers
 {
-	public class VenueController : Controller
-	{
-		private ApplicationDbContext context;
+    [Authorize(Roles = RoleNames.VenueOwner)]
+    public class VenueController : Controller
+    {
+        private ApplicationDbContext context;
 
-		public VenueController()
-		{
-			context = new ApplicationDbContext();
-		}
+        public VenueController()
+        {
+            context = new ApplicationDbContext();
+        }
 
-		protected override void Dispose(bool disposing)
-		{
-			base.Dispose(disposing);
-		}
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
 
-		private ApplicationUser GetUser()
-		{
-			var userId = User.Identity.GetUserId();
-			return context.Users.SingleOrDefault(u => u.Id == userId);
-		}
+        byte[] ImageBytes(HttpPostedFileBase PostedImage)
+        {
+            byte[] imageBytes;
+            using (BinaryReader br = new BinaryReader(PostedImage.InputStream))
+            {
+                imageBytes = br.ReadBytes(PostedImage.ContentLength);
+            }
 
-		#region GET
+            return imageBytes;
+        }
 
-		// GET: Venues
-		[Authorize]
-		public ActionResult AllVenues()
-		{
-			var allVenues = context.Venues
-				.Include(v => v.Location);
+        [HttpPost]
+        public ActionResult VenueProfileImage(VenueProfileImageViewModel viewModel)
+        {
+            if (viewModel.PostedImage == null)
+                return RedirectToAction("venueprofile", new { id = viewModel.VenueId });
 
-			return View("UserVenues", allVenues);
-		}
+            var image = new VenueProfileImage
+            {
+                VenueId = viewModel.VenueId,
+                Name = viewModel.PostedImage.FileName,
+                Data = ImageBytes(viewModel.PostedImage)
+            };
 
-		// GET: VenueBeers
-		[Authorize]
-		public ActionResult VenueBeers()
-		{
-			var viewModel = new VenueBeersViewModel
-			{
-				AllBeers = context.Beers
-			};
+            context.VenueProfileImage.AddOrUpdate(image);
+            context.SaveChanges();
 
-			return View(viewModel);
-		}
+            return RedirectToAction("venueprofile", new { id = viewModel.VenueId });
+        }
 
-		// GET: UserVenues
-		[Authorize]
-		public ActionResult UserVenues()
-		{
-			var userId = User.Identity.GetUserId();
+        [HttpPost]
+        public ActionResult VenueProfile(VenueProfileViewModel viewModel)
+        {
+            if (viewModel.PostedImage == null)
+                return RedirectToAction("venueprofile", new { id = viewModel.VenueId });
 
-			var userVenues = context.Venues
-				.Include(v => v.Location)
-				.Where(v => v.OwnerId == userId);
+            var image = new VenueImage
+            {
+                VenueId = viewModel.VenueId,
+                Name = viewModel.PostedImage.FileName,
+                ContentType = viewModel.PostedImage.ContentType,
+                Data = ImageBytes(viewModel.PostedImage)
+            };
 
-			return View(userVenues);
-		}
+            context.VenueImages.Add(image);
+            context.SaveChanges();
 
-		// GET : Venue/New
-		[Authorize(Roles = RoleNames.Admin + "," + RoleNames.VenueOwner)]
-		public ActionResult New()
-		{
+            return RedirectToAction("venueprofile", new { id = viewModel.VenueId });
+        }
 
-			var viewModel = new VenueFormViewModel
-			{
-				Locations = context.Locations,
-				ManagerName = GetUser().FirstName + " " + GetUser().LastName,
-				Venue = new Venue()
-			};
+        //Get: venue/VenueProfile/id
+        [AllowAnonymous]
+        public ActionResult VenueProfile(int id)
+        {
+            var venue = context.Venues
+                .Include(v => v.VenueImages)
+                .Include(v => v.ProfileImage)
+                .Include(v => v.VenueBeers.Select(vb => vb.AvailableBeer))
+                .SingleOrDefault(v => v.Id == id);
+
+            var viewModel = new VenueProfileViewModel
+            {
+                VenueId = id,
+                Venue = venue,
+                GetImages = venue.VenueImages,
+                ProfileImage = venue.ProfileImage,
+                Beers = venue.VenueBeers.Select(vb => new BeerPriceViewModel { Name = vb.AvailableBeer.Name,Price = vb.Price}).OrderBy(vm => vm.Name)
+            };
+
+            return View(viewModel);
+        }
 
 
-			return View("VenueForm", viewModel);
-		}
+        //Get venue/venueBeers
+        public ActionResult VenueBeers()
+        {
+            var userId = User.Identity.GetUserId();
+            var viewModel = new VenueBeersViewModel
+            {
+                AllBeers = context.Beers,
+                MyVenues = context.Venues.Where(v => v.OwnerId == userId)
+            };
 
-		// GET: Edit/id
-		[Authorize(Roles = RoleNames.Admin + "," + RoleNames.VenueOwner)]
-		public ActionResult Edit(int id)
-		{
-			var venue = context.Venues.SingleOrDefault(v => v.Id == id);
+            return View(viewModel);
+        }
 
-			var viewModel = new VenueFormViewModel
-			{
-				Locations = context.Locations,
-				ManagerName = GetUser().FirstName + " " + GetUser().LastName,
-				Venue = venue
-			};
+        // GET: Venue
+        [AllowAnonymous]
+        public ActionResult Index()
+        {
+            var viewModel = new VenuesViewModel
+            {
+                IsIndexAction = true,
+                Venues = context.Venues.Include(v => v.Location)
+            };
 
-			return View("VenueForm", viewModel);
-		}
+            return View("Venues",viewModel);
+        }
 
-		#endregion
+        //Get: Edit/id
+        public ActionResult Edit(int id)
+        {
+            var venue = context.Venues.SingleOrDefault(v => v.Id == id);
 
-		#region POST
+            var viewModel = new VenueFormViewModel
+            {
+                Locations = context.Locations,
+                ManagerName = GetUser().FirstName + " " + GetUser().LastName,
+                Venue = venue
+            };
 
-		// POST: Venue/New
-		[HttpPost]
-		[Authorize(Roles = RoleNames.Admin + "," + RoleNames.VenueOwner)]
-		public ActionResult New(Venue venue)
-		{
-			if (!ModelState.IsValid)
-			{
-				var viewModel = new VenueFormViewModel
-				{
-					Locations = context.Locations,
-					ManagerName = GetUser().FirstName + " " + GetUser().LastName,
-					Venue = new Venue()
-				};
-				return View("VenueForm", viewModel);
-			}
+            return View("VenueForm", viewModel);
+        }
 
-			if (venue == null)
-				return HttpNotFound();
+        [HttpPost]
+        public ActionResult Update(Venue venue)
+        {
+            if (venue == null)
+                return HttpNotFound();
 
-			venue.OwnerId = User.Identity.GetUserId();
-			context.Venues.Add(venue);
-			context.SaveChanges();
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new VenueFormViewModel
+                {
+                    Locations = context.Locations,
+                    ManagerName = GetUser().FirstName + " " + GetUser().LastName,
+                    Venue = venue
+                };
+                return View("VenueForm", viewModel);
+            }
 
-			return RedirectToAction("Index", "home");
-		}
+            var venueDb = context.Venues.SingleOrDefault(v => v.Id == venue.Id);
 
-		// POST: Update
-		[HttpPost]
-		[Authorize(Roles = RoleNames.Admin + "," + RoleNames.VenueOwner)]
-		public ActionResult Update(Venue venue)
-		{
-			if (venue == null)
-				return HttpNotFound();
+            venueDb.Name = venue.Name;
+            venueDb.DateOpened = venue.DateOpened;
+            venueDb.Manager = venue.Manager;
+            venueDb.LocationId = venue.LocationId;
 
-			if (!ModelState.IsValid)
-			{
-				var viewModel = new VenueFormViewModel
-				{
-					Locations = context.Locations,
-					ManagerName = GetUser().FirstName + " " + GetUser().LastName,
-					Venue = venue
-				};
-				return View("VenueForm", viewModel);
-			}
 
-			var venueDb = context.Venues.SingleOrDefault(v => v.Id == venue.Id);
 
-			venueDb.Name = venue.Name;
-			venueDb.DateOpened = venue.DateOpened;
-			venueDb.Manager = venue.Manager;
-			venueDb.LocationId = venue.LocationId;
+            context.SaveChanges();
 
-			context.SaveChanges();
 
-			return RedirectToAction("Index", "home");
-		}
+            return RedirectToAction("Index", "home");
+        }
 
-		#endregion
+        public ActionResult UserVenues()
+        {
+            var userId = User.Identity.GetUserId();
 
-	} // public class VenueController : Controller END //
+            var userVenues = context.Venues
+                .Include(v => v.Location)
+                .Where(v => v.OwnerId == userId);
 
-} // namespace UberTappDeveloping.Controllers END //
+            var viewModel = new VenuesViewModel
+            {
+                Venues = userVenues,
+                IsIndexAction = false
+            };
+
+            return View("Venues", viewModel);
+        }
+
+        //private IEnumerable<object> GetLocations()
+        //{
+        //    //return context.Locations
+        //    //    .Select(l => new { value = l.Id, text = l.Country + " | " + l.City + " | " + l.AddressLine1 + " " + l.AddressNumber });
+        //    //    as IEnumerable<object>;
+        //}
+
+        private ApplicationUser GetUser()
+        {
+            var userId = User.Identity.GetUserId();
+            return context.Users.SingleOrDefault(u => u.Id == userId);
+        }
+
+        //GET : venue/new
+        public ActionResult New()
+        {
+            
+            var viewModel = new VenueFormViewModel
+            {
+                Locations = context.Locations,
+                ManagerName = GetUser().FirstName + " " + GetUser().LastName,
+                Venue = new Venue()
+            };
+
+
+            return View("VenueForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult New(Venue venue)
+        {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new VenueFormViewModel
+                {
+                    Locations = context.Locations,
+                    ManagerName = GetUser().FirstName + " " + GetUser().LastName,
+                    Venue = new Venue()
+                };
+                return View("VenueForm", viewModel);
+            }
+
+            if (venue == null)
+                return HttpNotFound();
+
+            venue.OwnerId = User.Identity.GetUserId();
+            context.Venues.Add(venue);
+            context.SaveChanges();
+
+            return RedirectToAction("Index", "home");
+        }
+    }
+}

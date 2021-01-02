@@ -1,0 +1,170 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+
+.body-content {
+    font-family: 'Hanalei Fill', cursive;
+    background-image: url("");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    
+}
+.container-main {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.all {
+    background-color: blanchedalmond;
+    height: 100%;
+    border: thick solid black;
+    overflow: scroll;
+}
+
+.selected {
+    background-color: blanchedalmond;
+    height: 100%;
+    border: thick solid black;
+    overflow: scroll;
+}
+
+.box {
+    background-color: white;
+    margin: 5px auto;
+    width: 80%;
+    height: 8%;
+    border: medium solid black;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box img {
+    height:100%;
+    width:15%;
+}
+
+    .box span {
+        width: 60%;
+        font-size: 22px;
+        line-height:22px;
+    }
+
+    .box .price {
+        height: 100%;
+        width: 20%;
+        font-size:28px;
+        padding:0px;
+        
+    }
+
+    .box .fa {
+        font-size: 30px;
+        width:5%;
+        margin-right:3px;
+    }
+
+.destination {
+    width: 30%;
+    height: 700px;
+    text-align: center;
+}
+
+    .destination h1 {
+        text-shadow: 4px 4px 3px #AB4B9B;
+    }
+
+.origin {
+    width: 30%;
+    height: 700px;
+    text-align: center;
+}
+
+.origin .searchBeers {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-around;
+}
+
+    .origin .searchBeers:hover input {
+        display: block;
+    }
+
+    .origin .searchBeers input {
+        height: 30px;
+        font-size: 18px;
+        width: 46%;
+        padding: 15px;
+        display: none;
+    }
+
+    .origin .searchBeers h1 {
+        text-shadow: 4px 4px 3px #AB7449;
+        text-align:center;
+    }
+
+.venues {
+    width: 25%;
+    height: 700px;
+    text-align: center;
+}
+
+    .venues h1 {
+        text-shadow: 4px 4px 3px #48AB9A;
+    }
+
+.myVenues {
+    background-color: aquamarine;
+    height: 100%;
+    border: thick solid black;
+    overflow: scroll;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+}
+
+    .myVenues .radio {
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+    }
+
+        .myVenues .radio a {
+            display:none;
+            margin-left:10px;
+        }
+
+            .myVenues .radio a:hover{
+                display:block;
+            }
+
+            .myVenues .radio:hover a {
+                display: block;
+            }
+
+        .myVenues label {
+            font-size: 29px;
+            line-height: 22px;
+            border-bottom: medium solid black;
+        }
+
+    
+div {
+            border-radius: 5px;
+        }
+
+#title {
+    text-shadow: 4px 4px 3px #4FD6FF;
+}
+
+.container-main form input {
+    padding: 4px 26px;
+    font-size: 20px;
+    margin-top: 73%;
+}

@@ -17,6 +17,8 @@ namespace UberTappDeveloping.Models
         [Column(Order = 2)]
         public int VenueId { get; set; }
 
+        public double Price { get; set; }
+
         public Beer AvailableBeer { get; set; }
         public Venue Venue { get; set; }
     }

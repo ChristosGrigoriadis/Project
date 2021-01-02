@@ -1,0 +1,32 @@
+﻿@model UberTappDeveloping.ViewModels.VenuesViewModel
+@{
+    ViewBag.Title = "UserVenues";
+}
+@using UberTappDeveloping.Helper.Roles
+<h2>UserVenues</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Venue Name</th>
+        <th>Date Founded</th>
+        <th>Location</th>
+        <th></th>
+    </tr>
+    @foreach (var venue in Model.Venues)
+    {
+        <tr>
+            <td>@venue.Name</td>
+            <td>@venue.DateOpened</td>
+            <td>@venue.Location.Display</td>
+            <td>
+                @if ( !Model.IsIndexAction)
+                {
+                    <a href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a> 
+                }
+                
+                <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })">Profile</a>
+            </td>
+        </tr>
+    }
+
+</table>
