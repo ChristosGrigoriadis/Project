@@ -43,6 +43,12 @@
     color: white;
 }
 
+    #LoginView li {
+        color: white;
+        list-style:none;
+        text-align:left;
+    }
+
     #LoginView .container-fluid .row .form-group #WelcomeBackImg {
         padding: 10px 15px;
         margin-top: 2%;
@@ -215,13 +221,23 @@
             text-decoration: none;
         }
 
+    #DetailsView .container-fluid .row #UsersTranspImg {
+        padding: 10px 15px;
+        padding-left: 15px;
+        margin-top: 1%;
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 /*UserForm.cshtml*/
 
-#UserFormView {
-    background: url('../Helper/Images/RedMovBcg.gif') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
+    #UserFormView {
+        background: url('../Helper/Images/RedMovBcg.gif') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
 
     #UserFormView .container-fluid .row .form-group #UpdateProfileImg {
         padding: 10px 15px;
@@ -260,6 +276,44 @@
     #UserFormView .container-fluid #updateBtn .btn-primary {
         color: white;
         text-decoration: none;
+    }
+
+/*VenueForm.cshtml*/
+
+#VenueFormView {
+    background: url('../Helper/Images/greyishMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+    #VenueFormView .container-fluid .row .form-group #AddNewVenueImg {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #VenueFormView .container-fluid .row .form-group #VenuesTranspImg {
+        padding: 10px 15px;
+        padding-left: 15px;
+        margin-top: 1%;
+        width: 75%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #VenueFormView .container-fluid .row .form-group #SaveVenueBtn {
+        text-align: center;
+        padding: 5px 10px;
+        margin-top: 3%;
+    }
+
+    #VenueFormView .container-fluid .row .form-group #SaveVenueBtn button {
+        text-align: center;
+        padding: 5px 10px;
     }
 
 /*ViewPermiumOffer.cshtml*/
