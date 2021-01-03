@@ -6,12 +6,12 @@
 <link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
 
-<body class="body">
+<body id="DetailsView" class="body">
     <div class="container-fluid">
 
         <div class="row">
             <div class="form-group col-md-4">
-                <h2>Profile Details</h2>
+                <img id="ProfileDetailsImg" src="~/Helper/Images/Profile_Details.png" alt="Alternate Text" />
             </div>
         </div>
 
@@ -37,72 +37,82 @@
             </div>
         </div>
 
-        <table class="table table-hover">
-            <tbody>
-                <tr>
-                    <td>First Name</td>
-                    @if (Model.FirstName == null)
-                    {
-                        <td><i>First Name not assigned</i></td>
-                    }
-                    else
-                    {
-                        <td>@Html.DisplayFor(model => model.FirstName)</td>
-                    }
-                </tr>
-                <tr>
-                    <td>Last Name</td>
-                    @if (Model.LastName == null)
-                    {
-                        <td><i>Last Name not assigned</i></td>
-                    }
-                    else
-                    {
-                        <td>@Html.DisplayFor(model => model.LastName)</td>
-                    }
-                </tr>
-                <tr>
-                    <td>Date Of Birth</td>
-                    @if (Model.BirthDate == null)
-                    {
-                        <td><i>Date Of Birth not assigned</i></td>
-                    }
-                    else
-                    {
-                        <td>@Html.DisplayFor(model => model.BirthDate)</td>
-                    }
-                </tr>
-                <tr>
-                    <td>Gender</td>
-                    @if (Model.Gender == null)
-                    {
-                        <td><i>Gender not assigned</i></td>
-                    }
-                    else
-                    {
-                        <td>@Html.DisplayFor(model => model.Gender)</td>
-                    }
-                </tr>
-                <tr>
-                    <td>Location</td>
-                    <td>
-                        @Html.DisplayFor(model => model.Location.Display)
-                        <input id="submit" type="button" value="View Location" />
-                        <input id="latlng" type="text" value="@Model.Location.Latitude,@Model.Location.Longitude" hidden />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>@Html.DisplayFor(model => model.Email)</td>
-                </tr>
-                <tr>
-                    <td>Username</td>
-                    <td>@Html.DisplayFor(model => model.UserName)</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div id="ProfileDetailsField" class="form-group col-md-8">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>First Name</td>
+                            @if (Model.FirstName == null)
+                            {
+                                <td><i>First Name not assigned</i></td>
+                            }
+                            else
+                            {
+                                <td>@Html.DisplayFor(model => model.FirstName)</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            @if (Model.LastName == null)
+                            {
+                                <td><i>Last Name not assigned</i></td>
+                            }
+                            else
+                            {
+                                <td>@Html.DisplayFor(model => model.LastName)</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Date Of Birth</td>
+                            @if (Model.BirthDate == null)
+                            {
+                                <td><i>Date Of Birth not assigned</i></td>
+                            }
+                            else
+                            {
+                                <td>@Html.DisplayFor(model => model.BirthDate)</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            @if (Model.Gender == null)
+                            {
+                                <td><i>Gender not assigned</i></td>
+                            }
+                            else
+                            {
+                                <td>@Html.DisplayFor(model => model.Gender)</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>
+                                @Html.DisplayFor(model => model.Location.Display)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>@Html.DisplayFor(model => model.Email)</td>
+                        </tr>
+                        <tr>
+                            <td>Username</td>
+                            <td>@Html.DisplayFor(model => model.UserName)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <div id="map"></div>
+        @*<div class="row">
+            <div class="form-group col-md-12">
+                <img id="MainBottomImg" src="~/Helper/Images/main_bottom_transp.png" alt="Alternate Text" />
+            </div>
+        </div>*@
+
+        @*<div id="map"></div>
+        <input id="submit" type="button" value="View Location" />
+        <input id="latlng" type="text" value="@Model.Location.Latitude,@Model.Location.Longitude" hidden />*@
 
     </div>
 </body>
