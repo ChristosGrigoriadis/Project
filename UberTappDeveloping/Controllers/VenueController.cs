@@ -87,6 +87,7 @@ namespace UberTappDeveloping.Controllers
                 .Include(v => v.VenueImages)
                 .Include(v => v.ProfileImage)
                 .Include(v => v.VenueBeers.Select(vb => vb.AvailableBeer))
+                .Include(v => v.Events)
                 .SingleOrDefault(v => v.Id == id);
 
             var viewModel = new VenueProfileViewModel
@@ -95,7 +96,8 @@ namespace UberTappDeveloping.Controllers
                 Venue = venue,
                 GetImages = venue.VenueImages,
                 ProfileImage = venue.ProfileImage,
-                Beers = venue.VenueBeers.Select(vb => new BeerPriceViewModel { Name = vb.AvailableBeer.Name,Price = vb.Price}).OrderBy(vm => vm.Name)
+                Beers = venue.VenueBeers.Select(vb => new BeerPriceViewModel { Name = vb.AvailableBeer.Name,Price = vb.Price}).OrderBy(vm => vm.Name),
+                Events = venue.Events
             };
 
             return View(viewModel);
@@ -119,10 +121,19 @@ namespace UberTappDeveloping.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
+            var userId = User.Identity.GetUserId();
+
+            var followedVenuesIds = context.UserVenueFollowings
+                .Where(vf => vf.BeerEnthusiastId == userId)
+                .Select(vf => vf.VenueId)
+                .ToList();
+
+
             var viewModel = new VenuesViewModel
             {
                 IsIndexAction = true,
-                Venues = context.Venues.Include(v => v.Location)
+                Venues = context.Venues.Include(v => v.Location),
+                FollowedVenues = followedVenuesIds
             };
 
             return View("Venues",viewModel);

@@ -6,10 +6,11 @@ using UberTappDeveloping.Models;
 
 namespace UberTappDeveloping.ViewModels
 {
-    public class VenuesViewModel
+    public class EventsViewModel
     {
-        public IEnumerable<Venue> Venues { get; set; }
+        public IEnumerable<Event> Events { get; set; }
         public bool IsIndexAction { get; set; }
-        public IEnumerable<int> FollowedVenues { get; set; }
+
+
     }
 }

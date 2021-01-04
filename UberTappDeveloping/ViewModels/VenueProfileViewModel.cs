@@ -14,5 +14,6 @@ namespace UberTappDeveloping.ViewModels
         public IEnumerable<VenueImage> GetImages { get; set; }
         public VenueProfileImage ProfileImage { get; set; }
         public IEnumerable<BeerPriceViewModel> Beers { get; set; }
+        public IEnumerable<Event> Events { get; set; }
     }
 }

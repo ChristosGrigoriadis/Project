@@ -3,7 +3,15 @@
     ViewBag.Title = "VenueForm";
 }
 
-<h2>Venue Form</h2>
+@if (Model.Venue.Id == 0)
+{
+    <h2>Create Venue</h2>
+}
+else
+{
+    <h2>Edit Venue</h2>
+}
+
 
 @using (Html.BeginForm(Model.ActionName, "Venue"))
 {

@@ -19,14 +19,81 @@
             <td>@venue.DateOpened</td>
             <td>@venue.Location.Display</td>
             <td>
-                @if ( !Model.IsIndexAction)
+                @if (!Model.IsIndexAction)
                 {
-                    <a href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a> 
+                    <a href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a>
                 }
-                
-                <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })">Profile</a>
+
+                <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })" class="btn btn-success">Profile</a>
+
+                @if (User.IsInRole(RoleNames.BeerEnthusiast))
+                {
+                    <a href="#" class="follow" data-venue-name="@venue.Name" data-venue-id="@venue.Id">
+                        @if (Model.FollowedVenues.Contains(venue.Id))
+                        {
+                            <span class="btn btn-info">Unfollow</span>
+                        }
+                        else
+                        {
+                            <span class="btn btn-primary">Follow</span>
+                        }
+                    </a>
+                }
+
             </td>
         </tr>
     }
 
 </table>
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+
+
+
+            $("table").on("click", ".follow", function (e) {
+                console.log($(e.target).parent().attr("data-venue-id"));
+                console.log($(e.target).text());
+                
+
+                if ($(e.target).text() == "Follow") {
+                    $.post("/api/venueFollowings/" + $(e.target).parent().attr("data-venue-id"), function () {
+                        console.log("send");
+                    })
+                        .done(function () {
+                            $(e.target).text("Unfollow").removeClass("btn-primary").addClass("btn-info");
+                            bootbox.alert("You are now following " + $(e.target).parent().attr("data-venue-name"));
+                        })
+                        .fail(function (e) {
+                            console.log(e);
+                            bootbox.alert(e.responseJSON.message);
+                        });
+                } else {
+                    $.ajax({
+                        url: "/api/venueFollowings/" + $(e.target).parent().attr("data-venue-id"),
+                        method: "Delete"
+                    })
+                        .done(function () {
+                            console.log(e.target);
+                            $(e.target).text("Follow").removeClass("btn-info").addClass("btn-primary");
+                            bootbox.alert("You have successfully Unfollowed " + $(e.target).parent().attr("data-venue-name"));
+                        })
+                        .fail(function () {
+                            bootbox.alert("something went wrong");
+                        });
+                }
+                
+
+
+
+            });
+
+
+
+        });
+    </script>
+
+}

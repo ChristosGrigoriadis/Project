@@ -1,0 +1,40 @@
+﻿@model UberTappDeveloping.ViewModels.EventsViewModel
+@{
+    ViewBag.Title = "VenueOwnerEvents";
+}
+
+@if (Model.IsIndexAction)
+{
+    <h2>All Events</h2>
+}
+else
+{
+    <h2>My Events</h2>
+}
+
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Venue</th>
+        @if (!Model.IsIndexAction)
+        {
+            <th></th>
+        }
+    </tr>
+    @foreach (var evt in Model.Events)
+    {
+        <tr>
+            <td>@evt.Date.ToString("MMMM, dddd dd yyyy")</td>
+            <td>@evt.Description</td>
+            <td>@evt.Venue.Name</td>
+            @if (!Model.IsIndexAction)
+            {
+                <td><a href="@Url.Action("Edit", "Event",new { id = evt.Id})">Edit</a></td>
+            }
+
+        </tr>
+    }
+
+</table>

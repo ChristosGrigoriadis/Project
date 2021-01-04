@@ -34,6 +34,7 @@ namespace UberTappDeveloping.Models
 
         public ICollection<VenueImage> VenueImages { get; set; }
         public VenueProfileImage ProfileImage { get; set; }
+        public ICollection<Event> Events { get; set; }
 
         //[Required]
         //[Display(Name = "Address")]

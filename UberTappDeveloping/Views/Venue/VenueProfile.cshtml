@@ -105,7 +105,26 @@
                 </div>
             </div>
             <div class="col-md-8">
+                <h1>@Model.Venue.Name Upcoming Events!</h1>
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Venue</th>
+                        
+                    </tr>
+                    @foreach (var evt in Model.Events)
+                    {
+                        <tr>
+                            <td>@evt.Date.ToString("MMMM, dddd dd yyyy")</td>
+                            <td>@evt.Description</td>
+                            <td>@evt.Venue.Name</td>
+                            
+                            
+                        </tr>
+                    }
 
+                </table>
             </div>
         </div>
     </div>
