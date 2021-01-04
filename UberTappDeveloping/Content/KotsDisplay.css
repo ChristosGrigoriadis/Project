@@ -38,10 +38,16 @@
 /*Login.cshtml*/
 
 #LoginView {
-    background: url('../Helper/Images/RedMovBcg.gif') no-repeat center center fixed;
+    background: url('../Helper/Images/greyishMovBcg.gif') no-repeat center center fixed;
     background-size: cover;
     color: white;
 }
+
+    #LoginView li {
+        color: white;
+        list-style:none;
+        text-align:left;
+    }
 
     #LoginView .container-fluid .row .form-group #WelcomeBackImg {
         padding: 10px 15px;
@@ -102,8 +108,11 @@
 #EmailFormView {
     background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
     background-size: cover;
-    color: white;
 }
+
+    #EmailFormView .container-fluid #newEmail {
+        color: white;
+    }
 
     #EmailFormView .container-fluid .row .form-group #HowCanWeHelpImg {
         padding: 10px 15px;
@@ -128,7 +137,6 @@
 #AllUsersView {
     background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
     background-size: cover;
-    color: white;
 }
 
     #AllUsersView .container-fluid .row .form-group #AllUsersImg {
@@ -151,6 +159,10 @@
             color: white;
             text-decoration: none;
         }
+
+    #AllUsersView .container-fluid .row #UserField {
+        color: white;
+    }
 
     #AllUsersView .container-fluid #users tbody tr .buttons .btn {
         margin-left: 2%;
@@ -176,44 +188,77 @@
     }
 
 /*Details.cshtml*/
-.body .container-fluid .row .form-group h2 {
-    padding: 5px 10px;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    text-align: left;
-    border-bottom: solid;
+
+#DetailsView {
+    background: url('../Helper/Images/RedMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
 }
 
-.body .container-fluid .row #profileDetBtn .btn {
-    margin-right: 1%;
-}
+    #DetailsView .container-fluid .row .form-group #ProfileDetailsImg {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 100%;
+        display: block;
+        margin-left: 0;
+        margin-right: auto;
+    }
 
-    .body .container-fluid .row #profileDetBtn .btn a {
+    #DetailsView .container-fluid #ProfileDetailsField {
         color: white;
-        text-decoration: none;
+    }
+
+    #DetailsView .container-fluid #ProfileDetailsField table tbody tr:hover {
+        color: black;
+        cursor:pointer;
+    }
+
+    #DetailsView .container-fluid .row #profileDetBtn .btn {
+        margin-right: 1%;
+    }
+
+        #DetailsView .container-fluid .row #profileDetBtn .btn a {
+            color: white;
+            text-decoration: none;
+        }
+
+    #DetailsView .container-fluid .row #UsersTranspImg {
+        padding: 10px 15px;
+        padding-left: 15px;
+        margin-top: 1%;
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
 /*UserForm.cshtml*/
 
-.body .container-fluid .row .form-group h2 {
-    padding: 5px 10px;
-    margin-top: 5%;
-    margin-bottom: 3%;
-    text-align: left;
-    border-bottom: solid;
-}
+    #UserFormView {
+        background: url('../Helper/Images/RedMovBcg.gif') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
 
-.body .container-fluid .row #backToDetails .btn {
+    #UserFormView .container-fluid .row .form-group #UpdateProfileImg {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 40%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+#UserFormView .container-fluid .row #backToDetails .btn {
     margin-left: 1%;
     margin-right: 1%;
 }
 
-    .body .container-fluid .row #backToDetails .btn a {
+    #UserFormView .container-fluid .row #backToDetails .btn a {
         color: white;
         text-decoration: none;
     }
 
-.body .container-fluid .row .form-group h4 {
+#UserFormView .container-fluid .row .form-group h4 {
     padding: 5px 10px;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -222,15 +267,53 @@
     font-weight: bold;
 }
 
-.body .container-fluid #updateBtn {
+#UserFormView .container-fluid #updateBtn {
     padding: 10px 15px;
     text-align: center;
     margin-top: 3%;
 }
 
-    .body .container-fluid #updateBtn .btn-primary {
+    #UserFormView .container-fluid #updateBtn .btn-primary {
         color: white;
         text-decoration: none;
+    }
+
+/*VenueForm.cshtml*/
+
+#VenueFormView {
+    background: url('../Helper/Images/greyishMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+    #VenueFormView .container-fluid .row .form-group #AddNewVenueImg {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #VenueFormView .container-fluid .row .form-group #VenuesTranspImg {
+        padding: 10px 15px;
+        padding-left: 15px;
+        margin-top: 1%;
+        width: 75%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #VenueFormView .container-fluid .row .form-group #SaveVenueBtn {
+        text-align: center;
+        padding: 5px 10px;
+        margin-top: 3%;
+    }
+
+    #VenueFormView .container-fluid .row .form-group #SaveVenueBtn button {
+        text-align: center;
+        padding: 5px 10px;
     }
 
 /*ViewPermiumOffer.cshtml*/
@@ -242,6 +325,7 @@
 }
 
 /*SuccessfulPayment.cshtml*/
+
 #SuccessfulPaymentView .container-fluid .row #PremUserId {
     display: block;
     padding: 10px 15px;
