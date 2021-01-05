@@ -98,22 +98,22 @@
 }
 
     #AboutView .container-fluid .row {
-        margin-bottom:3%;
+        margin-bottom: 3%;
     }
 
-    #AboutView .container-fluid .row .form-group #AboutUs {
-        padding: 10px 15px;
-        margin-top: 1%;
-        width: 35%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        #AboutView .container-fluid .row .form-group #AboutUs {
+            padding: 10px 15px;
+            margin-top: 1%;
+            width: 35%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    #AboutView .container-fluid .row .form-group p {
-        text-align: center;
-        font-size:1.4em;
-    }
+        #AboutView .container-fluid .row .form-group p {
+            text-align: center;
+            font-size: 1.4em;
+        }
 
         #AboutView .container-fluid .row .form-group #DrunkUserImg {
             padding: 10px 15px;
@@ -135,14 +135,14 @@
 
         #AboutView .container-fluid .row .form-group h2 {
             text-align: center;
-            padding-bottom:5px;
+            padding-bottom: 5px;
         }
 
-    #AboutView .container-fluid .row .form-group li {
-        text-align: left;
-        font-size: 1.4em;
-        padding-bottom:1px;
-    }
+        #AboutView .container-fluid .row .form-group li {
+            text-align: left;
+            font-size: 1.4em;
+            padding-bottom: 1px;
+        }
 
 
 
@@ -193,7 +193,7 @@
         width: 25%;
         padding-left: 6px;
         padding-bottom: 6px;
-        margin-left:6%;
+        margin-left: 10%;
     }
 
     #EmailFormView .container-fluid form #EmailBtnRow {
@@ -376,13 +376,12 @@
     }
 
     #VenueFormView .container-fluid .row .form-group #VenuesTranspImg {
-        padding: 10px 15px;
-        padding-left: 15px;
-        margin-top: 1%;
-        width: 75%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        position: fixed;
+        bottom: 0;
+        width: 36%;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-left: 2%;
     }
 
     #VenueFormView .container-fluid .row .form-group #SaveVenueBtn {
