@@ -1,38 +1,44 @@
-﻿@model UberTappDeveloping.ViewModels.BeerViewModel
+﻿@model UberTappDeveloping.ViewModels.BeerFormViewModel
 
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>@Model.Name</h2>
+<h2>@Model.Heading</h2>
 
-@using (Html.BeginForm("Save", "Beer"))
+@using (Html.BeginForm(Model.Action, "Beer"))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(b => b.Id)
     <div class="form-group">
         @Html.LabelFor(b => b.Name)
         @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.Name)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(b => b.EBC)
         @Html.TextBoxFor(b => b.EBC, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.EBC)
     </div>
 
 
     <div class="form-group">
         @Html.LabelFor(b => b.ABV)
         @Html.TextBoxFor(b => b.ABV, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.ABV)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(b => b.IBU)
         @Html.TextBoxFor(b => b.IBU, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.IBU)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(b => b.Description)
         @Html.TextAreaFor(b => b.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.Description)
     </div>
 
 
@@ -42,3 +48,8 @@
 <p>
     @Html.ActionLink("Back to List", "Beers", "Beer")
 </p>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

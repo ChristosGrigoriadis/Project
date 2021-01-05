@@ -19,6 +19,8 @@ namespace UberTappDeveloping.DAL
         public DbSet<VenueBeer> VenueBeers { get; set; }
         public DbSet<VenueProfileImage> VenueProfileImage { get; set; }
         public DbSet<VenueImage> VenueImages { get; set; }
+        public DbSet<FavBeer> FavBeer { get; set; }
+
         public ApplicationDbContext()
             : base("UberTappDevelopingContext", throwIfV1Schema: false)
         {

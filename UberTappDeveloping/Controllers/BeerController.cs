@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -28,14 +29,30 @@ namespace UberTappDeveloping.Controllers
         // GET: Beer
         public ActionResult Beers()
         {
-            var beers = context.Beers.ToList();
+            var userId = User.Identity.GetUserId();
 
-            return View(beers);
+            var viewModel = new BeersViewModel()
+            {
+                AllBeers = context.Beers.ToList(),
+                FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult Edit(int id)
         {
-            var viewModel = new BeerViewModel(context.Beers.SingleOrDefault(b => b.Id == id));
+            var beer = context.Beers.SingleOrDefault(b => b.Id == id);
+            var viewModel = new BeerFormViewModel
+            {
+                Heading = "Update beer information.",
+                Id = beer.Id,
+                Name = beer.Name,
+                ABV = beer.ABV,
+                IBU = beer.IBU,
+                Description = beer.Description
+            };
+
 
             if (viewModel == null)
                 return HttpNotFound();
@@ -45,7 +62,11 @@ namespace UberTappDeveloping.Controllers
 
         public ActionResult Create()
         {
-            var viewModel = new BeerViewModel();
+
+            var viewModel = new BeerFormViewModel()
+            {
+                Heading = "Add a new beer."
+            };
 
             return View("BeerForm", viewModel);
         }
@@ -61,19 +82,41 @@ namespace UberTappDeveloping.Controllers
 
         #region POST
 
-        public ActionResult Save(Beer beer)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(BeerFormViewModel viewModel)
         {
-            if (beer.Id == 0)
-                context.Beers.Add(beer);
-            else
+            if (!ModelState.IsValid)
+                return View("BeerForm", viewModel);
+
+            var beer = new Beer
             {
-                var beerToBeUpdated = context.Beers.SingleOrDefault(b => b.Id == beer.Id);
-                beerToBeUpdated.Name = beer.Name;
-                beerToBeUpdated.ABV = beer.ABV;
-                beerToBeUpdated.IBU = beer.IBU;
-                beerToBeUpdated.EBC = beer.EBC;
-                beerToBeUpdated.Description = beer.Description;
-            }
+                Name = viewModel.Name,
+                ABV = viewModel.ABV,
+                Description = viewModel.Description,
+                EBC = viewModel.EBC,
+                IBU = viewModel.IBU
+            };
+
+            context.Beers.Add(beer);
+            context.SaveChanges();
+
+            return RedirectToAction("Beers", "Beer");
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Update(BeerFormViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View("BeerForm", viewModel);
+
+            var beerToBeUpdated = context.Beers.SingleOrDefault(b => b.Id == viewModel.Id);
+            beerToBeUpdated.Name = viewModel.Name;
+            beerToBeUpdated.ABV = viewModel.ABV;
+            beerToBeUpdated.IBU = viewModel.IBU;
+            beerToBeUpdated.EBC = viewModel.EBC;
+            beerToBeUpdated.Description = viewModel.Description;
 
             context.SaveChanges();
 
@@ -90,10 +133,8 @@ namespace UberTappDeveloping.Controllers
             {
                 context.Beers.Remove(beer);
                 context.SaveChanges();
+                return RedirectToAction("Beers", "Beer");
             }
-
-
-            return RedirectToAction("Beers", "Beer");
         }
 
 
