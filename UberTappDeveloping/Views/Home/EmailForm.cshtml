@@ -15,27 +15,34 @@
             </div>
         </div>
 
-        <form id="newEmail">
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label>Subject:</label>
-                    @Html.DropDownList("SupportCategory", EnumHelper.GetSelectList(typeof(SupportCategory)), "Select a Support Category", new { @class = "form-control", id = "subject" })
-                </div>
-            </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <form id="newEmail">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label>Subject:</label>
+                            @Html.DropDownList("SupportCategory", EnumHelper.GetSelectList(typeof(SupportCategory)), "Select a Support Category", new { @class = "form-control", id = "subject" })
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label>Body:</label>
-                    <textarea id="body" type="text" name="body" rows="10" cols="50" class="form-control" required></textarea>
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label>Body:</label>
+                            <textarea id="body" type="text" name="body" rows="10" cols="50" class="form-control" required></textarea>
+                        </div>
+                    </div>
 
-            <div id="EmailBtnRow" class="row">
-                <div class="form-group col-md-6">
-                    <button class="btn btn-lg btn-success">Submit Request</button>
-                </div>
+                    <div id="EmailBtnRow" class="row">
+                        <div class="form-group col-md-12">
+                            <button class="btn btn-success">Submit Request</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="form-group col-md-6">
+                <img id="SparkingBeerImg" src="~/Helper/Images/3.png" alt="Alternate Text" />
+            </div>
+        </div>
 
     </div>
 </body>

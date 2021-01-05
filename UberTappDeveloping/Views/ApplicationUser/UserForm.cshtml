@@ -14,12 +14,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div id="backToDetails" class="form-group col-md-2">
-                <button class="btn btn-sm btn-primary">@Html.ActionLink("Back", "Details", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "View Profile" })</button>
-            </div>
-        </div>
-
         @using (Html.BeginForm("Save", "ApplicationUser"))
         {
             @Html.AntiForgeryToken()

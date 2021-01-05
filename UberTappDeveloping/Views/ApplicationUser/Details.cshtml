@@ -19,7 +19,7 @@
             <div id="profileDetBtn" class="form-group col-md-6">
                 @if (User.IsInRole(RoleNames.Admin))
                 {
-                    <button class="btn btn-sm btn-info">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
+                    <button class="btn btn-sm btn-primary">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
                 }
                 else
                 {
@@ -38,7 +38,7 @@
         </div>
 
         <div class="row">
-            <div id="ProfileDetailsField" class="form-group col-md-8">
+            <div id="ProfileDetailsField" class="form-group col-md-5">
                 <table class="table table-hover">
                     <tbody>
                         <tr>
@@ -102,8 +102,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="form-group col-md-4">
-                <img id="UsersTranspImg" src="~/Helper/Images/users_transp.png" alt="Alternate Text" />
+            <div class="form-group col-md-7">
+                <img id="UsersTransp2Img" src="~/Helper/Images/14.png" alt="Alternate Text" />
             </div>
         </div>
 

@@ -29,6 +29,8 @@ textarea {
 
 /*BootStrap Override*/
 
+
+
 footer {
     border-top: solid;
     margin-top: 10%;
@@ -36,11 +38,11 @@ footer {
 }
 
 .field-validation-error {
-    color: red;
+    color: whitesmoke;
 }
 
 .input-validation-error {
-    border: 2px solid red;
+    border: 2px solid whitesmoke;
 }
 
 input, select, textarea {
