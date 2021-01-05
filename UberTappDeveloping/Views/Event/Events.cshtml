@@ -14,27 +14,65 @@ else
 
 
 <table class="table table-bordered table-hover">
-    <tr>
-        <th>Date</th>
-        <th>Description</th>
-        <th>Venue</th>
-        @if (!Model.IsIndexAction)
-        {
-            <th></th>
-        }
-    </tr>
-    @foreach (var evt in Model.Events)
-    {
+
+    <thead>
         <tr>
-            <td>@evt.Date.ToString("MMMM, dddd dd yyyy")</td>
-            <td>@evt.Description</td>
-            <td>@evt.Venue.Name</td>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Venue</th>
             @if (!Model.IsIndexAction)
             {
-                <td><a href="@Url.Action("Edit", "Event",new { id = evt.Id})">Edit</a></td>
+                <th></th>
             }
-
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var evt in Model.Events)
+        {
+            <tr>
+                <td class="date">@evt.Date.ToString("dd MMMM yyyy") </td>
+                <td>@evt.Description</td>
+                <td>@evt.Venue.Name</td>
+                @if (!Model.IsIndexAction)
+                {
+                    <td><a href="@Url.Action("Edit", "Event",new { id = evt.Id})">Edit</a></td>
+                }
+
+            </tr>
+        }
+    </tbody>
 
 </table>
+
+@section Scripts {
+
+    <script src="~/Scripts/moment.js"></script>
+
+    <script src="~/Scripts/datatables-moment.js"></script>
+    <script>
+
+        var now = moment(new Date(2018, 11, 24)).format("MM-DD-YYYY");
+        console.log(now);
+
+
+        console.log($("tbody .date").text());
+
+        for (var date of $("tbody .date")) {//Date Sort with Datatables
+            $(date).html(moment(new Date($(date).text())).format("MMMM dddd DD YYYY"));
+        }
+
+        $.fn.dataTable.moment("MMMM dddd DD YYYY");
+        $("table").DataTable();
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+}

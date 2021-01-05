@@ -3,61 +3,75 @@
     ViewBag.Title = "UserVenues";
 }
 @using UberTappDeveloping.Helper.Roles
-<h2>UserVenues</h2>
+
+@if (Model.IsIndexAction)
+{
+    <h2>All Venues</h2>
+}
+else
+{
+    <h2>My Venues</h2>
+}
 
 <table class="table table-bordered">
-    <tr>
-        <th>Venue Name</th>
-        <th>Date Founded</th>
-        <th>Location</th>
-        <th></th>
-    </tr>
-    @foreach (var venue in Model.Venues)
-    {
+    <thead>
         <tr>
-            <td>@venue.Name</td>
-            <td>@venue.DateOpened</td>
-            <td>@venue.Location.Display</td>
-            <td>
-                @if (!Model.IsIndexAction)
-                {
-                    <a href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a>
-                }
-
-                <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })" class="btn btn-success">Profile</a>
-
-                @if (User.IsInRole(RoleNames.BeerEnthusiast))
-                {
-                    <a href="#" class="follow" data-venue-name="@venue.Name" data-venue-id="@venue.Id">
-                        @if (Model.FollowedVenues.Contains(venue.Id))
-                        {
-                            <span class="btn btn-info">Unfollow</span>
-                        }
-                        else
-                        {
-                            <span class="btn btn-primary">Follow</span>
-                        }
-                    </a>
-                }
-
-            </td>
+            <th>Venue Name</th>
+            <th>Date Founded</th>
+            <th>Location</th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var venue in Model.Venues)
+        {
+            <tr>
+                <td>@venue.Name</td>
+                <td class="date">@venue.DateOpened.Value.ToString("dd MMMM yyyy")</td>
+                <td>@venue.Location.Display</td>
+                <td>
+                    @if (!Model.IsIndexAction)
+                    {
+                        <a href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a>
+                    }
+
+                    <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })" class="btn btn-success">Profile</a>
+
+                    @if (User.IsInRole(RoleNames.BeerEnthusiast))
+                    {
+                        <a href="#" class="follow" data-venue-name="@venue.Name" data-venue-id="@venue.Id">
+                            @if (Model.FollowedVenues.Contains(venue.Id))
+                            {
+                                <span class="btn btn-info">Unfollow</span>
+                            }
+                            else
+                            {
+                                <span class="btn btn-primary">Follow</span>
+                            }
+                        </a>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
 
 @section Scripts {
+    <script src="~/Scripts/moment.js"></script>
 
+    <script src="~/Scripts/datatables-moment.js"></script>
     <script>
 
         $(document).ready(function () {
 
+            
 
-
-            $("table").on("click", ".follow", function (e) {
+            $("table").on("click", ".follow", function (e) {//follow or unfollow ajax request when clicking the button
                 console.log($(e.target).parent().attr("data-venue-id"));
                 console.log($(e.target).text());
-                
+
 
                 if ($(e.target).text() == "Follow") {
                     $.post("/api/venueFollowings/" + $(e.target).parent().attr("data-venue-id"), function () {
@@ -85,13 +99,16 @@
                             bootbox.alert("something went wrong");
                         });
                 }
-                
-
-
 
             });
 
+            for (var date of $("tbody .date")) {//Change Date for Datatables to sort with Date
+                console.log(new Date($(date).text()));
+                $(date).html(moment(new Date($(date).text())).format("MMMM DD YYYY"));
+            }
 
+            $.fn.dataTable.moment("MMMM DD YYYY");
+            $("table").DataTable();
 
         });
     </script>
