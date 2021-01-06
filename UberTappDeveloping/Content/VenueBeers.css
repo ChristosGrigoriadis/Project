@@ -10,6 +10,14 @@
         text-align: center;
     }
 
+    #VenueBeersView .row .form-group #AvailableBeersImg {
+        width:55%;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:2%;
+    }
+
 .body-content {
     font-family: 'Hanalei Fill', cursive;
     background-image: url("");
