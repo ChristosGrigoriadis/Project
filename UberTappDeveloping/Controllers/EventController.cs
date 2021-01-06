@@ -109,7 +109,24 @@ namespace UberTappDeveloping.Controllers
                 VenueId = viewModel.Event.VenueId
             };
 
+            var events = context.Events.ToList();
+
+
             context.Events.Add(evnt);
+
+            var notification = new Notification
+            {
+                Event = evnt,
+                Type = Helper.Enums.NotificationType.EventCreated
+            };
+            context.Notifications.Add(notification);
+
+            var notificationId = context.Notifications.ToList().LastOrDefault() == null ? 0 : context.Notifications.ToList().Last().Id;
+            foreach (var follower in context.UserVenueFollowings.Where(f => f.VenueId == viewModel.Event.VenueId).Select(f => f.BeerEnthusiast).ToList())
+            {
+                context.UserNotifications.Add(new UserNotification { BeerEnthusiast = follower, Notification = notification});
+            }
+
             context.SaveChanges();
 
 
