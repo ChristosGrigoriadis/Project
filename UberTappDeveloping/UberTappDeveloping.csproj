@@ -195,6 +195,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Enums\Gender.cs" />
+    <Compile Include="Helper\Enums\NotificationType.cs" />
     <Compile Include="Helper\Enums\SupportCategory.cs" />
     <Compile Include="Helper\Roles\RoleNames.cs" />
     <Compile Include="Migrations\202012021308307_Initial.cs" />
@@ -257,15 +258,21 @@
     <Compile Include="Migrations\202101032027294_AddUserVenueFollowingModel.Designer.cs">
       <DependentUpon>202101032027294_AddUserVenueFollowingModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101052000066_AddNotificationAndUserNotificationModels.cs" />
+    <Compile Include="Migrations\202101052000066_AddNotificationAndUserNotificationModels.Designer.cs">
+      <DependentUpon>202101052000066_AddNotificationAndUserNotificationModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\ModelDtos\VenueBeersDto.cs" />
     <Compile Include="Models\ModelDtos\BeerDto.cs" />
     <Compile Include="Models\UserBeer.cs" />
+    <Compile Include="Models\UserNotification.cs" />
     <Compile Include="Models\UserVenueFollowing.cs" />
     <Compile Include="Models\Venue.cs" />
     <Compile Include="Models\VenueBeer.cs" />
@@ -728,6 +735,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101032027294_AddUserVenueFollowingModel.resx">
       <DependentUpon>202101032027294_AddUserVenueFollowingModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101052000066_AddNotificationAndUserNotificationModels.resx">
+      <DependentUpon>202101052000066_AddNotificationAndUserNotificationModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
