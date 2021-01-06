@@ -11,9 +11,7 @@
     <link href="~/Content/VenueProfile.css" rel="stylesheet" />
 
 </head>
-<body>
-
-
+<body id="VenueProfileView">
 
     <div id="ProfilePic">
         @if (Model.Venue.OwnerId == User.Identity.GetUserId())
@@ -45,10 +43,6 @@
             <input type="submit" id="btnUpload" value="Upload" class="bg-primary" />
         }
     }
-
-
-
-
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -105,13 +99,13 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <h1>@Model.Venue.Name Upcoming Events!</h1>
-                <table class="table table-bordered table-hover">
+                <h1>Upcoming Events in @Model.Venue.Name !</h1>
+                <table class="table table-hover">
                     <tr>
                         <th>Date</th>
                         <th>Description</th>
                         <th>Venue</th>
-                        
+
                     </tr>
                     @foreach (var evt in Model.Events)
                     {
@@ -119,15 +113,49 @@
                             <td>@evt.Date.ToString("MMMM, dddd dd yyyy")</td>
                             <td>@evt.Description</td>
                             <td>@evt.Venue.Name</td>
-                            
-                            
+
+
                         </tr>
                     }
 
                 </table>
             </div>
         </div>
+
+        <div id="MapAreaContainer">
+            <div class="row DecorativeImgs">
+                <div class="form-group col-md-12">
+                    <img id="PurpleBeerImg" src="~/Helper/Images/1.png" alt="Alternate Text" />
+                    <img id="MapTitleImg" src="~/Helper/Images/Map.png" alt="Alternate Text" />
+                    <img id="PurpleBeerImg" src="~/Helper/Images/1.png" alt="Alternate Text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <div id="map">
+                        @*Map is created here!*@
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 ViewLocationOnTheMapBtn">
+                    <input class="btn btn-lg btn-primary" id="submit" type="button" value="View Venue's Location on the Map!" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <input id="latlng" type="text" value="@Model.Location.Latitude,@Model.Location.Longitude" hidden/>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    @*Map Scripts*@
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpBZayreKhUYLqBhdUADi20brDXGV3EUU&callback=initMap&libraries=&v=weekly" defer></script>
+    <script src="~/Scripts/app/controllers/mapLocations.js"></script>
+    @*Map Scripts*@
 
 
     <script src="~/Scripts/bootbox.js"></script>

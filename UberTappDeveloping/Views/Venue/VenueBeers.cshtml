@@ -9,7 +9,6 @@
 
     <div class="row">
         <div class="form-group col-md-12">
-            @*<h1 id="title">My Venue's Beers</h1>*@
             <img id="AvailableBeersImg" src="~/Helper/Images/Available_Beers.png" alt="Alternate Text" />
         </div>
     </div>
@@ -70,6 +69,8 @@
 
     </div>
 </body>
+
+
 
 
 
@@ -242,12 +243,12 @@
 
                     allBeers.forEach(function (beer) {//append all beers to .all
                         var div = `<div draggable="true" class="box">
-                                                     <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
-                                                     <span>${beer.name}</span>
-                                                     <input type="hidden" name="beer" value="${beer.id}" />
-                                                     <input type="number" name="price" value="" min="0" class="price" />
-                                                     <i class="fa fa-eur"></i>
-                                              </div>`;
+                                                         <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
+                                                         <span>${beer.name}</span>
+                                                         <input type="hidden" name="beer" value="${beer.id}" />
+                                                         <input type="number" name="price" value="" min="0" class="price" />
+                                                         <i class="fa fa-eur"></i>
+                                                  </div>`;
                         $(".all").append(div);
                     });
 
@@ -284,12 +285,12 @@
 
             function ViewBeer(beer) {
                 var div = `<div draggable="true" class="box">
-                                             <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
-                                             <span>${beer.name}</span>
-                                             <input type="hidden" name="beer" value="${beer.id}" />
-                                             <input type="number" name="price" value="${beer.price}" min="0" class="price" />
-                                             <i class="fa fa-eur"></i>
-                                      </div>`;
+                                                 <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
+                                                 <span>${beer.name}</span>
+                                                 <input type="hidden" name="beer" value="${beer.id}" />
+                                                 <input type="number" name="price" value="${beer.price}" min="0" class="price" />
+                                                 <i class="fa fa-eur"></i>
+                                          </div>`;
 
                 $(".selected").append(div);
             }

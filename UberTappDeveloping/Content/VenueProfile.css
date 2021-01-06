@@ -7,7 +7,42 @@
            color:wheat;*/
     font-family: 'Architects Daughter', cursive;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+/*Kots start*/
+#VenueProfileView {
+    background: url("../Helper/Images/YellowMovBcg.gif") no-repeat center center fixed;
+    background-size: cover;
+}
+
+    #VenueProfileView .container-fluid .row .col-md-8 h1 {
+        text-align: center;
+    }
+
+    #VenueProfileView .container-fluid .row .col-md-8 table:hover {
+        cursor: pointer;
+    }
+
+
+    #VenueProfileView #MapAreaContainer .DecorativeImgs {
+        margin-top: 6%;
+        text-align: center;
+    }
+
+    #VenueProfileView #MapAreaContainer .row .form-group #MapTitleImg {
+        width: 20%;
+    }
+
+    #VenueProfileView #MapAreaContainer .row .form-group #PurpleBeerImg {
+        width: 10%;
+    }
+
+    #VenueProfileView #MapAreaContainer .row .ViewLocationOnTheMapBtn {
+        text-align: center;
+        margin-top: 1%;
+    }
+/*Kots End*/
 
 #dialog img {
     height: 550px;
@@ -42,7 +77,7 @@
     bottom: -90px;
     left: 39%;
     border: medium solid lightblue;
-    z-index:1;
+    z-index: 1;
 }
 
 #ProfilePic h1 {
@@ -62,25 +97,26 @@
 }
 
 .right.carousel-control, .left.carousel-control {
-    border-radius:10px;
+    border-radius: 10px;
 }
-    #myCarousel .carousel-inner {
-        position: relative;
-        border-radius:10px;
+
+#myCarousel .carousel-inner {
+    position: relative;
+    border-radius: 10px;
+}
+
+    #myCarousel .carousel-inner img {
+        height: 500px;
+        width: 100%;
     }
 
-        #myCarousel .carousel-inner img {
-            height: 500px;
-            width: 100%;
-        }
-
-    #myCarousel #delete-btn {
-        position: absolute;
-        top: 6px;
-        right: 4px;
-        display: none;
-        z-index: 1;
-    }
+#myCarousel #delete-btn {
+    position: absolute;
+    top: 6px;
+    right: 4px;
+    display: none;
+    z-index: 1;
+}
 
 .venue-beers {
     display: flex;
@@ -129,7 +165,7 @@
 .venue-beers .beer span {
     font-size: 26px;
     font-weight: bold;
-    text-align:center;
+    text-align: center;
 }
 
 .venue-beers .beer i {
@@ -171,11 +207,11 @@
 }
 
     #profileInput:hover {
-        cursor:pointer;
+        cursor: pointer;
     }
 
 input[type=file]:hover {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #profileInput + input {
@@ -195,7 +231,7 @@ input[type=file]:hover {
     left: 17.2%;
     z-index: 24;
     bottom: 43.5%;
-    display:none;
+    display: none;
 }
 
     #carouselInput + input {
@@ -205,5 +241,3 @@ input[type=file]:hover {
         bottom: 40.5%;
         display: none;
     }
-
-   
