@@ -1,72 +1,102 @@
 ﻿@model UberTappDeveloping.ViewModels.VenuesViewModel
-@{
-    ViewBag.Title = "UserVenues";
-}
 @using UberTappDeveloping.Helper.Roles
 
-@if (Model.IsIndexAction)
-{
-    <h2>All Venues</h2>
-}
-else
-{
-    <h2>My Venues</h2>
-}
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Venue Name</th>
-            <th>Date Founded</th>
-            <th>Location</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var venue in Model.Venues)
+<body id="VenuesView" class="body">
+    <div class="container-fluid">
+        @if (Model.IsIndexAction)
         {
-            <tr>
-                <td>@venue.Name</td>
-                <td class="date">@venue.DateOpened.Value.ToString("dd MMMM yyyy")</td>
-                <td>@venue.Location.Display</td>
-                <td>
-                    @if (!Model.IsIndexAction)
-                    {
-                        <a href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a>
-                    }
-
-                    <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })" class="btn btn-success">Profile</a>
-
-                    @if (User.IsInRole(RoleNames.BeerEnthusiast))
-                    {
-                        <a href="#" class="follow" data-venue-name="@venue.Name" data-venue-id="@venue.Id">
-                            @if (Model.FollowedVenues.Contains(venue.Id))
-                            {
-                                <span class="btn btn-info">Unfollow</span>
-                            }
-                            else
-                            {
-                                <span class="btn btn-primary">Follow</span>
-                            }
-                        </a>
-                    }
-
-                </td>
-            </tr>
+            <div class="row">
+                <div class="form-group col-md-6"></div>
+                <div class="form-group col-md-6">
+                    <img id="VenuesImg" src="~/Helper/Images/Venues.png" alt="Alternate Text" />
+                </div>
+            </div>
         }
-    </tbody>
+        else
+        {
+            <div class="row">
+                <div class="form-group col-md-6"></div>
+                <div class="form-group col-md-6">
+                    <img id="MyVenuesImg" src="~/Helper/Images/My_Venues.png" alt="Alternate Text" />
+                </div>
+            </div>
+        }
 
-</table>
+        <div class="row">
+            @if (Model.IsIndexAction)
+            {
+                <div class="form-group col-md-4">
+                    <img id="BarrelGermImg" src="~/Helper/Images/11.png" alt="Alternate Text" />
+                </div>
+            }
+            else
+            {
+                <div class="form-group col-md-4">
+                    <img id="BarrelImg" src="~/Helper/Images/7.png" alt="Alternate Text" />
+                </div>
+            }
+
+            <div id="VenueField" class="form-group col-md-8">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Venue Name</th>
+                            <th>Date Founded</th>
+                            <th>Location</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var venue in Model.Venues)
+                        {
+                            <tr>
+                                <td>@venue.Name</td>
+                                <td class="date">@venue.DateOpened.Value.ToString("dd MMMM yyyy")</td>
+                                <td>@venue.Location.Display</td>
+                                <td class="flex-area">
+                                    @if (!Model.IsIndexAction)
+                                    {
+                                        <a class="btn btn-primary" href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a>
+                                    }
+
+                                    <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })" class="btn btn-success">Profile</a>
+
+                                    @if (User.IsInRole(RoleNames.BeerEnthusiast))
+                                    {
+                                        <a href="#" class="follow" data-venue-name="@venue.Name" data-venue-id="@venue.Id">
+                                            @if (Model.FollowedVenues.Contains(venue.Id))
+                                            {
+                                                <span class="btn btn-info">Unfollow</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="btn btn-primary">Follow</span>
+                                            }
+                                        </a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
 
 @section Scripts {
-    <script src="~/Scripts/moment.js"></script>
 
+    <script src="~/Scripts/moment.js"></script>
     <script src="~/Scripts/datatables-moment.js"></script>
     <script>
 
         $(document).ready(function () {
 
-            
+
 
             $("table").on("click", ".follow", function (e) {//follow or unfollow ajax request when clicking the button
                 console.log($(e.target).parent().attr("data-venue-id"));

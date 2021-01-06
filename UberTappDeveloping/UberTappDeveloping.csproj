@@ -478,6 +478,8 @@
     <Content Include="Helper\Images\14.png" />
     <Content Include="Helper\Images\3.png" />
     <Content Include="Helper\Images\4.png" />
+    <Content Include="Helper\Images\6.png" />
+    <Content Include="Helper\Images\7.png" />
     <Content Include="Helper\Images\8.png" />
     <Content Include="Helper\Images\9.png" />
     <Content Include="Helper\Images\about_us.png" />

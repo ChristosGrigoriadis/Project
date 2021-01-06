@@ -1,14 +1,23 @@
 ﻿
 @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
 
+#VenueBeersView {
+    background: url('../Helper/Images/YellowMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+    #VenueBeersView .row .form-group h1 {
+        text-align: center;
+    }
+
 .body-content {
     font-family: 'Hanalei Fill', cursive;
     background-image: url("");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
-    
 }
+
 .container-main {
     display: flex;
     justify-content: space-around;
@@ -44,29 +53,28 @@
     align-items: center;
 }
 
-.box img {
-    height:100%;
-    width:15%;
-}
+    .box img {
+        height: 100%;
+        width: 15%;
+    }
 
     .box span {
         width: 60%;
         font-size: 22px;
-        line-height:22px;
+        line-height: 22px;
     }
 
     .box .price {
         height: 100%;
         width: 20%;
-        font-size:28px;
-        padding:0px;
-        
+        font-size: 28px;
+        padding: 0px;
     }
 
     .box .fa {
         font-size: 30px;
-        width:5%;
-        margin-right:3px;
+        width: 5%;
+        margin-right: 3px;
     }
 
 .destination {
@@ -85,28 +93,28 @@
     text-align: center;
 }
 
-.origin .searchBeers {
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-around;
-}
-
-    .origin .searchBeers:hover input {
-        display: block;
+    .origin .searchBeers {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
     }
 
-    .origin .searchBeers input {
-        height: 30px;
-        font-size: 18px;
-        width: 46%;
-        padding: 15px;
-        display: none;
-    }
+        .origin .searchBeers:hover input {
+            display: block;
+        }
 
-    .origin .searchBeers h1 {
-        text-shadow: 4px 4px 3px #AB7449;
-        text-align:center;
-    }
+        .origin .searchBeers input {
+            height: 30px;
+            font-size: 18px;
+            width: 46%;
+            padding: 15px;
+            display: none;
+        }
+
+        .origin .searchBeers h1 {
+            text-shadow: 4px 4px 3px #AB7449;
+            text-align: center;
+        }
 
 .venues {
     width: 25%;
@@ -126,38 +134,38 @@
     text-align: left;
     display: flex;
     align-items: center;
-    flex-direction:column;
+    flex-direction: column;
 }
 
     .myVenues .radio {
         display: flex;
         align-items: center;
-        justify-content:space-between;
+        justify-content: space-between;
     }
 
         .myVenues .radio a {
-            display:none;
-            margin-left:10px;
+            display: none;
+            margin-left: 10px;
         }
 
-            .myVenues .radio a:hover{
-                display:block;
-            }
-
-            .myVenues .radio:hover a {
+            .myVenues .radio a:hover {
                 display: block;
             }
 
-        .myVenues label {
-            font-size: 29px;
-            line-height: 22px;
-            border-bottom: medium solid black;
+        .myVenues .radio:hover a {
+            display: block;
         }
 
-    
+    .myVenues label {
+        font-size: 29px;
+        line-height: 22px;
+        border-bottom: medium solid black;
+    }
+
+
 div {
-            border-radius: 5px;
-        }
+    border-radius: 5px;
+}
 
 #title {
     text-shadow: 4px 4px 3px #4FD6FF;

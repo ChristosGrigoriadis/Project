@@ -5,64 +5,70 @@
 
 }
 
-<h1 id="title">My Venues Beers</h1>
+<body id="VenueBeersView" class="body">
 
-
-
-<div class="container-main">
-    <div class="venues">
-        <h1>My Venues</h1>
-        <div class="myVenues">
-
-            @foreach (var venue in Model.MyVenues)
-            {
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="venue" value="@venue.Id" class="venue-input">
-                        @venue.Name
-                    </label>
-                    <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })" class="btn btn-primary">Profile</a>
-                </div>
-            }
-
+    <div class="row">
+        <div class="form-group col-md-12">
+            <h1 id="title">My Venue's Beers</h1>
         </div>
     </div>
 
-    <div class="origin">
-        <div class="searchBeers">
-            <input type="text" value="" placeholder="Search by Beer Name" />
-            <h1>All Beers</h1>
+    <div class="container-main">
+
+        <div class="venues">
+            <h1>My Venues</h1>
+            <div class="myVenues">
+
+                @foreach (var venue in Model.MyVenues)
+                {
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="venue" value="@venue.Id" class="venue-input">
+                            @venue.Name
+                        </label>
+                        <a href="@Url.Action("VenueProfile","venue",new {id = venue.Id })" class="btn btn-primary">Profile</a>
+                    </div>
+                }
+
+            </div>
         </div>
-        <div class="all dropzone">
 
-            @foreach (var beer in Model.AllBeers)
-            {
-                <div class="box">
-                    <img src="~/Content/Images/beer-logo-1.jpg" alt="@beer.Name" />
-                    <span>@beer.Name</span>
-                    <input type="hidden" name="beer" value="@beer.Id" />
-                    <input type="number" name="price" value="" min="0" class="price" />
-                    <i class="fa fa-eur"></i>
-                </div>
-            }
+        <div class="origin">
+            <div class="searchBeers">
+                <input type="text" value="" placeholder="Search by Beer Name" />
+                <h1>All Beers</h1>
+            </div>
+            <div class="all dropzone">
 
+                @foreach (var beer in Model.AllBeers)
+                {
+                    <div class="box">
+                        <img src="~/Content/Images/beer-logo-1.jpg" alt="@beer.Name" />
+                        <span>@beer.Name</span>
+                        <input type="hidden" name="beer" value="@beer.Id" />
+                        <input type="number" name="price" value="" min="0" class="price" />
+                        <i class="fa fa-eur"></i>
+                    </div>
+                }
+
+
+            </div>
 
         </div>
+
+        <div class="destination">
+            <h1>Available Beers</h1>
+            <div class="selected dropzone">
+
+            </div>
+        </div>
+
+        <form>
+            <input class="bg-primary" id="submit" type="submit" value="Save" />
+        </form>
 
     </div>
-
-    <div class="destination">
-        <h1>Available Beers</h1>
-        <div class="selected dropzone">
-
-        </div>
-    </div>
-
-    <form>
-
-        <input class="bg-primary" id="submit" type="submit" value="Save" />
-    </form>
-</div>
+</body>
 
 
 
@@ -235,12 +241,12 @@
 
                     allBeers.forEach(function (beer) {//append all beers to .all
                         var div = `<div draggable="true" class="box">
-                                             <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
-                                             <span>${beer.name}</span>
-                                             <input type="hidden" name="beer" value="${beer.id}" />
-                                             <input type="number" name="price" value="" min="0" class="price" />
-                                             <i class="fa fa-eur"></i>
-                                      </div>`;
+                                                     <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
+                                                     <span>${beer.name}</span>
+                                                     <input type="hidden" name="beer" value="${beer.id}" />
+                                                     <input type="number" name="price" value="" min="0" class="price" />
+                                                     <i class="fa fa-eur"></i>
+                                              </div>`;
                         $(".all").append(div);
                     });
 
@@ -277,31 +283,31 @@
 
             function ViewBeer(beer) {
                 var div = `<div draggable="true" class="box">
-                                     <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
-                                     <span>${beer.name}</span>
-                                     <input type="hidden" name="beer" value="${beer.id}" />
-                                     <input type="number" name="price" value="${beer.price}" min="0" class="price" />
-                                     <i class="fa fa-eur"></i>
-                              </div>`;
+                                             <img src="/Content/Images/beer-logo-1.jpg"  alt=${beer.name} />
+                                             <span>${beer.name}</span>
+                                             <input type="hidden" name="beer" value="${beer.id}" />
+                                             <input type="number" name="price" value="${beer.price}" min="0" class="price" />
+                                             <i class="fa fa-eur"></i>
+                                      </div>`;
 
                 $(".selected").append(div);
             }
 
-          
+
             function SearchBeers() {//filter .all beers
                 $(".searchBeers input").on("keyup", function () {
-                    
+
                     var value = $(this).val().toLowerCase();
-                    
+
                     $($(".all .box span")).filter(function () {
-                        
+
                         $(this).parent().toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                        
+
                     });
                 });
             };
 
-            
+
 
 
 
