@@ -144,8 +144,6 @@
             padding-bottom: 1px;
         }
 
-
-
 /*Contact.cshtml*/
 
 #ContactView {
@@ -394,6 +392,61 @@
             text-align: center;
             padding: 5px 10px;
         }
+
+/*Venues.cshtml*/
+
+#VenuesView {
+    background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+}   
+
+#VenuesView .container-fluid .row .form-group #VenuesImg {
+    padding: 10px 15px;
+    margin-top: 2%;
+    width: 78%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #VenuesView .container-fluid .row .form-group #MyVenuesImg {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 78%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #VenuesView .container-fluid .row #VenueField {
+        color: white;
+    }
+
+        #VenuesView .container-fluid .row #VenueField table tbody tr:hover {
+            color: black;
+            cursor: pointer;
+        }
+
+        #VenuesView .container-fluid .row #VenueField table tbody .flex-area {
+            display:flex;
+            justify-content:space-evenly;
+        }
+
+    #VenuesView .container-fluid .row .form-group #BarrelGermImg {
+        position: fixed;
+        bottom: 0;
+        width: 28%;
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    #VenuesView .container-fluid .row .form-group #BarrelImg {
+        position: fixed;
+        bottom: 0;
+        width: 28%;
+        margin-left: 0;
+        margin-right: auto;
+    }
 
 /*ViewPermiumOffer.cshtml*/
 
