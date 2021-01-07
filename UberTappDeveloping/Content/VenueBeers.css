@@ -1,6 +1,8 @@
 ﻿
 @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
 
+/*Kots start*/
+
 #VenueBeersView {
     background: url('../Helper/Images/YellowMovBcg.gif') no-repeat center center fixed;
     background-size: cover;
@@ -17,6 +19,8 @@
         margin-right:auto;
         margin-top:2%;
     }
+
+/*Kots End*/
 
 .body-content {
     font-family: 'Hanalei Fill', cursive;
