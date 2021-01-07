@@ -75,6 +75,26 @@ namespace UberTappDeveloping.Controllers
 
             var evntDb = context.Events.SingleOrDefault(e => e.Id == viewModel.Event.Id);
 
+            if (evntDb.Description == viewModel.Event.Description && evntDb.Date == viewModel.Event.Date && evntDb.VenueId == viewModel.Event.VenueId)
+                return RedirectToAction("venueOwnerEvents", "event");//dont create new notification if everything is the same
+
+            var notification = new Notification
+            {
+                EventId = evntDb.Id,
+                OriginalDate = evntDb.Date,
+                OriginalDescription = evntDb.Description,
+                OriginalVenueId = evntDb.VenueId,
+                Type = Helper.Enums.NotificationType.EventUpdated
+            };
+
+            context.Notifications.Add(notification);//create new notification
+
+            foreach (var follower in context.UserVenueFollowings.Where(f => f.VenueId == evntDb.VenueId).Select(f => f.BeerEnthusiast).ToList())
+            {
+                context.UserNotifications.Add(new UserNotification { BeerEnthusiast = follower, Notification = notification });//add a notification to users that follow this venue
+            }
+
+            //update event
             evntDb.Description = viewModel.Event.Description;
             evntDb.Date = viewModel.Event.Date;
             evntDb.VenueId = viewModel.Event.VenueId;
@@ -109,9 +129,6 @@ namespace UberTappDeveloping.Controllers
                 VenueId = viewModel.Event.VenueId
             };
 
-            var events = context.Events.ToList();
-
-
             context.Events.Add(evnt);
 
             var notification = new Notification
@@ -119,12 +136,13 @@ namespace UberTappDeveloping.Controllers
                 Event = evnt,
                 Type = Helper.Enums.NotificationType.EventCreated
             };
-            context.Notifications.Add(notification);
 
-            var notificationId = context.Notifications.ToList().LastOrDefault() == null ? 0 : context.Notifications.ToList().Last().Id;
-            foreach (var follower in context.UserVenueFollowings.Where(f => f.VenueId == viewModel.Event.VenueId).Select(f => f.BeerEnthusiast).ToList())
+            context.Notifications.Add(notification);//create new notification
+
+            
+            foreach (var follower in context.UserVenueFollowings.Where(f => f.VenueId == evnt.VenueId).Select(f => f.BeerEnthusiast).ToList())
             {
-                context.UserNotifications.Add(new UserNotification { BeerEnthusiast = follower, Notification = notification});
+                context.UserNotifications.Add(new UserNotification { BeerEnthusiast = follower, Notification = notification});//add a notification to users that follow this venue
             }
 
             context.SaveChanges();

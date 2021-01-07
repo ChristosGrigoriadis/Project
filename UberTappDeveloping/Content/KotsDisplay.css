@@ -398,16 +398,16 @@
 #VenuesView {
     background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
     background-size: cover;
-}   
-
-#VenuesView .container-fluid .row .form-group #VenuesImg {
-    padding: 10px 15px;
-    margin-top: 2%;
-    width: 78%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
+
+    #VenuesView .container-fluid .row .form-group #VenuesImg {
+        padding: 10px 15px;
+        margin-top: 2%;
+        width: 78%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     #VenuesView .container-fluid .row .form-group #MyVenuesImg {
         padding: 10px 15px;
@@ -428,8 +428,8 @@
         }
 
         #VenuesView .container-fluid .row #VenueField table tbody .flex-area {
-            display:flex;
-            justify-content:space-evenly;
+            display: flex;
+            justify-content: space-evenly;
         }
 
     #VenuesView .container-fluid .row .form-group #BarrelGermImg {
@@ -492,5 +492,43 @@
 /*FailedPayment.cshtml*/
 
 
+/*Pavlos Notifications CSS*/
+#DetailsView #profileDetBtn #notifications {
+    float: right;
+    position: relative;
+    top: 10px;
+    width: 3em;
+    left: 1em;
+}
 
+    #DetailsView #profileDetBtn #notifications .fa-bell {
+        color: coral;
+        font-size: 25px;
+        cursor: pointer;
+    }
 
+    #DetailsView #profileDetBtn #notifications .badge {
+        position: absolute;
+        top: -12px;
+        right: 0.7em;
+    }
+
+#DetailsView #myModal .modal-body {
+    background-color:white;
+    color:black;
+    font-size:20px;
+    font-weight:bold;
+    
+}
+
+#DetailsView #myModal .modal-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#DetailsView #myModal .modal-header {
+    background-color: coral;
+    color: black;
+    border-bottom:1px solid black;
+}

@@ -16,7 +16,7 @@
         </div>
 
         <div class="row">
-            <div id="profileDetBtn" class="form-group col-md-6">
+            <div id="profileDetBtn" class="form-group col-md-5">
                 @if (User.IsInRole(RoleNames.Admin))
                 {
                     <button class="btn btn-sm btn-primary">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
@@ -25,6 +25,7 @@
                 {
                     <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
                     <button id="deleteBtn" class="btn btn-sm btn-danger" title="Delete Profile">Delete</button>
+
                     if (Model.IsPremiumUser == false)
                     {
                         <button class="btn btn-sm btn-primary">@Html.ActionLink("Become A Premium User", "ViewPermiumOffer", "PayPal", new { Id = User.Identity.GetUserId() }, new { title = "More Info" })</button>
@@ -33,6 +34,11 @@
                     {
                         <button class="btn btn-sm btn-primary">@Html.ActionLink("Check Your Membership Status", "SuccessfulPayment", "PayPal", new { Id = User.Identity.GetUserId() }, new { title = "Membership Status" })</button>
                     }
+
+                    <span id="notifications">
+                        <i class="fa fa-bell" data-toggle="modal" data-target="#myModal"></i>
+                        <span class="badge js-notification-count hide"></span>
+                    </span>
                 }
                 else
                 {
@@ -112,6 +118,28 @@
             </div>
         </div>
 
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Notifications</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         @*<div class="row">
                 <div class="form-group col-md-12">
                     <img id="MainBottomImg" src="~/Helper/Images/main_bottom_transp.png" alt="Alternate Text" />
@@ -132,6 +160,89 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpBZayreKhUYLqBhdUADi20brDXGV3EUU&callback=initMap&libraries=&v=weekly" defer></script>
     <script src="~/Scripts/app/controllers/mapLocations.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+
+    <script>
+        
+        $(document).ready(function () {
+            $("#myModel").change(function () {
+                console.log("modal change!");
+            })
+            $.get("/api/notifications", function (notifications) {
+                console.log(notifications);
+
+                $(".js-notification-count").text(notifications.length).removeClass("hide").addClass("animated fadeInDown");
+
+
+            }).done(function (notifications) {
+
+                $(".fa-bell").click(function (e) {
+                    $(".modal-body ul").text("");
+                    notifications.forEach(ViewNotification);
+
+                    $.post("/api/notifications", function () {
+
+                    })
+                        .done(function () {
+                            $(".js-notification-count").text("").addClass("hide");
+                            //$(".modal-body ul").addClass("hide");
+                        })
+                        .fail(function () {
+                            alert("something failed");
+                        });
+
+                });
+
+                function ViewNotification(notification) {
+                    console.log(notification);
+                    var date = moment(`${notification.event.date}`).format("MMMM, dddd DD - yyyy");
+                    var originalDate = moment(`${notification.originalDate}`).format("MMMM, dddd DD - yyyy");
+                    if (notification.type == 1) {
+
+                        var content = `Venue <a href='@Url.Action("VenueProfile","venue")?id=${notification.event.venueId}'>${notification.event.venue.name}</a>
+                                        has created a new Event on ${date}!`;
+                        $(".modal-body ul").append($("<li>").html(content));
+
+                    } else if (notification.type == 2) {
+                        var content;
+                        if (notification.originalVenueId != notification.event.venue.id) {
+                            content = `Venue <a href='@Url.Action("VenueProfile","venue")?id=${notification.originalVenueId}'>${notification.originalVenueName}</a>
+                             with description `;
+                            if (notification.originalDescription != "")
+                                content += `<u>${notification.originalDescription}</u> changed it's description to <u>${notification.event.description}</u>,`;
+                            else
+                                content += `<u>${notification.event.description}</u>`;
+                            if (originalDate != "")
+                                content += ` moved it's date from <u>${originalDate}</u> to <u>${date}</u>`
+                            else
+                                content += ` on <u>${date}</u>`
+
+                            content += ` and changed it's location to <a href='@Url.Action("VenueProfile","venue")?id=${notification.event.venueId}'>${notification.event.venue.name}</a>!`;
+
+                            $(".modal-body ul").append($("<li>").html(content));
+                        } else {
+                            content = `Venue <a href='@Url.Action("VenueProfile","venue")?id=${notification.event.venueId}'>${notification.event.venue.name}</a>
+                             with description `;
+                            if (notification.originalDescription != notification.event.description)
+                                content += `<u>${notification.originalDescription}</u> changed it's description to <u>${notification.event.description}</u>,`;
+                            else
+                                content += `<u>${notification.event.description}</u>,`;
+                            if (originalDate != date)
+                                content += ` moved it's date from <u>${originalDate}</u> to <u>${date}</u>!`
+                            else
+                                content += ` on <u>${date}</u>!`
+
+                            $(".modal-body ul").append($("<li>").html(content));
+                        }
+                    }
+                }
+            })
+
+
+
+        });
+
+    </script>
 
 }
 

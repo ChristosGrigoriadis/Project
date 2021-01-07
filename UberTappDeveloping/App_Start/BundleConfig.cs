@@ -30,6 +30,7 @@ namespace UberTappDeveloping
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/font-awesome.css",
+                      "~/Content/animate.css",
                       "~/Content/datatables/css/dataTables.bootstrap.css"));
         }
     }
