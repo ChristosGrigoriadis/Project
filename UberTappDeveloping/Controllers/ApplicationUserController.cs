@@ -55,7 +55,8 @@ namespace UberTappDeveloping.Controllers
 				Gender =applicationUser.Gender,
 				IsVenueOwner = applicationUser.IsVenueOwner,
 				LocationId = applicationUser.LocationId,
-				Locations = context.Locations
+				Locations = context.Locations,
+				IsPremiumUser = applicationUser.IsPremiumUser				
 			};
 
 			return View("UserForm", viewModel);
@@ -100,6 +101,7 @@ namespace UberTappDeveloping.Controllers
 			userDb.BirthDate = applicationUser.BirthDate;
 			userDb.Gender = applicationUser.Gender;
 			userDb.LocationId = applicationUser.LocationId;
+			userDb.IsPremiumUser = applicationUser.IsPremiumUser;
 
 			context.SaveChanges();
 

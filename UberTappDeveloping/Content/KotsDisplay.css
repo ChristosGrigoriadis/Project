@@ -15,6 +15,30 @@
         margin-right: auto;
     }
 
+/*ErrorPage.cshtml*/
+
+#ErrorPageView {
+    background: url('../Helper/Images/YellowMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+    #ErrorPageView .container-fluid .row .form-group #ErrorImg {
+        padding: 10px 15px;
+        display: block;
+        margin-top: 1%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 6%;
+        width: 42%;
+    }
+
+    #ErrorPageView .container-fluid .row .form-group .btn a {
+        color: white;
+        text-decoration: none;
+    }
+
 /*Register.cshtml*/
 
 #RegisterView {
@@ -458,6 +482,13 @@
 
 /*SuccessfulPayment.cshtml*/
 
+#SuccessfulPaymentView {
+    background: url('../Helper/Images/YellowMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
 #SuccessfulPaymentView .container-fluid .row #PremUserId {
     display: block;
     padding: 10px 15px;
@@ -465,7 +496,7 @@
     margin-right: auto;
     margin-top: 3%;
     margin-bottom: 1%;
-    width: 75%;
+    width: 65%;
     border-radius: 7%;
 }
 
@@ -473,7 +504,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    padding: 10px 15px;
+    padding: 5px 10px;
     margin-top: 1%;
     margin-bottom: 1%;
 }
@@ -489,10 +520,8 @@
         color: white;
     }
 
-/*FailedPayment.cshtml*/
+/*Pavlos Notifications CSS start*/
 
-
-/*Pavlos Notifications CSS*/
 #DetailsView #profileDetBtn #notifications {
     float: right;
     position: relative;
@@ -514,11 +543,10 @@
     }
 
 #DetailsView #myModal .modal-body {
-    background-color:white;
-    color:black;
-    font-size:20px;
-    font-weight:bold;
-    
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #DetailsView #myModal .modal-title {
@@ -530,5 +558,7 @@
 #DetailsView #myModal .modal-header {
     background-color: coral;
     color: black;
-    border-bottom:1px solid black;
+    border-bottom: 1px solid black;
 }
+
+/*Pavlos Notifications CSS end*/

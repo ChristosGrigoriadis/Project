@@ -1,5 +1,6 @@
 ﻿@model UberTappDeveloping.ViewModels.UserFormViewModel
 @using Microsoft.AspNet.Identity
+@using UberTappDeveloping.Helper.Roles
 
 @*<style></style>*@
 <link href="~/Content/KotsDisplay.css" rel="stylesheet" />
@@ -81,6 +82,13 @@
                     @Html.DropDownListFor(u => u.LocationId, new SelectList(Model.Locations, "Id", "Display"), " --- Select --- ", new { @class = "form-control" })
                     @Html.ValidationMessageFor(u => u.LocationId)
                 </div>
+                @if (User.IsInRole(RoleNames.Admin))
+                {
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(u => u.IsPremiumUser)
+                        @Html.CheckBoxFor(u => u.IsPremiumUser)
+                    </div>
+                }
             </div>
 
             <div id="updateBtn" class="row">
@@ -89,6 +97,7 @@
                 </div>
             </div>
         }
+
     </div>
 </body>
 

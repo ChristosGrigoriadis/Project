@@ -10,7 +10,7 @@
             <img id="PremUserId" src="~/Helper/Images/PremiumUser.jpg" />
         </div>
         <div class="row">
-            <button id="premBtn" class="btn btn-primary">
+            <button id="premBtn" class="btn btn-lg btn-primary">
                 @Html.ActionLink("Back to your profile " + User.Identity.GetUserName() + "?", "Details", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "View Profile" })
             </button>
         </div>
