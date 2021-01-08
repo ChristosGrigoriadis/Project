@@ -531,7 +531,7 @@
 }
 
     #DetailsView #profileDetBtn #notifications .fa-bell {
-        color: coral;
+        color: whitesmoke;
         font-size: 25px;
         cursor: pointer;
     }
@@ -556,8 +556,8 @@
 }
 
 #DetailsView #myModal .modal-header {
-    background-color: coral;
-    color: black;
+    background-color: rebeccapurple;
+    color: white;
     border-bottom: 1px solid black;
 }
 
