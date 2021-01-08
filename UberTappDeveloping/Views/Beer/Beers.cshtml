@@ -19,6 +19,22 @@
         <div class="row">
             <div class="form-group col-md-4">
                 <button class="btn btn-sm">@Html.ActionLink("Add a New Beer", "Create", "Beer", new { title = "View Beer Details" })</button>
+                    <div class="container-fluid">
+                        <button>@Html.ActionLink("All Beers", "FilterBeers", new { id = 14 })</button>
+                        <button>@Html.ActionLink("Pale lager, Witbier, Pilsener, Berliner Weisse", "FilterBeers", new { id = 1 })</button>
+                        <button>@Html.ActionLink("Maibock, Blonde Ale", "FilterBeers", new { id = 2 })</button>
+                        <button>@Html.ActionLink("Weissbier", "FilterBeers", new { id = 3 })</button>
+                        <button>@Html.ActionLink("American Pale Ale, Indian Pale Ale", "FilterBeers", "Beer", new { id = 4 })</button>
+                        <button>@Html.ActionLink("Weissbier, Saison", "FilterBeers", new { id = 5 })</button>
+                        <button>@Html.ActionLink("English Bitter, ESB", "FilterBeers", new { id = 6 })</button>
+                        <button>@Html.ActionLink("Biere de Garde, Double IPA", "FilterBeers", new { id = 7 })</button>
+                        <button>@Html.ActionLink("Dark lager, Vienna lager, Marzen, Amber Ale", "FilterBeers", new { id = 8 })</button>
+                        <button>@Html.ActionLink("Brown Ale, Bock, Dunkel, Dunkelweizen", "FilterBeers", new { id = 9 })</button>
+                        <button>@Html.ActionLink("Irish Dry Stout, Doppelbock, Porter", "FilterBeers", new { id = 10 })</button>
+                        <button>@Html.ActionLink("Stout", "FilterBeers", new { id = 11 })</button>
+                        <button>@Html.ActionLink("Foreign Stout, Baltic Porter", "FilterBeers", new { id = 12 })</button>
+                        <button>@Html.ActionLink("Imperial Stout", "FilterBeers", new { id = 13 })</button>
+                    </div>
             </div>
         </div>
 

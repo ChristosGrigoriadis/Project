@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UberTappDeveloping.Models.ApplicationUser>
+﻿@model UberTappDeveloping.ViewModels.UserViewModel
 @using Microsoft.AspNet.Identity
 
 @*<style></style>*@
@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var user in Model)
+                        @foreach (var user in Model.AllUsers)
                         {
                             <tr>
                                 <td>@user.Email</td>
@@ -41,9 +41,13 @@
                                 <td>@user.FirstName</td>
                                 <td>@user.LastName</td>
                                 <td class="buttons">
+                                    @if (Model.ShowActions)
+                                    {
+                                        <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "ApplicationUser", new { Id = user.Id }, new { title = "View User's Profile" })</button>
+                                        <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "ApplicationUser", new { Id = user.Id }, new { title = "Update User's Info" })</button>
+                                        <button class="btn btn-sm btn-danger js-delete" data-user-id="@user.Id" title="Delete This User">Delete</button>
+                                    }
                                     <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "ApplicationUser", new { Id = user.Id }, new { title = "View User's Profile" })</button>
-                                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "ApplicationUser", new { Id = user.Id }, new { title = "Update User's Info" })</button>
-                                    <button class="btn btn-sm btn-danger js-delete" data-user-id="@user.Id" title="Delete This User">Delete</button>
                                 </td>
                             </tr>
                         }

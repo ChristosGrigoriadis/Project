@@ -28,11 +28,20 @@ namespace UberTappDeveloping.Controllers
 		#region GET
 
 		// GET: All ApplicationUsers (Admin)
-		[Authorize(Roles = RoleNames.Admin)]
+		//[Authorize(Roles = RoleNames.Admin)]
 		public ActionResult AllUsers()
 		{
 			var applicationUsers = context.Users.ToList();
-			return View("AllUsers", applicationUsers);
+
+			var viewModel = new UserViewModel
+			{
+				AllUsers = applicationUsers,
+				ShowActions = User.IsInRole(RoleNames.Admin)
+			};
+			
+			return View("AllUsers", viewModel);
+
+			
 		}
 
 		// GET: An ApplicationUser

@@ -10,5 +10,6 @@ namespace UberTappDeveloping.ViewModels
     {
         public IEnumerable<Beer> AllBeers { get; set; }
         public ILookup<int, FavBeer> FavBeers { get; set; }
+        //public int BeerFilterId { get; set; }
     }
 }

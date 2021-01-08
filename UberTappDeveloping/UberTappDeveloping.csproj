@@ -183,7 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\ApplicationUsersController.cs" />
     <Compile Include="Controllers\API\EmailsController.cs" />
-    <Compile Include="Controllers\API\FavBeersController.cs" />
+    <Compile Include="Controllers\API\FollowersController.cs" />
     <Compile Include="Controllers\API\VenuesController.cs" />
     <Compile Include="Controllers\ApplicationUserController.cs" />
     <Compile Include="Controllers\BeerController.cs" />
@@ -257,6 +257,7 @@
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\Email.cs" />
     <Compile Include="Models\FavBeer.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\ModelDtos\VenueBeersDto.cs" />
@@ -276,6 +277,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\UserFormViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\VenueBeersViewModel.cs" />
     <Compile Include="ViewModels\VenueFormViewModel.cs" />
     <Compile Include="ViewModels\VenueProfileViewModel.cs" />

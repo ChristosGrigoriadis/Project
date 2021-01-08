@@ -40,6 +40,184 @@ namespace UberTappDeveloping.Controllers
             return View(viewModel);
         }
 
+        public ActionResult FilterBeers(int id)
+        {
+            if (id == 0)
+            {
+                return View("ErrorPage", "Home"); // Error Page?
+            }
+
+
+            if (id == 1)
+            {
+                var beers = context.Beers.Where(b => b.EBC <= 4).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 2)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 4 && b.EBC <= 6).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 3)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 6 && b.EBC <= 8).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 4)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 8 && b.EBC <= 12).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 5)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 12 && b.EBC <= 16).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 6)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 16 && b.EBC <= 20).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 7)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 20 && b.EBC <= 26).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 8)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 26 && b.EBC <= 33).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 9)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 33 && b.EBC <= 39).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 10)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 39 && b.EBC <= 47).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 11)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 47 && b.EBC <= 57).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 12)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 57 && b.EBC <= 69).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else if (id == 13)
+            {
+                var beers = context.Beers.Where(b => b.EBC > 69).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+            else
+            {
+                var beers = context.Beers.Where(b => b.EBC > 0).ToList();
+                var userId = User.Identity.GetUserId();
+
+                var viewModel = new BeersViewModel()
+                {
+                    AllBeers = beers,
+                    FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
+                };
+                return View("Beers", viewModel);
+            }
+        }
+
         public ActionResult Edit(int id)
         {
             var beer = context.Beers.SingleOrDefault(b => b.Id == id);

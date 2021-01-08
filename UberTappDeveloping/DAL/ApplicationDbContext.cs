@@ -33,6 +33,7 @@ namespace UberTappDeveloping.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Location>()
                 .HasMany(l => l.VenueLocations)
                 .WithRequired(v => v.Location)
