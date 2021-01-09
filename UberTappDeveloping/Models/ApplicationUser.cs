@@ -40,6 +40,7 @@ namespace UberTappDeveloping.Models
 		public int LocationId { get; set; }
 		public Location Location { get; set; }
 
+		[Display(Name = "Is Premium User?")]
 		public bool IsPremiumUser { get; set; }
 
 		public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

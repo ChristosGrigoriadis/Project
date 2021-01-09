@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using PayPal.Api;
 using UberTappDeveloping.DAL;
 using UberTappDeveloping.Helper.Roles;
@@ -31,7 +32,6 @@ namespace UberTappDeveloping.Controllers
 		public ActionResult ViewPermiumOffer(string id)
 		{
 			var applicationUser = context.Users.SingleOrDefault(u => u.Id == id);
-
 			if (applicationUser == null)
 				return HttpNotFound();
 
@@ -45,13 +45,6 @@ namespace UberTappDeveloping.Controllers
 			return View("SuccessfulPayment");
 
 		} // public ActionResult SuccessfulPayment END //
-
-		[Authorize(Roles = RoleNames.BeerEnthusiast)]
-		public ActionResult FailedPayment(string id)
-		{
-			return View("FailedPayment");
-
-		} // public ActionResult FailedPayment END //
 
 		#endregion
 
@@ -90,16 +83,17 @@ namespace UberTappDeveloping.Controllers
 
 					if (executedPayment.state.ToLower() != "approved")
 					{
-						return View("FailedPayment");
+						return RedirectToAction("ErrorPage", "Home");
 					}
 				}
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
-				return View("FailedPayment", ex);
+				return RedirectToAction("ErrorPage", "Home");
 			}
 
 			return View("SuccessfulPayment");
+			
 
 		} // public ActionResult PaymentWithPaypal(string Cancel = null) END //
 

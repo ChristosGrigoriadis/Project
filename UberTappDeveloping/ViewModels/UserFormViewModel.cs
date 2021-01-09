@@ -43,5 +43,8 @@ namespace UberTappDeveloping.ViewModels
 		[Display(Name = "Location")]
 		public int LocationId { get; set; }
 		public IEnumerable<Location> Locations { get; set; }
+
+		[Display(Name = "Is Premium User?")]
+		public bool IsPremiumUser { get; set; }
 	}
 }

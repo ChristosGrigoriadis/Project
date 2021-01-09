@@ -1,4 +1,5 @@
 ﻿@model UberTappDeveloping.Models.ApplicationUser
+@using Microsoft.AspNet.Identity
 
 @*<style></style>*@
 <link href="~/Content/KotsDisplay.css" rel="stylesheet" />
@@ -15,6 +16,7 @@
         </div>
         <div class="row">
             <button id="premBtn" class="btn btn-primary">
+                @Html.ActionLink("Become A Premium User", "PaymentWithPaypal", "PayPal", new { Id = User.Identity.GetUserId() })
             </button>
         </div>
     </div>

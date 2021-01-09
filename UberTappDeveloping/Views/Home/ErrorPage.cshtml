@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNet.Identity
+
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
+
+<body id="ErrorPageView" class="body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="form-group col-md-12">
+            <img id="ErrorImg" src="~/Helper/Images/error.gif" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <button class="btn btn-lg btn-primary">
+                    @Html.ActionLink("Back to your profile " + User.Identity.GetUserName() + "?", "Details", "ApplicationUser", new { Id = User.Identity.GetUserId() }, new { title = "View Profile" })
+                </button>
+            </div>
+        </div>
+    </div>
+</body>

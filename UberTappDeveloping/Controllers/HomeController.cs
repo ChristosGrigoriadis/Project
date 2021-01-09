@@ -9,6 +9,12 @@ namespace UberTappDeveloping.Controllers
     public class HomeController : Controller
     {
         [Authorize]
+        public ActionResult ErrorPage()
+        {
+            return View("ErrorPage");
+        }
+
+        [Authorize]
         public ActionResult EmailForm()
         {
             return View("EmailForm");
