@@ -6,14 +6,14 @@ namespace UberTappDeveloping.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class IsPremiumUser : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class FavouriteBeer : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(IsPremiumUser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FavouriteBeer));
         
         string IMigrationMetadata.Id
         {
-            get { return "202012311436539_IsPremiumUser"; }
+            get { return "202101021729441_FavouriteBeer"; }
         }
         
         string IMigrationMetadata.Source

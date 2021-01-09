@@ -8,6 +8,7 @@ using UberTappDeveloping.Helper.Roles;
 using UberTappDeveloping.Models;
 using System.Data.Entity;
 using UberTappDeveloping.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace UberTappDeveloping.Controllers
 {
@@ -28,11 +29,26 @@ namespace UberTappDeveloping.Controllers
 		#region GET
 
 		// GET: All ApplicationUsers (Admin)
-		[Authorize(Roles = RoleNames.Admin)]
+		//[Authorize(Roles = RoleNames.Admin)]
 		public ActionResult AllUsers()
 		{
 			var applicationUsers = context.Users.ToList();
-			return View("AllUsers", applicationUsers);
+			
+
+			var userId = User.Identity.GetUserId();
+			var currentUser = applicationUsers.FirstOrDefault(u => u.Id == userId);
+			applicationUsers.Remove(currentUser); // Admin needs to see all?
+
+			var viewModel = new UserViewModel
+			{
+				AllUsers = applicationUsers,
+				ShowActions = User.IsInRole(RoleNames.Admin),
+				Followers = context.Followings.Where(f => f.FollowerId == userId ).ToLookup(fe => fe.FolloweeId)
+			};
+			
+			return View("AllUsers", viewModel);
+
+			
 		}
 
 		// GET: An ApplicationUser

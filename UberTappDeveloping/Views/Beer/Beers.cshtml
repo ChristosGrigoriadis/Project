@@ -1,0 +1,124 @@
+﻿@model UberTappDeveloping.ViewModels.BeersViewModel
+
+@using Microsoft.AspNet.Identity
+@using UberTappDeveloping.Helper.Roles;
+
+
+
+
+<h2>Beers</h2>
+
+<body class="body">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <h2>All Beers</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <button class="btn btn-sm">@Html.ActionLink("Add a New Beer", "Create", "Beer", new { title = "View Beer Details" })</button>
+                    <div class="container-fluid">
+                        <button>@Html.ActionLink("All Beers", "FilterBeers", new { id = 14 })</button>
+                        <button>@Html.ActionLink("Pale lager, Witbier, Pilsener, Berliner Weisse", "FilterBeers", new { id = 1 })</button>
+                        <button>@Html.ActionLink("Maibock, Blonde Ale", "FilterBeers", new { id = 2 })</button>
+                        <button>@Html.ActionLink("Weissbier", "FilterBeers", new { id = 3 })</button>
+                        <button>@Html.ActionLink("American Pale Ale, Indian Pale Ale", "FilterBeers", "Beer", new { id = 4 })</button>
+                        <button>@Html.ActionLink("Weissbier, Saison", "FilterBeers", new { id = 5 })</button>
+                        <button>@Html.ActionLink("English Bitter, ESB", "FilterBeers", new { id = 6 })</button>
+                        <button>@Html.ActionLink("Biere de Garde, Double IPA", "FilterBeers", new { id = 7 })</button>
+                        <button>@Html.ActionLink("Dark lager, Vienna lager, Marzen, Amber Ale", "FilterBeers", new { id = 8 })</button>
+                        <button>@Html.ActionLink("Brown Ale, Bock, Dunkel, Dunkelweizen", "FilterBeers", new { id = 9 })</button>
+                        <button>@Html.ActionLink("Irish Dry Stout, Doppelbock, Porter", "FilterBeers", new { id = 10 })</button>
+                        <button>@Html.ActionLink("Stout", "FilterBeers", new { id = 11 })</button>
+                        <button>@Html.ActionLink("Foreign Stout, Baltic Porter", "FilterBeers", new { id = 12 })</button>
+                        <button>@Html.ActionLink("Imperial Stout", "FilterBeers", new { id = 13 })</button>
+                    </div>
+            </div>
+        </div>
+
+        <table id="beers" class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>EBC</th>
+                    <th>IBU</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var beer in Model.AllBeers)
+                {
+                    <tr>
+                        <td>@beer.Name</td>
+                        <td>@beer.EBC</td>
+                        <td>@beer.IBU</td>
+                        <td>@beer.Description</td>
+                        <td class="buttons">
+                            @*@if (User.IsInRole(RoleNames.VenueOwner) || User.IsInRole(RoleNames.Admin))*@
+                            @*{*@
+                            <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "Beer", new { Id = beer.Id }, new { title = "View Beer Details" })</button>
+                            <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "Beer", new { Id = beer.Id }, new { title = "Update Beer Info" })</button>
+                            <button class="btn btn-sm btn-danger">@Html.ActionLink("Delete", "Delete", "Beer", new { Id = beer.Id }, new { title = "Delete this beer" })</button>
+                            @*}*@
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole(RoleNames.BeerEnthusiast))
+                                {
+                                    <a href="#" class="favourite" data-beer-name="@beer.Name" data-beer-id="@beer.Id">
+                                        @if (Model.FavBeers.Contains(beer.Id))
+                                        {
+                                            <span class="btn btn-info">Remove from favourites</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="btn btn-primary">Add favourite</span>
+                                        }
+                                    </a>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $("table").on("click", ".favourite", function (e) {
+                if ($(e.target).text() == "Add favourite") {
+                    $.post("/api/favBeers/" + $(e.target).parent().attr("data-beer-id"), function () {
+                    })
+                        .done(function () {
+                            $(e.target).text("Remove from favourites").removeClass("btn-primary").addClass("btn-info");
+                            bootbox.alert($(e.target).parent().attr("data-beer-name") + " is now in favourites!");
+                        })
+                        .fail(function (e) {
+                            console.log(e);
+                            bootbox.alert(e.responseJSON.message);
+                        });
+                } else {
+                    $.ajax({
+                        url: "/api/favBeers/" + $(e.target).parent().attr("data-beer-id"),
+                        method: "Delete"
+                    })
+                        .done(function () {
+                            $(e.target).text("Add favourite").removeClass("btn-info").addClass("btn-primary");
+                            bootbox.alert($(e.target).parent().attr("data-beer-name") + " is no longer in favourites");
+                        })
+                        .fail(function () {
+                            bootbox.alert("something went wrong");
+                        });
+                }
+
+            });
+        });
+    </script>
+}

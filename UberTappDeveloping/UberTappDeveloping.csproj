@@ -45,6 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=8.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.8.1.1\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
@@ -187,10 +199,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\ApplicationUsersController.cs" />
     <Compile Include="Controllers\API\EmailsController.cs" />
+    <Compile Include="Controllers\API\FavBeersController.cs" />
+    <Compile Include="Controllers\API\FollowersController.cs" />
     <Compile Include="Controllers\API\EventsController.cs" />
     <Compile Include="Controllers\API\NotificationsController.cs" />
     <Compile Include="Controllers\API\VenuesController.cs" />
     <Compile Include="Controllers\ApplicationUserController.cs" />
+    <Compile Include="Controllers\BeerController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -252,9 +267,17 @@
     <Compile Include="Migrations\202012281735248_AddImageAndProfileImageModels.Designer.cs">
       <DependentUpon>202012281735248_AddImageAndProfileImageModels.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012311436539_IsPremiumUser.cs" />
-    <Compile Include="Migrations\202012311436539_IsPremiumUser.Designer.cs">
-      <DependentUpon>202012311436539_IsPremiumUser.cs</DependentUpon>
+    <Compile Include="Migrations\202101021656524_test.cs" />
+    <Compile Include="Migrations\202101021656524_test.Designer.cs">
+      <DependentUpon>202101021656524_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101021729441_FavouriteBeer.cs" />
+    <Compile Include="Migrations\202101021729441_FavouriteBeer.Designer.cs">
+      <DependentUpon>202101021729441_FavouriteBeer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101090008359_UserFollowing.cs" />
+    <Compile Include="Migrations\202101090008359_UserFollowing.Designer.cs">
+      <DependentUpon>202101090008359_UserFollowing.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202012312006427_AddEventModelAndCustomValidation.cs" />
     <Compile Include="Migrations\202012312006427_AddEventModelAndCustomValidation.Designer.cs">
@@ -274,13 +297,18 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
+    <Compile Include="Models\ChatHub.cs" />
+    <Compile Include="Models\ConnectedUser.cs" />
     <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\FavBeer.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ModelDtos\EventDto.cs" />
     <Compile Include="Models\ModelDtos\NotificationDto.cs" />
     <Compile Include="Models\ModelDtos\VenueDto.cs" />
     <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\ModelDtos\VenueBeersDto.cs" />
     <Compile Include="Models\ModelDtos\BeerDto.cs" />
@@ -295,6 +323,8 @@
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="ViewModels\BeerPriceViewModel.cs" />
+    <Compile Include="ViewModels\BeerFormViewModel.cs" />
+    <Compile Include="ViewModels\BeersViewModel.cs" />
     <Compile Include="Helper\CustomDA\FutureDate.cs" />
     <Compile Include="ViewModels\EventFormViewModel.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
@@ -302,6 +332,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\UserFormViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\VenueBeersViewModel.cs" />
     <Compile Include="ViewModels\VenueFormViewModel.cs" />
     <Compile Include="ViewModels\VenueProfileViewModel.cs" />
@@ -533,6 +564,7 @@
     <Content Include="Helper\Images\Yellow.jpg" />
     <Content Include="Helper\Images\YellowMovBcg.gif" />
     <Content Include="Scripts\app\controllers\adminDelete.js" />
+    <Content Include="Scripts\app\controllers\beersController.js" />
     <Content Include="Scripts\app\controllers\deleteProfile.js" />
     <Content Include="Scripts\app\controllers\mapLocations.js" />
     <Content Include="Scripts\bootbox.js" />
@@ -632,6 +664,8 @@
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -685,6 +719,10 @@
     <Content Include="Views\Home\EmailForm.cshtml" />
     <Content Include="Views\PayPal\ViewPermiumOffer.cshtml" />
     <Content Include="Views\PayPal\SuccessfulPayment.cshtml" />
+    <Content Include="Views\Beer\BeerForm.cshtml" />
+    <Content Include="Views\Beer\Beers.cshtml" />
+    <Content Include="Views\Beer\Details.cshtml" />
+    <Content Include="Views\Home\Chat.cshtml" />
     <Content Include="Views\Event\EventForm.cshtml" />
     <Content Include="Views\Event\Events.cshtml" />
     <Content Include="Scripts\moment.min.js.map" />
@@ -696,6 +734,7 @@
     <Folder Include="DAL\Persistence\" />
     <Folder Include="DAL\Repositories\" />
     <Folder Include="Scripts\app\services\" />
+    <Folder Include="Views\FavBeer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -745,8 +784,14 @@
     <EmbeddedResource Include="Migrations\202012071206437_FixLocationANDBeerModels.resx">
       <DependentUpon>202012071206437_FixLocationANDBeerModels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012311436539_IsPremiumUser.resx">
-      <DependentUpon>202012311436539_IsPremiumUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101021656524_test.resx">
+      <DependentUpon>202101021656524_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101021729441_FavouriteBeer.resx">
+      <DependentUpon>202101021729441_FavouriteBeer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101090008359_UserFollowing.resx">
+      <DependentUpon>202101090008359_UserFollowing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012312006427_AddEventModelAndCustomValidation.resx">
       <DependentUpon>202012312006427_AddEventModelAndCustomValidation.cs</DependentUpon>

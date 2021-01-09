@@ -23,6 +23,9 @@ namespace UberTappDeveloping.DAL
         public DbSet<UserVenueFollowing> UserVenueFollowings { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<UserNotification> UserNotifications { get; set; }
+        public DbSet<FavBeer> FavBeer { get; set; }
+        public DbSet<Following> Followings { get; set; }
+
         public ApplicationDbContext()
             : base("UberTappDevelopingContext", throwIfV1Schema: false)
         {
@@ -35,6 +38,17 @@ namespace UberTappDeveloping.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.Followers)
+                .WithRequired(f => f.Followee)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.Followees)
+                .WithRequired(f => f.Follower)
+                .WillCascadeOnDelete(false);
+
+
             modelBuilder.Entity<Location>()
                 .HasMany(l => l.VenueLocations)
                 .WithRequired(v => v.Location)
@@ -46,8 +60,8 @@ namespace UberTappDeveloping.DAL
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>()
-                .HasRequired(u=>u.Location)
-                .WithMany(l=>l.UserLocations)
+                .HasRequired(u => u.Location)
+                .WithMany(l => l.UserLocations)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>()

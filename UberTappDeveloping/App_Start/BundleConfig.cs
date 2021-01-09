@@ -13,6 +13,7 @@ namespace UberTappDeveloping
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/datatables/jquery.dataTables.js",
+                        "~/Scripts/jquery.signalR-2.2.2.min.js",
                         "~/Scripts/datatables/dataTables.bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
