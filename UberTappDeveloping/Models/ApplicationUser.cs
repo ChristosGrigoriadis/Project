@@ -42,11 +42,9 @@ namespace UberTappDeveloping.Models
 
 		public bool IsPremiumUser { get; set; }
 
-		// Akis to do
 		public ICollection<Following> Followers { get; set; }
 		public ICollection<Following> Followees { get; set; }
 
-		// DOOO
 
 		public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
 		{

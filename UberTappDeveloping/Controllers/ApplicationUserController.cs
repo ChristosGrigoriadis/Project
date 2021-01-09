@@ -33,8 +33,11 @@ namespace UberTappDeveloping.Controllers
 		public ActionResult AllUsers()
 		{
 			var applicationUsers = context.Users.ToList();
+			
 
 			var userId = User.Identity.GetUserId();
+			var currentUser = applicationUsers.FirstOrDefault(u => u.Id == userId);
+			applicationUsers.Remove(currentUser); // Admin needs to see all?
 
 			var viewModel = new UserViewModel
 			{
