@@ -10,5 +10,6 @@ namespace UberTappDeveloping.ViewModels
     {
         public IEnumerable<ApplicationUser> AllUsers { get; set; }
         public bool ShowActions { get; set; }
+        public ILookup<string, Following> Followers { get; set; }
     }
 }

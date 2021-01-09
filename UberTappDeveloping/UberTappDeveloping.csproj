@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\ApplicationUsersController.cs" />
     <Compile Include="Controllers\API\EmailsController.cs" />
+    <Compile Include="Controllers\API\FavBeersController.cs" />
     <Compile Include="Controllers\API\FollowersController.cs" />
     <Compile Include="Controllers\API\VenuesController.cs" />
     <Compile Include="Controllers\ApplicationUserController.cs" />
@@ -252,6 +253,10 @@
     <Compile Include="Migrations\202101021729441_FavouriteBeer.cs" />
     <Compile Include="Migrations\202101021729441_FavouriteBeer.Designer.cs">
       <DependentUpon>202101021729441_FavouriteBeer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101090008359_UserFollowing.cs" />
+    <Compile Include="Migrations\202101090008359_UserFollowing.Designer.cs">
+      <DependentUpon>202101090008359_UserFollowing.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
@@ -704,6 +709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101021729441_FavouriteBeer.resx">
       <DependentUpon>202101021729441_FavouriteBeer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101090008359_UserFollowing.resx">
+      <DependentUpon>202101090008359_UserFollowing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

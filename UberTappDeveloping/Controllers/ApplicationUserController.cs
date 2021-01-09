@@ -8,6 +8,7 @@ using UberTappDeveloping.Helper.Roles;
 using UberTappDeveloping.Models;
 using System.Data.Entity;
 using UberTappDeveloping.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace UberTappDeveloping.Controllers
 {
@@ -33,10 +34,13 @@ namespace UberTappDeveloping.Controllers
 		{
 			var applicationUsers = context.Users.ToList();
 
+			var userId = User.Identity.GetUserId();
+
 			var viewModel = new UserViewModel
 			{
 				AllUsers = applicationUsers,
-				ShowActions = User.IsInRole(RoleNames.Admin)
+				ShowActions = User.IsInRole(RoleNames.Admin),
+				Followers = context.Followings.Where(f => f.FollowerId == userId ).ToLookup(fe => fe.FolloweeId)
 			};
 			
 			return View("AllUsers", viewModel);

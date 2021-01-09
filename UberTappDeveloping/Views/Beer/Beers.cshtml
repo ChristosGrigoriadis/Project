@@ -98,7 +98,7 @@
                     })
                         .done(function () {
                             $(e.target).text("Remove from favourites").removeClass("btn-primary").addClass("btn-info");
-                            bootbox.alert($(e.target).parent().attr("data-beer-name") + "is now in favourites!");
+                            bootbox.alert($(e.target).parent().attr("data-beer-name") + " is now in favourites!");
                         })
                         .fail(function (e) {
                             console.log(e);
@@ -110,9 +110,8 @@
                         method: "Delete"
                     })
                         .done(function () {
-                            console.log(e.target);
                             $(e.target).text("Add favourite").removeClass("btn-info").addClass("btn-primary");
-                            bootbox.alert($(e.target).parent().attr("data-beer-name") + "is no longer in favourites");
+                            bootbox.alert($(e.target).parent().attr("data-beer-name") + " is no longer in favourites");
                         })
                         .fail(function () {
                             bootbox.alert("something went wrong");
