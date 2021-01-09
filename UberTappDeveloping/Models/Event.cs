@@ -20,6 +20,8 @@ namespace UberTappDeveloping.Models
         [Display(Name = "Event's Date")]
         public DateTime Date { get; set; }
 
+        public bool IsCanceled { get; set; }
+
         [Display(Name = "My Venues")]
         public int VenueId { get; set; }
         public Venue Venue { get; set; }

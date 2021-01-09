@@ -198,7 +198,7 @@
                         if (notification.originalVenueId != notification.event.venue.id) {
                             content = `Venue <a href='@Url.Action("VenueProfile","venue")?id=${notification.originalVenueId}'>${notification.originalVenueName}</a>
                              with description `;
-                            if (notification.originalDescription != "")
+                            if (notification.originalDescription != notification.event.description)
                                 content += `<u>${notification.originalDescription}</u> changed it's description to <u>${notification.event.description}</u>,`;
                             else
                                 content += `<u>${notification.event.description}</u>`;
@@ -224,6 +224,10 @@
 
                             $(".modal-body ul").append($("<li>").html(content));
                         }
+                    } else {
+                        var content = `Venue <a href='@Url.Action("VenueProfile","venue")?id=${notification.event.venueId}'>${notification.event.venue.name}</a>
+                                        has canceled an Event on ${date} !`;
+                        $(".modal-body ul").append($("<li>").html(content));
                     }
                 }
             })

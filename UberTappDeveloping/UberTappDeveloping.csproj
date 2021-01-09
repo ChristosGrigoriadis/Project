@@ -187,6 +187,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\ApplicationUsersController.cs" />
     <Compile Include="Controllers\API\EmailsController.cs" />
+    <Compile Include="Controllers\API\EventsController.cs" />
     <Compile Include="Controllers\API\NotificationsController.cs" />
     <Compile Include="Controllers\API\VenuesController.cs" />
     <Compile Include="Controllers\ApplicationUserController.cs" />
@@ -266,6 +267,10 @@
     <Compile Include="Migrations\202101052000066_AddNotificationAndUserNotificationModels.cs" />
     <Compile Include="Migrations\202101052000066_AddNotificationAndUserNotificationModels.Designer.cs">
       <DependentUpon>202101052000066_AddNotificationAndUserNotificationModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101081645143_AddIsCanceledColumntoEventModel.cs" />
+    <Compile Include="Migrations\202101081645143_AddIsCanceledColumntoEventModel.Designer.cs">
+      <DependentUpon>202101081645143_AddIsCanceledColumntoEventModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
@@ -751,6 +756,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101052000066_AddNotificationAndUserNotificationModels.resx">
       <DependentUpon>202101052000066_AddNotificationAndUserNotificationModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101081645143_AddIsCanceledColumntoEventModel.resx">
+      <DependentUpon>202101081645143_AddIsCanceledColumntoEventModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
