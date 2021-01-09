@@ -37,7 +37,9 @@ namespace UberTappDeveloping.Controllers
 
 			var userId = User.Identity.GetUserId();
 			var currentUser = applicationUsers.FirstOrDefault(u => u.Id == userId);
+			var admin = applicationUsers.FirstOrDefault(u => u.Email == "admin@cb11.com");
 			applicationUsers.Remove(currentUser); // Admin needs to see all?
+			applicationUsers.Remove(admin);
 
 			var viewModel = new UserViewModel
 			{

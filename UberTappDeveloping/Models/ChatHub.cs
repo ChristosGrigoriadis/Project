@@ -10,6 +10,7 @@ using System.Web;
 
 namespace UberTappDeveloping.Models
 {
+    [Authorize]
     public class ChatHub : Hub
     {
         static private List<ConnectedUser> ConnectedUsers = new List<ConnectedUser>();
