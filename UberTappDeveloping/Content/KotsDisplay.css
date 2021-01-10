@@ -603,7 +603,7 @@
     }
 
         #BeersView .container-fluid #TitleContainer .form-group #CheersBeerImg {
-            width: 8%;
+            width: 4%;
         }
 
         #BeersView .container-fluid #TitleContainer .form-group #BeerpediaImg {
@@ -630,13 +630,12 @@
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 4%;
-        width: 52%;
-        background-color: black;
-        border: solid darkgoldenrod;
-        border-radius: 10%;
+        width: 40%;
+        background-color: darkred;
+        border: solid black;
         text-decoration: none;
         text-align: center;
-        color: darkgoldenrod;
+        color: white;
         font-size: 1.4em;
     }
 
@@ -655,11 +654,11 @@
     }
 
     #FilterBeersView .container-fluid .form-group #SingleBeerImg {
-        width: 6%;
+        width: 3%;
     }
 
-    #FilterBeersView .container-fluid .form-group #BeerpediaImg {
-        width: 32%;
+    #FilterBeersView .container-fluid .form-group #SelectedBeersImg {
+        width: 54%;
     }
 
     #FilterBeersView .container-fluid #TableContainer .form-group #SingleCartoonBeerImg {
@@ -684,3 +683,42 @@
         display: flex;
         justify-content: space-evenly;
     }
+
+
+/*Details(Beer).cshtml*/
+
+#DetailsBeerView {
+    background: url('../Helper/Images/dark_backround.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+    #DetailsBeerView .container-fluid #TitleContainer .form-group #OldBeerBottleImg {
+      width:4%;
+    }
+
+    #DetailsBeerView .container-fluid #TitleContainer .form-group #BeersImg {
+        width: 32%;
+    }
+
+    #DetailsBeerView .container-fluid .row #BtnArea .btn {
+        margin-right: 1%;
+    }
+
+        #DetailsBeerView .container-fluid .row #BtnArea .btn a {
+            text-decoration: none;
+            color: white;
+        }
+
+    #DetailsBeerView .container-fluid .row .col-md-7 #BeersTransp {
+        position: fixed;
+        bottom: 0;
+        width: 42%;
+        padding-left: 15px;
+        padding-bottom: 5px;
+        margin-top:2%;
+        margin-left: 10%;
+    }
+
+
+
