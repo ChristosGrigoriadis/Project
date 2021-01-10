@@ -514,8 +514,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Helper\Images\1.png" />
     <Content Include="Helper\Images\11.png" />
+    <Content Include="Helper\Images\12.png" />
     <Content Include="Helper\Images\13.png" />
     <Content Include="Helper\Images\14.png" />
+    <Content Include="Helper\Images\15.png" />
     <Content Include="Helper\Images\3.png" />
     <Content Include="Helper\Images\4.png" />
     <Content Include="Helper\Images\6.png" />
@@ -527,6 +529,32 @@
     <Content Include="Helper\Images\Add_a_new_Venue.png" />
     <Content Include="Helper\Images\AllUsers.png" />
     <Content Include="Helper\Images\Available_Beers.png" />
+    <Content Include="Helper\Images\BeerColor\Amber_Ale.png" />
+    <Content Include="Helper\Images\BeerColor\American_Pale_Ale.png" />
+    <Content Include="Helper\Images\BeerColor\Baltic_Porter.png" />
+    <Content Include="Helper\Images\BeerColor\Berliner_Weisse.png" />
+    <Content Include="Helper\Images\BeerColor\Biere_de_Garde.png" />
+    <Content Include="Helper\Images\BeerColor\Blonde_Ale.png" />
+    <Content Include="Helper\Images\BeerColor\Brown_Ale.png" />
+    <Content Include="Helper\Images\BeerColor\Dark_Lager.png" />
+    <Content Include="Helper\Images\BeerColor\Doppelbock.png" />
+    <Content Include="Helper\Images\BeerColor\Dunkel.png" />
+    <Content Include="Helper\Images\BeerColor\Dunkelweizen.png" />
+    <Content Include="Helper\Images\BeerColor\English_Bitter.png" />
+    <Content Include="Helper\Images\BeerColor\Foreign_Stout.png" />
+    <Content Include="Helper\Images\BeerColor\Imperial_Stout.png" />
+    <Content Include="Helper\Images\BeerColor\India_pale_ale.png" />
+    <Content Include="Helper\Images\BeerColor\Irish_Dry_Stout.png" />
+    <Content Include="Helper\Images\BeerColor\Maibock.png" />
+    <Content Include="Helper\Images\BeerColor\Marzen.png" />
+    <Content Include="Helper\Images\BeerColor\Pale_Lager.png" />
+    <Content Include="Helper\Images\BeerColor\Pilsner.png" />
+    <Content Include="Helper\Images\BeerColor\Porter.png" />
+    <Content Include="Helper\Images\BeerColor\Saison.png" />
+    <Content Include="Helper\Images\BeerColor\Stout.png" />
+    <Content Include="Helper\Images\BeerColor\Vienna_Lager.png" />
+    <Content Include="Helper\Images\BeerColor\Weissbier.png" />
+    <Content Include="Helper\Images\BeerColor\Wheat_Beer.png" />
     <Content Include="Helper\Images\Beerpedia.png" />
     <Content Include="Helper\Images\Beers.png" />
     <Content Include="Helper\Images\beers_transp.png" />
@@ -721,6 +749,7 @@
     <Content Include="Scripts\moment.min.js.map" />
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Home\ErrorPage.cshtml" />
+    <Content Include="Views\Beer\FilterBeers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

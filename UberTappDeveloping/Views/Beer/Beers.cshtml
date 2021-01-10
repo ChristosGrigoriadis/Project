@@ -1,124 +1,560 @@
 ﻿@model UberTappDeveloping.ViewModels.BeersViewModel
-
 @using Microsoft.AspNet.Identity
 @using UberTappDeveloping.Helper.Roles;
 
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
 
-
-
-<h2>Beers</h2>
-
-<body class="body">
+<body id="BeersView" class="body">
     <div class="container-fluid">
 
-        <div class="row">
-            <div class="form-group col-md-4">
-                <h2>All Beers</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-4">
-                <button class="btn btn-sm">@Html.ActionLink("Add a New Beer", "Create", "Beer", new { title = "View Beer Details" })</button>
-                    <div class="container-fluid">
-                        <button>@Html.ActionLink("All Beers", "FilterBeers", new { id = 14 })</button>
-                        <button>@Html.ActionLink("Pale lager, Witbier, Pilsener, Berliner Weisse", "FilterBeers", new { id = 1 })</button>
-                        <button>@Html.ActionLink("Maibock, Blonde Ale", "FilterBeers", new { id = 2 })</button>
-                        <button>@Html.ActionLink("Weissbier", "FilterBeers", new { id = 3 })</button>
-                        <button>@Html.ActionLink("American Pale Ale, Indian Pale Ale", "FilterBeers", "Beer", new { id = 4 })</button>
-                        <button>@Html.ActionLink("Weissbier, Saison", "FilterBeers", new { id = 5 })</button>
-                        <button>@Html.ActionLink("English Bitter, ESB", "FilterBeers", new { id = 6 })</button>
-                        <button>@Html.ActionLink("Biere de Garde, Double IPA", "FilterBeers", new { id = 7 })</button>
-                        <button>@Html.ActionLink("Dark lager, Vienna lager, Marzen, Amber Ale", "FilterBeers", new { id = 8 })</button>
-                        <button>@Html.ActionLink("Brown Ale, Bock, Dunkel, Dunkelweizen", "FilterBeers", new { id = 9 })</button>
-                        <button>@Html.ActionLink("Irish Dry Stout, Doppelbock, Porter", "FilterBeers", new { id = 10 })</button>
-                        <button>@Html.ActionLink("Stout", "FilterBeers", new { id = 11 })</button>
-                        <button>@Html.ActionLink("Foreign Stout, Baltic Porter", "FilterBeers", new { id = 12 })</button>
-                        <button>@Html.ActionLink("Imperial Stout", "FilterBeers", new { id = 13 })</button>
-                    </div>
+        <div id="TitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="CheersBeerImg" src="~/Helper/Images/4.png" alt="Alternate Text" />
+                <img id="BeerpediaImg" src="~/Helper/Images/Beerpedia.png" alt="Alternate Text" />
+                <img id="CheersBeerImg" src="~/Helper/Images/4.png" alt="Alternate Text" />
             </div>
         </div>
 
-        <table id="beers" class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>EBC</th>
-                    <th>IBU</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var beer in Model.AllBeers)
-                {
+        <div class="row">
+            @if (User.IsInRole(RoleNames.Admin))
+            {
+                <div class="form-group col-md-6">
+                    @Html.ActionLink("Add a New Beer", "Create", "Beer")
+                </div>
+            }
+            <div class="form-group col-md-6">
+                @Html.ActionLink("All Beers", "FilterBeers", new { id = 14 })
+            </div>
+        </div>
+
+        @*Pale lager, Witbier, Pilsener, Berliner Weisse*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
                     <tr>
-                        <td>@beer.Name</td>
-                        <td>@beer.EBC</td>
-                        <td>@beer.IBU</td>
-                        <td>@beer.Description</td>
-                        <td class="buttons">
-                            @*@if (User.IsInRole(RoleNames.VenueOwner) || User.IsInRole(RoleNames.Admin))*@
-                            @*{*@
-                            <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "Beer", new { Id = beer.Id }, new { title = "View Beer Details" })</button>
-                            <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "Beer", new { Id = beer.Id }, new { title = "Update Beer Info" })</button>
-                            <button class="btn btn-sm btn-danger">@Html.ActionLink("Delete", "Delete", "Beer", new { Id = beer.Id }, new { title = "Delete this beer" })</button>
-                            @*}*@
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                if (User.IsInRole(RoleNames.BeerEnthusiast))
-                                {
-                                    <a href="#" class="favourite" data-beer-name="@beer.Name" data-beer-id="@beer.Id">
-                                        @if (Model.FavBeers.Contains(beer.Id))
-                                        {
-                                            <span class="btn btn-info">Remove from favourites</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="btn btn-primary">Add favourite</span>
-                                        }
-                                    </a>
-                                }
-                            }
+                        <td><img src="~/Helper/Images/BeerColor/Pale_Lager.png" /></td>
+                        <td>Pale lager</td>
+                        <td>
+                            Pale lager is a very pale-to-golden-colored lager beer with a well-attenuated
+                            body and a varying degree of noble hop bitterness.
                         </td>
                     </tr>
-                }
-            </tbody>
-        </table>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Wheat_Beer.png" /></td>
+                        <td>Witbier</td>
+                        <td>
+                            Wheat beer is a top-fermented beer which is brewed with a large
+                            proportion of wheat relative to the amount of malted barley. The two
+                            main varieties are German Weißbier and Belgian Witbier; other types include
+                            Lambic (made with wild yeast), Berliner Weisse (a cloudy, sour beer), and Gose (a sour, salty beer).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Pilsner.png" /></td>
+                        <td>Pilsener</td>
+                        <td>
+                            Pilsner (also pilsener or simply pils) is a type of pale lager.
+                            It takes its name from the Bohemian city of Pilsen, where it was first produced
+                            in 1842 by Bavarian brewer Josef Groll.[1] The world's first pale lager, the original
+                            Pilsner Urquell, is still produced there today.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Berliner_Weisse.png" /></td>
+                        <td>Berliner Weisse</td>
+                        <td>
+                            Berliner Weisse (German: Berliner Weiße, pronounced [bɛʁˌliːnɐ ˈvaɪ̯sə] (About this soundlisten))
+                            is a cloudy, sour beer of around 3% alcohol by volume. It is a regional variation of the wheat beer
+                            style from Northern Germany, dating back to at least the 16th century. It can be made from combinations
+                            of malted barley and wheat, with the stipulation that the malts are kilned at very low temperatures to
+                            minimise colour formation. The fermentation takes place with a mixture of yeast and lactic acid bacteria,
+                            a prerequisite that creates the lactic acid taste, a distinguishing feature of Berliner Weisse.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Pale lager, Witbier, Pilsener, Berliner Weisse*@
+                @Html.ActionLink("View Similar", "FilterBeers", new { id = 1 })
+            </div>
+        </div>
+
+        @*Maibock, Blonde Ale*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Maibock.png" /></td>
+                        <td>Maibock</td>
+                        <td>
+                            Bock is a strong lager (traditionally, and sometimes still, an ale, as in the case of at least some weizenbocks), of
+                            German origin. Several substyles exist, including maibock (helles bock, heller bock), a paler, more hopped version
+                            generally made for consumption at spring festivals; doppelbock, a stronger and maltier version; weizenbock, a version
+                            using 40–60% wheat, and eisbock, a much stronger version made by partially freezing the beer and removing the ice that forms.
+                            Originally a dark beer, a modern bock can range from light copper to brown in colour. The style is very popular,
+                            with many examples brewed internationally.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Blonde_Ale.png" /></td>
+                        <td>Blonde Ale</td>
+                        <td>
+                            Blonde ales are very pale in colour. The term "blonde" for pale beers is common in Europe and
+                            South America – particularly in France, Belgium, the UK, and Brazil – though the beers may
+                            not have much in common, other than colour. Blondes tend to be clear, crisp, and dry, with
+                            low-to-medium bitterness and aroma from hops, and some sweetness from malt. Fruitiness
+                            from esters may be perceived. A lighter body from higher carbonation may be noticed. In
+                            the United Kingdom, golden or summer ales were developed in the late 20th century by
+                            breweries to compete with the pale lager market. A typical golden ale has an appearance and profile
+                            similar to that of a pale lager. Malt character is subdued and the hop profile ranges from spicy to citrus;
+                            common hops include Styrian Golding and Cascade. Alcohol is in the 4% to 5% abv range. The UK style is attributed to
+                            John Gilbert, owner of Hop Back Brewery, who developed "Summer Lightning" in 1989, which won several awards and inspired
+                            numerous imitators.[23] Belgian blondes are often made with pilsner malt. Some beer writers regard blonde and golden ales
+                            as distinct styles, while others do not. Duvel is a typical Belgian blonde ale, and one of the most popular bottled beers
+                            in the country as well as being well known internationally.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Maibock, Blonde Ale", "FilterBeers*@
+                @Html.ActionLink("View Similar", "FilterBeers", new { id = 2 })
+            </div>
+        </div>
+
+        @*Weissbier*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Weissbier.png" /></td>
+                        <td>Weissbier</td>
+                        <td>
+                            Bock is a strong lager (traditionally, and sometimes still, an ale, as in the case of at least some weizenbocks), of German origin. Several substyles exist,
+                            including maibock (helles bock, heller bock), a paler, more hopped version generally made for consumption at spring festivals; doppelbock, a stronger
+                            and maltier version; weizenbock, a version using 40–60% wheat, and eisbock, a much stronger version made by partially freezing the beer and removing the ice that forms.
+                            Originally a dark beer, a modern bock can range from light copper to brown in colour. The style is very popular, with many examples brewed internationally.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Weissbier*@
+                @Html.ActionLink("View Similar", "FilterBeers", new { id = 3 })
+            </div>
+        </div>
+
+        @*American Pale Ale, Indian Pale Ale*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/American_Pale_Ale.png" /></td>
+                        <td>American Pale Ale</td>
+                        <td>
+                            American pale ale (APA) is a style of pale ale developed in the United States around 1980.
+                            American pale ales are generally around 5% abv with significant quantities of American hops, typically Cascade.
+                            Although American brewed beers tend to use a cleaner yeast, and American two row malt, it is particularly the
+                            American hops that distinguish an APA from British or European pale ales. The style is close to the American India Pale Ale (IPA),
+                            and boundaries blur, though IPAs are stronger and more assertively hopped. The style is also close to amber ale,
+                            though ambers are darker and maltier due to use of crystal malts.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/India_pale_ale.png" /></td>
+                        <td>Indian Pale Ale</td>
+                        <td>
+                            India pale ale (IPA) is a hoppy beer style within the broader category of pale ale.
+                            The style of pale ale which became known as India pale ale, was widespread in England by 1815, and would grow in popularity,
+                            notably as an export beer shipped to India and elsewhere.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+               @* American Pale Ale, Indian Pale Ale*@
+                @Html.ActionLink("View Similar", "FilterBeers", new { id = 4 })
+            </div>
+        </div>
+
+        @*Weissbier, Saison*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Weissbier.png" /></td>
+                        <td>Weissbier</td>
+                        <td>
+                            Bock is a strong lager (traditionally, and sometimes still, an ale, as in the case of at least some weizenbocks), of German origin. Several substyles exist,
+                            including maibock (helles bock, heller bock), a paler, more hopped version generally made for consumption at spring festivals; doppelbock, a stronger
+                            and maltier version; weizenbock, a version using 40–60% wheat, and eisbock, a much stronger version made by partially freezing the beer and removing the ice that forms.
+                            Originally a dark beer, a modern bock can range from light copper to brown in colour. The style is very popular, with many examples brewed internationally.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Saison.png" /></td>
+                        <td>Saison</td>
+                        <td>
+                            Saison (French, "season," French pronunciation: ​[sɛzɔ̃]) is a pale ale that is highly carbonated, fruity, spicy, and often bottle conditioned.
+                            It was historically brewed with low alcohol levels, but modern productions of the style have moderate to high levels of alcohol. Along with
+                            several other varieties, it is generally classified as a farmhouse ale.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Weissbier, Saison*@
+                @Html.ActionLink("View Similar", "FilterBeers", new { id = 5 })
+            </div>
+        </div>
+
+        @*English Bitter, ESB*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/English_Bitter.png" /></td>
+                        <td>English Bitter, ESB</td>
+                        <td>
+                            Bitter is a British style of pale ale that varies in colour from gold to dark amber, and in strength typically
+                            from 3% to 5.5% alcohol by volume.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*English Bitter, ESB*@
+                @Html.ActionLink("View Similar", "FilterBeers", new { id = 6 })
+            </div>
+        </div>
+
+        @*Biere de Garde, Double IPA*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Biere_de_Garde.png" /></td>
+                        <td>Biere de Garde</td>
+                        <td>
+                            Bière de Garde ("beer for keeping") is a strong pale ale or keeping beer traditionally brewed in the Nord-Pas-de-Calais region of France.
+                            These beers were originally brewed in farmhouses (they are known as Farmhouse ales) during the winter and spring, to avoid unpredictable
+                            problems with the yeast during the summertime. Farmhouse production is now supplemented by commercial production, although most Bière de
+                            Garde brewers are small businesses. Typically, beers of this tradition are of a copper colour or golden colour, and as the name suggests
+                            the origins of this style lies in the tradition that it was matured or cellared for a period of time once bottled (and most sealed with a cork),
+                            to be consumed later in the year, akin to a Belgian Saison.Most varieties are top-fermented and unfiltered, although bottom-fermented and filtered versions exist.
+                            Particularly authentic products, using only regional ingredients, are entitled to use the Appellation d'origine contrôlée, "Pas de Calais/Region du Nord.
+                            Some of the better known brands include Brasserie de Saint-Sylvestre Trois Monts, Brasseurs Duyck Jenlain, Brasserie Castelain Ch'Ti and Brasserie La Choulette Ambrée.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/India_pale_ale.png" /></td>
+                        <td>Double IPA</td>
+                        <td>
+                            Double IPAs (also referred to as Imperial IPAs) are a stronger, very hoppy variant of IPAs that typically have alcohol content above 7.5% by volume.
+                            The style is claimed to have originated with Vinnie Cilurzo, currently the owner of Russian River Brewing Company in Santa Rosa, California,
+                            in 1994 at the now-defunct Blind Pig Brewery in Temecula, California.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Biere de Garde, Double IPA*@
+                @Html.ActionLink("View Similar", "FilterBeers", new { id = 7 })
+            </div>
+        </div>
+
+        @*Dark lager, Vienna lager, Marzen, Amber Ale*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Dark_Lager.png" /></td>
+                        <td>Dark lager</td>
+                        <td>
+                            Lagers would likely have been mainly dark until the 1840s; pale lagers were not common until the later part of the
+                            19th century when technological advances made them easier to produce. Dark lagers range from amber to dark
+                            reddish brown, and may be termed Vienna, amber lager, Dunkel, tmavé, or Schwarzbier depending on region,
+                            color or brewing method.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Vienna_Lager.png" /></td>
+                        <td>Vienna lager</td>
+                        <td>
+                            The Vienna lager beer style was developed by Anton Dreher in the late 1830s by combining the knowledge of
+                            making pale malt he had gained during a visit together with Gabriel Sedlmayr to England and Scotland in 1833
+                            and cold bottom fermentation using lager yeast he was given by Gabriel Sedlmayr. In late 1840, Anton Dreher
+                            started renting a cellar to mature his beer under cold conditions, a process that is called "lagering".
+                            The resulting beer was clean-tasting and relatively pale for the time thanks to the use of smoke-free "
+                            English" hot air kilns, resulting in a pale amber color.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Marzen.png" /></td>
+                        <td>Marzen</td>
+                        <td>
+                            Märzen or Märzenbier (German: March beer) is a lager that originated in Bavaria. It has a medium to
+                            full body and may vary in color from pale through amber to dark brown. It is the beer traditionally
+                            served at the Munich Oktoberfest.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Amber_Ale.png" /></td>
+                        <td>Amber Ale</td>
+                        <td>
+                            Amber ale is an emerging term used in Australia, France and North America for pale ales brewed with a
+                            proportion of amber malt and sometimes crystal malt to produce an amber colour generally ranging from
+                            light copper to light brown. A small amount of crystal or other coloured malt is added to the basic
+                            pale ale base to produce a slightly darker colour, as in some Irish and British pale ales. In France
+                            the term "ambrée" is used to signify a beer, either cold or warm fermented, which is amber in colour;
+                            the beer, as in Pelforth Ambrée and Fischer Amber, may be a Vienna lager, or it may be a Bière de Garde a
+                            s in Jenlain Ambrée. In North America, American-variety hops are used in varying degrees of bitterness,
+                            although very few examples are particularly hoppy. Diacetyl is barely perceived or absent in an amber ale.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Dark lager, Vienna lager, Marzen, Amber Ale*@
+                @Html.ActionLink("View Similar", "FilterBeers", new { id = 8 })
+            </div>
+        </div>
+
+        @*Brown Ale, Bock, Dunkel, Dunkelweizen*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Brown_Ale.png" /></td>
+                        <td>Brown Ale</td>
+                        <td>
+                            Brown ale is a style of beer with a dark amber or brown colour. The term was first used by London brewers
+                            in the late 17th century to describe their products,
+                            such as mild ale, though the term has a rather different meaning today. 18th century brown ales
+                            were lightly hopped and brewed from 100% brown malt.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Maibock.png" /></td>
+                        <td>Bock</td>
+                        <td>
+                            Bock is a strong lager (traditionally, and sometimes still, an ale, as in the case of at least some weizenbocks), of
+                            German origin. Several substyles exist, including maibock (helles bock, heller bock), a paler, more hopped version
+                            generally made for consumption at spring festivals; doppelbock, a stronger and maltier version; weizenbock, a version
+                            using 40–60% wheat, and eisbock, a much stronger version made by partially freezing the beer and removing the ice that forms.
+                            Originally a dark beer, a modern bock can range from light copper to brown in colour. The style is very popular,
+                            with many examples brewed internationally.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Dunkel.png" /></td>
+                        <td>Dunkel</td>
+                        <td>
+                            Dunkel, or Dunkles, is a word used for several types of dark German lager. Dunkel is the German word meaning dark,
+                            and dunkel beers typically range in color from amber to dark reddish brown. They are characterized by their smooth
+                            malty flavor. In informal terms, such as when ordering at a bar, "dunkel" is likely to mean whatever dark beer
+                            the bar has on tap, or sells most of; in much of north and western Germany, especially near Düsseldorf, this may be Altbier.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Dunkelweizen.png" /></td>
+                        <td>Dunkelweizen</td>
+                        <td>
+                            The German-style Dunkelweizen can be considered a cross between a German-style dunkel and a hefeweizen.
+                            Distinguished by its sweet maltiness and chocolate-like character, it can also have banana and clove
+                            (and occasionally vanilla or bubblegum) esters from weizen ale yeast.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Brown Ale, Bock, Dunkel, Dunkelweizen*@
+                @Html.ActionLink("View Similar", "FilterBeers", new { id = 9 })
+            </div>
+        </div>
+
+        @*Irish Dry Stout, Doppelbock, Porter*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Irish_Dry_Stout.png" /></td>
+                        <td>Irish Dry Stout</td>
+                        <td>
+                            With milk or sweet stout becoming the dominant stout in the UK in the early 20th century,
+                            it was mainly in Ireland that the non-sweet or standard stout was being made. As standard
+                            stout has a drier taste than the English and American sweet stouts, they came to be called
+                            dry stout or Irish stout to differentiate them from stouts with added lactose or oatmeal.
+                            This is the style that represents a typical stout to most people.
+                            The best selling stouts worldwide are Irish stouts made by Guinness (now owned by Diageo) at
+                            St. James's Gate Brewery (also known as the Guinness Brewery) in Dublin. Guinness makes a number
+                            of different varieties of its Irish stouts. Other examples of Irish dry stout include Murphy's
+                            and Beamish. Draught Irish stout is normally served with a nitrogen propellant in addition to the carbon
+                            dioxide most beers use, to create a creamy texture with a long-lasting head.
+                            Some canned and bottled stouts include a special device called a "widget" to nitrogenate the beer in the
+                            container to replicate the experience of the keg varieties.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Doppelbock.png" /></td>
+                        <td>Doppelbock</td>
+                        <td>
+                            Doppelbock or double bock is a stronger version of traditional bock that was first brewed in Munich by the
+                            Paulaner Friars, a Franciscan order founded by St. Francis of Paula. Historically, doppelbock was high
+                            in alcohol and sweet, thus serving as "liquid bread" for the Friars during times of fasting, when solid
+                            food was not permitted. Today, doppelbock is still strong—ranging from 7%–12% or more by volume. It isn't
+                            clear, with colour ranging from dark gold, for the paler version, to dark brown with ruby highlights for
+                            darker version. It has a large, creamy, persistent head (although head retention may be impaired by
+                            alcohol in the stronger versions). The aroma is intensely malty, with some toasty notes, and possibly
+                            some alcohol presence as well; darker versions may have a chocolate-like or fruity aroma. The flavour
+                            is very rich and malty, with toasty notes and noticeable alcoholic strength, and little or no detectable hops (16–26 IBUs).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Porter.png" /></td>
+                        <td>Porter</td>
+                        <td>
+                            Porter is a style of beer that was developed in London, England in the early eighteenth century.
+                            It was well-hopped and dark in appearance owing to the use of brown malt.
+                            The name originated from its popularity with street and river porters.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Irish Dry Stout, Doppelbock, Porter*@
+                @Html.ActionLink("Similar Beers", "FilterBeers", new { id = 10 })
+            </div>
+        </div>
+
+        @*Stout*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Stout.png" /></td>
+                        <td>Stout</td>
+                        <td>
+                            Stout is a dark, top-fermented beer with a number of variations, including dry stout, oatmeal stout, milk stout, and imperial stout.
+                            The first known use of the word stout for beer was in a document dated 1677 found in the Egerton Manuscripts, the sense being that
+                            a "stout beer" was a strong beer, not a dark beer. The name porter was first used in 1721 to describe a dark brown beer that
+                            had been made with roasted malts. Because of the huge popularity of porters, brewers made them in a variety of strengths.
+                            The stronger beers, typically 7% or 8% alcohol by volume (ABV), were called "stout porters", so the history and development
+                            of stout and porter are intertwined, and the term stout has become firmly associated with dark beer, rather than just strong beer.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Stout*@
+                @Html.ActionLink("Similar Beers", "FilterBeers", new { id = 11 })
+            </div>
+        </div>
+
+
+        @*Foreign Stout, Baltic Porter*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Foreign_Stout.png" /></td>
+                        <td>Foreign Stout</td>
+                        <td>
+                            Foreign extra stout is a stronger variant of traditional Irish dry stout
+                            originally brewed for the tropical regions. The higher alcohol and hopping
+                            rates helped the stout survive the long journey to the colonies.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Baltic_Porter.png" /></td>
+                        <td>Baltic Porter</td>
+                        <td>
+                            Baltic porter is a version of imperial stout which originated in the Baltic region in the nineteenth century.
+                            Imperial stouts exported from Britain in the eighteenth century were popular in the countries around the Baltic Sea,
+                            and were recreated locally using local ingredients and brewing traditions. Early versions were warm fermented until
+                            the late nineteenth century when many breweries began to brew their porter with cool fermentation. Baltic porters
+                            typically have a minimum gravity of 18 degrees plato and a high alcohol content, even over 10% abv.
+                            They are produced in Finland, Estonia, Latvia, Lithuania, the Czech Republic, Germany, Poland, Russia, Ukraine, Denmark,
+                            Sweden and the United States.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Foreign Stout, Baltic Porter*@
+                @Html.ActionLink("Similar Beers", "FilterBeers", new { id = 12 })
+            </div>
+        </div>
+
+        @*Imperial Stout*@
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <table class="table">
+                    <tr>
+                        <td><img src="~/Helper/Images/BeerColor/Imperial_Stout.png" /></td>
+                        <td>Imperial Stout</td>
+                        <td>
+                            Imperial stout, also known as "Russian Imperial stout", is a strong dark beer in the style that was brewed
+                            in the 18th century by Thrale's Anchor Brewery in London for export to the court of Catherine II of Russia.
+                            In 1781 the brewery changed hands and the beer became known as "Barclay Perkins Imperial Brown Stout".
+                            It was shipped to Russia by Albert von Le Coq who was awarded a Russian royal warrant which entitled him to use the name "Imperial".
+                            A recipe from 1856 shows it had an original gravity of 1.107 (almost certainly over 10% abv) and over 10 pounds of hops
+                            to the barrel. When Barclay's brewery was taken over by Courage in 1955, the beer was renamed
+                            "Courage Imperial Russian Stout" and it was brewed sporadically until 1993.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                @*Imperial Stout*@
+                @Html.ActionLink("Similar Beers", "FilterBeers", new { id = 13 })
+            </div>
+        </div>
+
+        @*Aki's changes start here!*@  @*Aki's changes start here!*@  @*Aki's changes start here!*@  @*Aki's changes start here!*@  @*Aki's changes start here!*@  @*Aki's changes start here!*@
+
+        
     </div>
 </body>
 
-@section Scripts
-{
-    <script>
-        $(document).ready(function () {
-
-            $("table").on("click", ".favourite", function (e) {
-                if ($(e.target).text() == "Add favourite") {
-                    $.post("/api/favBeers/" + $(e.target).parent().attr("data-beer-id"), function () {
-                    })
-                        .done(function () {
-                            $(e.target).text("Remove from favourites").removeClass("btn-primary").addClass("btn-info");
-                            bootbox.alert($(e.target).parent().attr("data-beer-name") + " is now in favourites!");
-                        })
-                        .fail(function (e) {
-                            console.log(e);
-                            bootbox.alert(e.responseJSON.message);
-                        });
-                } else {
-                    $.ajax({
-                        url: "/api/favBeers/" + $(e.target).parent().attr("data-beer-id"),
-                        method: "Delete"
-                    })
-                        .done(function () {
-                            $(e.target).text("Add favourite").removeClass("btn-info").addClass("btn-primary");
-                            bootbox.alert($(e.target).parent().attr("data-beer-name") + " is no longer in favourites");
-                        })
-                        .fail(function () {
-                            bootbox.alert("something went wrong");
-                        });
-                }
-
-            });
-        });
-    </script>
-}

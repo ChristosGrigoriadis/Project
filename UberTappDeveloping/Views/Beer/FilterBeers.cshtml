@@ -1,0 +1,117 @@
+﻿@model UberTappDeveloping.ViewModels.BeersViewModel
+@using Microsoft.AspNet.Identity
+@using UberTappDeveloping.Helper.Roles;
+
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
+
+<body id="FilterBeersView" class="body">
+    <div class="container-fluid">
+
+        <div id="TitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="SingleBeerImg" src="~/Helper/Images/15.png" alt="Alternate Text" />
+                <img id="BeerpediaImg" src="~/Helper/Images/Beers.png" alt="Alternate Text" />
+                <img id="SingleBeerImg" src="~/Helper/Images/15.png" alt="Alternate Text" />
+            </div>
+        </div>
+
+        <div id="TableContainer" class="row">
+            <div class="form-group col-md-3">
+                <img id="SingleCartoonBeerImg" src="~/Helper/Images/12.png" alt="Alternate Text" />
+            </div>
+
+            <div class="form-group col-md-6">
+                <table id="beers" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>EBC</th>
+                            <th>ABV</th>
+                            <th>IBU</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var beer in Model.AllBeers)
+                        {
+                            <tr>
+                                <td>@beer.Name</td>
+                                <td>@beer.EBC</td>
+                                <td>@beer.ABV</td>
+                                <td>@beer.IBU</td>
+                                <td class="buttons">
+                                    @*@if (User.IsInRole(RoleNames.VenueOwner) || User.IsInRole(RoleNames.Admin))*@
+                                    @*{*@
+                                    <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "Beer", new { Id = beer.Id }, new { title = "View Beer Details" })</button>
+                                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "Beer", new { Id = beer.Id }, new { title = "Update Beer Info" })</button>
+                                    <button class="btn btn-sm btn-danger">@Html.ActionLink("Delete", "Delete", "Beer", new { Id = beer.Id }, new { title = "Delete this beer" })</button>
+                                    @*}*@
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        if (User.IsInRole(RoleNames.BeerEnthusiast))
+                                        {
+                                            <a href="#" class="favourite" data-beer-name="@beer.Name" data-beer-id="@beer.Id">
+                                                @if (Model.FavBeers.Contains(beer.Id))
+                                                {
+                                                    <span class="btn btn-info">Remove from favourites</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="btn btn-primary">Add favourite</span>
+                                                }
+                                            </a>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-group col-md-3">
+                <img id="SingleCartoonBeerImg" src="~/Helper/Images/12.png" alt="Alternate Text" />
+            </div>
+        </div>
+
+    </div>
+</body>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $("table").on("click", ".favourite", function (e) {
+                if ($(e.target).text() == "Add favourite") {
+                    $.post("/api/favBeers/" + $(e.target).parent().attr("data-beer-id"), function () {
+                    })
+                        .done(function () {
+                            $(e.target).text("Remove from favourites").removeClass("btn-primary").addClass("btn-info");
+                            bootbox.alert($(e.target).parent().attr("data-beer-name") + " is now in favourites!");
+                        })
+                        .fail(function (e) {
+                            console.log(e);
+                            bootbox.alert(e.responseJSON.message);
+                        });
+                } else {
+                    $.ajax({
+                        url: "/api/favBeers/" + $(e.target).parent().attr("data-beer-id"),
+                        method: "Delete"
+                    })
+                        .done(function () {
+                            $(e.target).text("Add favourite").removeClass("btn-info").addClass("btn-primary");
+                            bootbox.alert($(e.target).parent().attr("data-beer-name") + " is no longer in favourites");
+                        })
+                        .fail(function () {
+                            bootbox.alert("something went wrong");
+                        });
+                }
+
+            });
+        });
+    </script>
+}
+

@@ -27,6 +27,7 @@ namespace UberTappDeveloping.Controllers
 
         #region GET
         // GET: Beer
+        [Authorize]
         public ActionResult Beers()
         {
             var userId = User.Identity.GetUserId();
@@ -44,7 +45,7 @@ namespace UberTappDeveloping.Controllers
         {
             if (id == 0)
             {
-                return View("ErrorPage", "Home"); // Error Page?
+                return View("ErrorPage", "Home");
             }
 
 
@@ -58,7 +59,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 2)
             {
@@ -70,7 +71,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 3)
             {
@@ -82,7 +83,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 4)
             {
@@ -94,7 +95,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 5)
             {
@@ -106,7 +107,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 6)
             {
@@ -118,7 +119,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 7)
             {
@@ -130,7 +131,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 8)
             {
@@ -142,7 +143,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 9)
             {
@@ -154,7 +155,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 10)
             {
@@ -166,7 +167,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 11)
             {
@@ -178,7 +179,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 12)
             {
@@ -190,7 +191,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else if (id == 13)
             {
@@ -202,7 +203,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
             else
             {
@@ -214,7 +215,7 @@ namespace UberTappDeveloping.Controllers
                     AllBeers = beers,
                     FavBeers = context.FavBeer.Where(fb => fb.UserThatFollows == userId).ToLookup(b => b.BeerToBeFollowed)
                 };
-                return View("Beers", viewModel);
+                return View("FilterBeers", viewModel);
             }
         }
 

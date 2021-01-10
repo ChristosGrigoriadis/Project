@@ -489,36 +489,36 @@
     text-align: center;
 }
 
-#SuccessfulPaymentView .container-fluid .row #PremUserId {
-    display: block;
-    padding: 10px 15px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3%;
-    margin-bottom: 1%;
-    width: 65%;
-    border-radius: 7%;
-}
+    #SuccessfulPaymentView .container-fluid .row #PremUserId {
+        display: block;
+        padding: 10px 15px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3%;
+        margin-bottom: 1%;
+        width: 65%;
+        border-radius: 7%;
+    }
 
-#SuccessfulPaymentView .container-fluid .row #premBtn {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px 10px;
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-    #SuccessfulPaymentView .container-fluid .row #premBtn a {
+    #SuccessfulPaymentView .container-fluid .row #premBtn {
         display: block;
         margin-left: auto;
         margin-right: auto;
         padding: 5px 10px;
         margin-top: 1%;
         margin-bottom: 1%;
-        text-decoration: none;
-        color: white;
     }
+
+        #SuccessfulPaymentView .container-fluid .row #premBtn a {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 5px 10px;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            text-decoration: none;
+            color: white;
+        }
 
 /*Pavlos Notifications CSS start*/
 
@@ -562,3 +562,96 @@
 }
 
 /*Pavlos Notifications CSS end*/
+
+/*Beers.cshtml*/
+
+#BeersView {
+    background: url('../Helper/Images/RedMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+    #BeersView .container-fluid #TitleContainer {
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 1%;
+    }
+
+        #BeersView .container-fluid #TitleContainer .form-group #CheersBeerImg {
+            width: 8%;
+        }
+
+        #BeersView .container-fluid #TitleContainer .form-group #BeerpediaImg {
+            width: 38%;
+        }
+
+    #BeersView .container-fluid .row .form-group .table {
+        text-align: center;
+        color: white;
+    }
+
+        #BeersView .container-fluid .row .form-group .table tr td img {
+            border-radius: 26%;
+            width: 150px;
+            height: 200px;
+        }
+
+        #BeersView .container-fluid .row .form-group .table tr td:nth-child(even) {
+            width: 14%;
+        }
+
+    #BeersView .container-fluid .row .form-group a {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 4%;
+        width: 52%;
+        background-color: black;
+        border: solid darkgoldenrod;
+        border-radius: 10%;
+        text-decoration: none;
+        text-align: center;
+        color: darkgoldenrod;
+        font-size: 1.4em;
+    }
+
+/*FilterBeers.cshtml*/
+
+#FilterBeersView {
+    background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+    #FilterBeersView .container-fluid #TitleContainer {
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 1%;
+    }
+
+    #FilterBeersView .container-fluid .form-group #SingleBeerImg {
+        width: 6%;
+    }
+
+    #FilterBeersView .container-fluid .form-group #BeerpediaImg {
+        width: 32%;
+    }
+
+    #FilterBeersView .container-fluid #TableContainer .form-group #SingleCartoonBeerImg {
+        position: fixed;
+        bottom: 0;
+        width: 20%;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    #FilterBeersView .container-fluid #TableContainer .form-group #beers tbody tr:hover {
+        color: black;
+        cursor: pointer;
+    }
+
+    #FilterBeersView .container-fluid #TableContainer .form-group #beers tbody tr .buttons a {
+        text-decoration: none;
+        color: white;
+    }

@@ -9,7 +9,6 @@ namespace UberTappDeveloping.DAL
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
 
-
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Venue> Venues { get; set; }
@@ -47,7 +46,6 @@ namespace UberTappDeveloping.DAL
                 .HasMany(u => u.Followees)
                 .WithRequired(f => f.Follower)
                 .WillCascadeOnDelete(false);
-
 
             modelBuilder.Entity<Location>()
                 .HasMany(l => l.VenueLocations)
