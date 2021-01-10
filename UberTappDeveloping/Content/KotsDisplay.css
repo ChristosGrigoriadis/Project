@@ -525,7 +525,7 @@
 #DetailsView #profileDetBtn #notifications {
     float: right;
     position: relative;
-    top: 10px;
+    top: 8px;
     width: 3em;
     left: 1em;
 }
@@ -547,13 +547,37 @@
     color: black;
     font-size: 20px;
     font-weight: bold;
+    overflow: scroll;
+    height: 500px;
 }
 
-#DetailsView #myModal .modal-title {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-}
+    #DetailsView #myModal .modal-body ul {
+        list-style:none;
+        padding:0px;
+    }
+
+        #DetailsView #myModal .modal-body ul li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border: thick solid black;
+            padding: 10px;
+            border-radius: 15px;
+            background-color: burlywood;
+        }
+
+            #DetailsView #myModal .modal-body ul li img {
+                width: 5em;
+                height: 5em;
+                margin-right: 20px;
+            }
+
+            #DetailsView #myModal .modal-title {
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+            }
 
 #DetailsView #myModal .modal-header {
     background-color: rebeccapurple;

@@ -20,9 +20,13 @@ else
             <th>Date</th>
             <th>Description</th>
             <th>Venue</th>
-            @if (!Model.IsIndexAction)
+            @if (Model.IsIndexAction)
             {
-                <th></th>
+                <th>Status</th>
+            }
+            else
+            {
+                <th>Actions</th>
             }
         </tr>
     </thead>
@@ -35,7 +39,26 @@ else
                 <td>@evt.Venue.Name</td>
                 @if (!Model.IsIndexAction)
                 {
-                    <td><a href="@Url.Action("Edit", "Event",new { id = evt.Id})">Edit</a></td>
+                    if (!evt.IsCanceled)
+                    {
+                        <td><a class="btn btn-info" href="@Url.Action("Edit", "Event",new { id = evt.Id})">Edit</a></td>
+                    }
+                    else
+                    {
+                        <td><span class="btn btn-danger">Canceled</span></td>
+                    }
+
+                }
+                else
+                {
+                    if (evt.IsCanceled)
+                    {
+                        <td><span class="btn btn-danger">Canceled</span></td>
+                    }
+                    else
+                    {
+                        <td><span class="btn btn-info">Active</span></td>
+                    }
                 }
 
             </tr>
@@ -58,10 +81,10 @@ else
         console.log($("tbody .date").text());
 
         for (var date of $("tbody .date")) {//Date Sort with Datatables
-            $(date).html(moment(new Date($(date).text())).format("MMMM dddd DD YYYY"));
+            $(date).html(moment(new Date($(date).text())).format("MMMM, dddd DD YYYY"));
         }
 
-        $.fn.dataTable.moment("MMMM dddd DD YYYY");
+        $.fn.dataTable.moment("MMMM, dddd DD YYYY"); // has to be the same date format for date sort to work
         $("table").DataTable();
     </script>
 
