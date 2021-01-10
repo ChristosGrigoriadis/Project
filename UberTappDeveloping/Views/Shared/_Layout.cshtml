@@ -30,7 +30,7 @@
                             Contact
                             <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu12">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
                             <li><a href="@Url.Action("Contact", "Home")">Development Team</a></li>
                             <li><a href="@Url.Action("EmailForm", "Home")">Report An Issue</a></li>
                         </ul>
@@ -55,6 +55,22 @@
                                 <li><a href="@Url.Action("New", "Event")">Add an Event</a></li>
                                 <li><a href="@Url.Action("VenueOwnerEvents", "Event")">My Events</a></li>
                                 <li><a href="@Url.Action("Index", "Event")">All Events</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Beers
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
+                            @if (User.IsInRole(RoleNames.BeerEnthusiast))
+                            {
+                                <li><a href="@Url.Action("Beers", "Beer")">All Beers</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("Create", "Beer")">Add New Beer</a></li>
                             }
                         </ul>
                     </li>
