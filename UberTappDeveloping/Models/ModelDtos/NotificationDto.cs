@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using UberTappDeveloping.DAL;
 using UberTappDeveloping.Helper.Enums;
+using System.Data.Entity;
 
 namespace UberTappDeveloping.Models.ModelDtos
 {
@@ -11,7 +12,6 @@ namespace UberTappDeveloping.Models.ModelDtos
     {
         private ApplicationDbContext context = new ApplicationDbContext();
 
-        public int Id { get; set; }
         public NotificationType Type { get; set; }
         public DateTime? OriginalDate { get; set; }
         public int? OriginalVenueId { get; set; }
@@ -21,6 +21,14 @@ namespace UberTappDeveloping.Models.ModelDtos
             get
             {
                 return OriginalVenueId.HasValue ? context.Venues.SingleOrDefault(v => v.Id == OriginalVenueId).Name : null;
+            }
+        }
+
+        public string VenueProfileImage
+        {
+            get
+            {
+                return Convert.ToBase64String(context.VenueProfileImage.SingleOrDefault(i => i.VenueId == Event.VenueId).Data);
             }
         }
 

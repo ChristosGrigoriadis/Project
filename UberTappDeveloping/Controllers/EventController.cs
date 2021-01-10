@@ -29,6 +29,7 @@ namespace UberTappDeveloping.Controllers
         {
             var Events = context.Events
                             .Include(e => e.Venue)
+                            .Where(e => e.Date >= DateTime.Now)
                             .OrderBy(e => e.Date);
 
             var viewModel = new EventsViewModel
@@ -52,7 +53,7 @@ namespace UberTappDeveloping.Controllers
             var userId = User.Identity.GetUserId();
             var myEvents = context.Events
                 .Include(e => e.Venue)
-                .Where(e => e.Venue.OwnerId == userId)
+                .Where(e => e.Venue.OwnerId == userId && e.Date >= DateTime.Now)
                 .OrderBy(e => e.Date);
 
             var viewModel = new EventsViewModel
