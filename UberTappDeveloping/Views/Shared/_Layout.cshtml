@@ -37,6 +37,22 @@
                     </li>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Beers
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
+                            @if (User.IsInRole(RoleNames.Admin) || User.IsInRole(RoleNames.VenueOwner)) // Admin & VenueOwner can add 
+                            {
+                                <li><a href="@Url.Action("Add", "Beer")">Add New Beer</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("Beers", "Beer")">All Beers</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             Venues
                             <span class="caret"></span>
                         </a>

@@ -260,6 +260,7 @@ namespace UberTappDeveloping.Controllers
 
         #region POST
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(BeerFormViewModel viewModel)
@@ -282,6 +283,7 @@ namespace UberTappDeveloping.Controllers
             return RedirectToAction("Beers", "Beer");
         }
 
+        [Authorize]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Update(BeerFormViewModel viewModel)
@@ -301,6 +303,7 @@ namespace UberTappDeveloping.Controllers
             return RedirectToAction("Beers", "Beer");
         }
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var beer = context.Beers.SingleOrDefault(b => b.Id == id);
