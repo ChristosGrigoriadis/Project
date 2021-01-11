@@ -552,8 +552,8 @@
 }
 
     #DetailsView #myModal .modal-body ul {
-        list-style:none;
-        padding:0px;
+        list-style: none;
+        padding: 0px;
     }
 
         #DetailsView #myModal .modal-body ul li {
@@ -573,11 +573,11 @@
                 margin-right: 20px;
             }
 
-            #DetailsView #myModal .modal-title {
-                text-align: center;
-                font-size: 24px;
-                font-weight: bold;
-            }
+#DetailsView #myModal .modal-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
 
 #DetailsView #myModal .modal-header {
     background-color: rebeccapurple;
@@ -694,7 +694,7 @@
 }
 
     #DetailsBeerView .container-fluid #TitleContainer .form-group #OldBeerBottleImg {
-      width:4%;
+        width: 4%;
     }
 
     #DetailsBeerView .container-fluid #TitleContainer .form-group #BeersImg {
@@ -716,9 +716,58 @@
         width: 42%;
         padding-left: 15px;
         padding-bottom: 5px;
-        margin-top:2%;
+        margin-top: 2%;
         margin-left: 10%;
     }
 
+/*BeerForm.cshtml*/
 
+#BeerFormView {
+    background: url('../Helper/Images/YellowMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
 
+    #BeerFormView .field-validation-error {
+        color: red;
+    }
+
+    #BeerFormView .input-validation-error {
+        border: 2px solid red;
+    }
+
+    #BeerFormView .container-fluid #TitleContainer {
+        text-align: left;
+    }
+
+        #BeerFormView .container-fluid #TitleContainer .form-group #OldBeerBottleImg {
+            width: 4%;
+        }
+
+        #BeerFormView .container-fluid #TitleContainer .form-group #BeersImg {
+            width: 26%;
+        }
+
+    #BeerFormView .container-fluid .row .form-group #BeerDescription textarea {
+        height: 150px !important;
+    }
+
+    #BeerFormView .container-fluid .row .form-group #BarrelGermImg {
+        position: fixed;
+        bottom: 0;
+        width: 32%;
+        margin-left: 8%;
+    }
+
+    #BeerFormView .container-fluid .row .form-group #SubmitBtn {
+        background-color: black;
+        color: darkgoldenrod;
+        border: solid 1px darkgoldenrod;
+        border-radius: 6%;
+        width: 40%;
+        display: block;
+        margin-top: 4%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.4em;
+        padding: 5px 10px;
+    }

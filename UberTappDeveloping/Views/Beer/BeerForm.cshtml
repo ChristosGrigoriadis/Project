@@ -1,53 +1,83 @@
 ﻿@model UberTappDeveloping.ViewModels.BeerFormViewModel
 
-@{
-    ViewBag.Title = "Edit";
-}
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
 
-<h2>@Model.Heading</h2>
+<body id="BeerFormView" class="body">
+    <div class="container-fluid">
 
-@using (Html.BeginForm(Model.Action, "Beer"))
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(b => b.Id)
-    <div class="form-group">
-        @Html.LabelFor(b => b.Name)
-        @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.Name)
+        @if (Model.Id == 0)
+        {
+            <div id="TitleContainer" class="row">
+                <div class="form-group col-md-12">
+                    <img id="OldBeerBottleImg" src="~/Helper/Images/2.png" alt="Alternate Text" />
+                    <img id="BeersImg" src="~/Helper/Images/Beers.png" alt="Alternate Text" />
+                    @*<h2>Add Beer</h2>*@
+                    <img id="OldBeerBottleImg" src="~/Helper/Images/2.png" alt="Alternate Text" />
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <div id="TitleContainer" class="row">
+                <div class="form-group col-md-12">
+                    <img id="OldBeerBottleImg" src="~/Helper/Images/2.png" alt="Alternate Text" />
+                    <img id="BeersImg" src="~/Helper/Images/Beers.png" alt="Alternate Text" />
+                    @*<h2>Update Beer Information</h2>*@
+                    <img id="OldBeerBottleImg" src="~/Helper/Images/2.png" alt="Alternate Text" />
+                </div>
+            </div>
+        }
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                @using (Html.BeginForm(Model.Action, "Beer"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(b => b.Id)
+
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(b => b.Name)
+                        @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(b => b.Name)
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(b => b.EBC)
+                        @Html.TextBoxFor(b => b.EBC, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(b => b.EBC)
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(b => b.ABV)
+                        @Html.TextBoxFor(b => b.ABV, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(b => b.ABV)
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(b => b.IBU)
+                        @Html.TextBoxFor(b => b.IBU, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(b => b.IBU)
+                    </div>
+
+                    <div id="BeerDescription" class="form-group col-md-12">
+                        @Html.LabelFor(b => b.Description)
+                        @Html.TextAreaFor(b => b.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(b => b.Description)
+                    </div>
+
+                    <button id="SubmitBtn" type="submit">Save</button>
+                }
+            </div>
+            <div class="form-group col-md-6">
+                <img id="BarrelGermImg" src="~/Helper/Images/11.png" alt="Alternate Text" />
+            </div>
+        </div>
+
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(b => b.EBC)
-        @Html.TextBoxFor(b => b.EBC, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.EBC)
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(b => b.ABV)
-        @Html.TextBoxFor(b => b.ABV, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.ABV)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(b => b.IBU)
-        @Html.TextBoxFor(b => b.IBU, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.IBU)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(b => b.Description)
-        @Html.TextAreaFor(b => b.Description, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.Description)
-    </div>
-
-
-    <button type="submit" class="btn btn-primary">Save</button>
-}
-
-<p>
-    @Html.ActionLink("Back to List", "Beers", "Beer")
-</p>
+</body>
 
 @section scripts
 {

@@ -41,9 +41,10 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
-                            @if (User.IsInRole(RoleNames.Admin) || User.IsInRole(RoleNames.VenueOwner)) // Admin & VenueOwner can add 
+                            @if (User.IsInRole(RoleNames.Admin) || User.IsInRole(RoleNames.VenueOwner)) // Admin & VenueOwner can add
                             {
-                                <li><a href="@Url.Action("Add", "Beer")">Add New Beer</a></li>
+                                <li><a href="@Url.Action("Beers", "Beer")">All Beers</a></li>
+                                <li><a href="@Url.Action("Create", "Beer")">Add New Beer</a></li>
                             }
                             else
                             {
