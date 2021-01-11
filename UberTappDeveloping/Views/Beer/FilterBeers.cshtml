@@ -84,6 +84,8 @@
     <script>
         $(document).ready(function () {
 
+            let table = $("#beers").DataTable({});
+
             $("table").on("click", ".favourite", function (e) {
                 if ($(e.target).text() == "Add favourite") {
                     $.post("/api/favBeers/" + $(e.target).parent().attr("data-beer-id"), function () {

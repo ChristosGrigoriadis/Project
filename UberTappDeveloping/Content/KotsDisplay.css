@@ -610,6 +610,21 @@
             width: 38%;
         }
 
+    #BeersView .container-fluid #ParagraphContainer .form-group p #TinyBeersImg {
+        width: 4%;
+        margin-bottom:1%;
+    }
+
+    #BeersView .container-fluid #ImageTitleContainer .form-group {
+        text-align:left;
+    }
+
+    #BeersView .container-fluid #ImageTitleContainer .form-group #BookImg {
+        text-align:left;
+        margin-top:2%;
+        width: 20%;
+    }
+
     #BeersView .container-fluid .row .form-group .table {
         text-align: center;
         color: white;
@@ -629,6 +644,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+        margin-top:1%;
         margin-bottom: 4%;
         width: 40%;
         background-color: darkred;
@@ -644,7 +660,6 @@
 #FilterBeersView {
     background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
     background-size: cover;
-    color: white;
 }
 
     #FilterBeersView .container-fluid #TitleContainer {
@@ -659,6 +674,10 @@
 
     #FilterBeersView .container-fluid .form-group #SelectedBeersImg {
         width: 54%;
+    }
+
+    #FilterBeersView .container-fluid #TableContainer {
+        color: white;
     }
 
     #FilterBeersView .container-fluid #TableContainer .form-group #SingleCartoonBeerImg {

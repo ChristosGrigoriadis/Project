@@ -17,20 +17,62 @@
             </div>
         </div>
 
+        <div id="ParagraphContainer" class="row">
+            <div class="form-group col-md-12">
+                <p>
+                    Beer is one of the oldest and most widely consumed alcoholic drinks in the world,
+                    and the third most popular drink overall after water and tea. Beer is brewed from
+                    cereal grains—most commonly from malted barley, though wheat, maize (corn), and
+                    rice are also used. During the brewing process, fermentation of the starch sugars
+                    in the wort produces ethanol and carbonation in the resulting beer. Most modern
+                    beer is brewed with hops, which add bitterness and other flavours and act as a
+                    natural preservative and stabilizing agent. Other flavouring agents such as gruit,
+                    herbs, or fruits may be included or used instead of hops. In commercial brewing,
+                    the natural carbonation effect is often removed during processing and replaced
+                    with forced carbonation.
+                </p>
+                <p>
+                    Beer style is a term used to differentiate and categorise beers by factors such as
+                    colour, flavour, strength, ingredients, production method, recipe, history, or origin.
+                    Colour is usually imparted by the malts used, notably the adjunct malts added to
+                    darker beers, though other ingredients may contribute to the colour of some styles
+                    such as fruit beers. Colour intensity can be measured by systems such as EBC, SRM or
+                    Lovibond, but this information is rarely given to the public. Many beers are transparent,
+                    but some beers, such as hefeweizen, may be cloudy due to the presence of yeast making them
+                    translucent. A third variety is the opaque or near-opaque colour that exists with stouts,
+                    porters, schwarzbiers (black beer) and other deeply coloured styles. Thickness and retention
+                    of the head and the lace it can leave on the glass, are also factors in a beer's appearance.
+                </p>
+                <p>
+                    Navigate below for more information about Beers, CHEERS <img id="TinyBeersImg" src="~/Helper/Images/5.png" alt="Alternate Text" />
+                </p>
+            </div>
+        </div>
+
         <div class="row">
             @if (User.IsInRole(RoleNames.Admin))
             {
                 <div class="form-group col-md-6">
+                    @Html.ActionLink("All Beers", "FilterBeers", new { id = 14 })
+                </div>
+                <div class="form-group col-md-6">
                     @Html.ActionLink("Add a New Beer", "Create", "Beer")
                 </div>
             }
-            <div class="form-group col-md-6">
-                @Html.ActionLink("All Beers", "FilterBeers", new { id = 14 })
-            </div>
+            else
+            {
+                <div class="form-group col-md-12">
+                    @Html.ActionLink("All Beers", "FilterBeers", new { id = 14 })
+                </div>
+            }
         </div>
 
         @*Pale lager, Witbier, Pilsener, Berliner Weisse*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Pale_Lager_Witbier_Pilsener_Berliner_Weisse.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -85,7 +127,11 @@
         </div>
 
         @*Maibock, Blonde Ale*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Maibock_Blonde_Ale.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -131,7 +177,11 @@
         </div>
 
         @*Weissbier*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Weissbier_Book.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -156,7 +206,11 @@
         </div>
 
         @*American Pale Ale, Indian Pale Ale*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/American_Pale_Ale_Indian_Pale_Ale.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -186,13 +240,17 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-               @* American Pale Ale, Indian Pale Ale*@
+                @* American Pale Ale, Indian Pale Ale*@
                 @Html.ActionLink("View Similar", "FilterBeers", new { id = 4 })
             </div>
         </div>
 
         @*Weissbier, Saison*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Weissbier_Saison.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -226,7 +284,11 @@
         </div>
 
         @*English Bitter, ESB*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/English_Bitter_ESB.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -249,7 +311,11 @@
         </div>
 
         @*Biere de Garde, Double IPA*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Biere_de_Garde_Double_IPA.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -287,7 +353,11 @@
         </div>
 
         @*Dark lager, Vienna lager, Marzen, Amber Ale*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Dark_Lager_Vienna_Lager_Marzen_Amber_Ale.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -347,7 +417,11 @@
         </div>
 
         @*Brown Ale, Bock, Dunkel, Dunkelweizen*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Brown_Ale_Bock_Dunkel_Dunkelweizen.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -403,7 +477,11 @@
         </div>
 
         @*Irish Dry Stout, Doppelbock, Porter*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Irish_Dry_Stout_Doppelbock_Porter.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -460,7 +538,11 @@
         </div>
 
         @*Stout*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Stout_Book.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -488,7 +570,11 @@
 
 
         @*Foreign Stout, Baltic Porter*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Foreign_Stout_Baltic_Porter.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -525,7 +611,11 @@
         </div>
 
         @*Imperial Stout*@
-
+        <div id="ImageTitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="BookImg" src="~/Helper/Images/BeerColor/Imperial_Stout_Book.png" alt="Alternate Text" />
+            </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <table class="table">
@@ -551,7 +641,7 @@
                 @Html.ActionLink("Similar Beers", "FilterBeers", new { id = 13 })
             </div>
         </div>
-       
+
     </div>
 </body>
 
