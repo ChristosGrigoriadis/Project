@@ -564,6 +564,7 @@
     <Content Include="Helper\Images\dark_backround.gif" />
     <Content Include="Helper\Images\edit_venue.png" />
     <Content Include="Helper\Images\error.gif" />
+    <Content Include="Helper\Images\events.png" />
     <Content Include="Helper\Images\greyishMovBcg.gif" />
     <Content Include="Helper\Images\How_can_we_help.png" />
     <Content Include="Helper\Images\Lower_thirds_assets.png" />

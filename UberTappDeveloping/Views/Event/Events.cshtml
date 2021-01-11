@@ -1,71 +1,91 @@
 ﻿@model UberTappDeveloping.ViewModels.EventsViewModel
-@{
-    ViewBag.Title = "VenueOwnerEvents";
-}
 
-@if (Model.IsIndexAction)
-{
-    <h2>All Events</h2>
-}
-else
-{
-    <h2>My Events</h2>
-}
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
 
-
-<table class="table table-bordered table-hover">
-
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Venue</th>
-            @if (Model.IsIndexAction)
-            {
-                <th>Status</th>
-            }
-            else
-            {
-                <th>Actions</th>
-            }
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var evt in Model.Events)
+<body id="EventsView" class="body">
+    <div class="container-fluid">
+        @if (Model.IsIndexAction)
         {
-            <tr>
-                <td class="date">@evt.Date.ToString("dd MMMM yyyy") </td>
-                <td>@evt.Description</td>
-                <td>@evt.Venue.Name</td>
-                @if (!Model.IsIndexAction)
-                {
-                    if (!evt.IsCanceled)
-                    {
-                        <td><a class="btn btn-info" href="@Url.Action("Edit", "Event",new { id = evt.Id})">Edit</a></td>
-                    }
-                    else
-                    {
-                        <td><span class="btn btn-danger">Canceled</span></td>
-                    }
-
-                }
-                else
-                {
-                    if (evt.IsCanceled)
-                    {
-                        <td><span class="btn btn-danger">Canceled</span></td>
-                    }
-                    else
-                    {
-                        <td><span class="btn btn-info">Active</span></td>
-                    }
-                }
-
-            </tr>
+            <div id="TitleContainer" class="row">
+                <div class="form-group col-md-12">
+                    <img id="CrateBottleImg" src="~/Helper/Images/6.png" alt="Alternate Text" />
+                    <img id="EventsImg" src="~/Helper/Images/events.png" alt="Alternate Text" />
+                    @*<h2>All Events</h2>*@
+                    <img id="CrateBottleImg" src="~/Helper/Images/6.png" alt="Alternate Text" />
+                </div>
+            </div>
         }
-    </tbody>
+        else
+        {
+            <div id="TitleContainer" class="row">
+                <div class="form-group col-md-12">
+                    <img id="CrateBottleImg" src="~/Helper/Images/6.png" alt="Alternate Text" />
+                    <img id="EventsImg" src="~/Helper/Images/events.png" alt="Alternate Text" />
+                    @*<h2><h2>My Events</h2>*@
+                    <img id="CrateBottleImg" src="~/Helper/Images/6.png" alt="Alternate Text" />
+                </div>
+            </div>
+        }
 
-</table>
+        <div id="TableContainer">
+            <table class="table table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Venue</th>
+                        @if (Model.IsIndexAction)
+                        {
+                            <th>Status</th>
+                        }
+                        else
+                        {
+                            <th>Actions</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var evt in Model.Events)
+                    {
+                        <tr>
+                            <td class="date">@evt.Date.ToString("dd MMMM yyyy") </td>
+                            <td>@evt.Description</td>
+                            <td>@evt.Venue.Name</td>
+                            @if (!Model.IsIndexAction)
+                            {
+                                if (!evt.IsCanceled)
+                                {
+                                    <td><a class="btn btn-info" href="@Url.Action("Edit", "Event",new { id = evt.Id})">Edit</a></td>
+                                }
+                                else
+                                {
+                                    <td><span class="btn btn-danger">Canceled</span></td>
+                                }
+
+                            }
+                            else
+                            {
+                                if (evt.IsCanceled)
+                                {
+                                    <td><span class="btn btn-danger">Canceled</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="btn btn-info">Active</span></td>
+                                }
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</body>
 
 @section Scripts {
 

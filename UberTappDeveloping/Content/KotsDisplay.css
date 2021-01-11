@@ -771,3 +771,41 @@
         font-size: 1.4em;
         padding: 5px 10px;
     }
+
+/*Events.cshtml*/
+
+#EventsView {
+    background: url('../Helper/Images/greyishMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+    #EventsView .container-fluid #TitleContainer {
+        text-align:center;      
+    }
+
+        #EventsView .container-fluid #TitleContainer .form-group {
+            text-align: center;
+            margin-top: 2%;
+            margin-bottom: 1%;
+        }
+
+    #EventsView .container-fluid #TitleContainer .form-group #CrateBottleImg {
+        width: 8%;
+    }
+
+    #EventsView .container-fluid #TitleContainer .form-group #EventsImg {
+        width: 28%;
+    }
+
+    #EventsView .container-fluid #TableContainer {
+        color:purple;
+    }
+
+    #EventsView .container-fluid #TableContainer .table tbody{
+        color:whitesmoke;
+    }
+
+        #EventsView .container-fluid #TableContainer .table tbody tr:hover {
+            cursor:pointer;
+            color: purple;
+        }
