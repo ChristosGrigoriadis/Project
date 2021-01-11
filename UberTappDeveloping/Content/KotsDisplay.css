@@ -784,7 +784,6 @@
     }
 
         #EventsView .container-fluid #TitleContainer .form-group {
-            text-align: center;
             margin-top: 2%;
             margin-bottom: 1%;
         }
@@ -809,3 +808,60 @@
             cursor:pointer;
             color: purple;
         }
+
+        #EventsView .container-fluid #TableContainer .table tbody tr .flex-area{
+           display:flex;
+           justify-content:center;
+        }
+
+/*EventForm.cshtml*/
+
+#EventFormView {
+    background: url('../Helper/Images/greyishMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+    #EventFormView .container-fluid #TitleContainer {
+        text-align: left;
+    }
+
+        #EventFormView .container-fluid #TitleContainer .form-group {
+            margin-top: 2%;
+            margin-bottom: 1%;
+        }
+
+            #EventFormView .container-fluid #TitleContainer .form-group #VenueSignImg {
+                width: 8%;
+                padding-left:15px;
+                padding-right:15px;
+            }
+
+            #EventFormView .container-fluid #TitleContainer .form-group #AddAnEventImg {
+                width: 38%;
+            }
+
+    #EventFormView .container-fluid #FormArea {
+       color:white;
+    }
+
+        #EventFormView .container-fluid #FormArea .col-md-6 #TextArea input{
+            height: 100px;
+        }
+
+        #EventFormView .container-fluid #FormArea .col-md-6 #BtnArea {
+           text-align:center;
+           padding-top:14px;
+        }
+
+        #EventFormView .container-fluid #FormArea .form-group #DrunkUserImg {
+           position:fixed;
+           bottom:0;
+           width:33%;
+           margin-left:8%;
+           margin-right:auto;
+        }
+
+           
+
+      
+

@@ -513,6 +513,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Helper\Images\1.png" />
+    <Content Include="Helper\Images\10.png" />
     <Content Include="Helper\Images\11.png" />
     <Content Include="Helper\Images\12.png" />
     <Content Include="Helper\Images\13.png" />

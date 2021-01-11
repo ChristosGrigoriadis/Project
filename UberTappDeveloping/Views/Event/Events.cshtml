@@ -58,11 +58,11 @@
                             {
                                 if (!evt.IsCanceled)
                                 {
-                                    <td><a class="btn btn-info" href="@Url.Action("Edit", "Event",new { id = evt.Id})">Edit</a></td>
+                                    <td class=" flex-area"><a class="btn btn-info" href="@Url.Action("Edit", "Event",new { id = evt.Id})">Edit</a></td>
                                 }
                                 else
                                 {
-                                    <td><span class="btn btn-danger">Canceled</span></td>
+                                    <td class=" flex-area"><span class="btn btn-danger">Canceled</span></td>
                                 }
 
                             }
@@ -70,11 +70,11 @@
                             {
                                 if (evt.IsCanceled)
                                 {
-                                    <td><span class="btn btn-danger">Canceled</span></td>
+                                    <td class=" flex-area"><span class="btn btn-danger">Canceled</span></td>
                                 }
                                 else
                                 {
-                                    <td><span class="btn btn-info">Active</span></td>
+                                    <td class=" flex-area"><span class="btn btn-info">Active</span></td>
                                 }
                             }
 
