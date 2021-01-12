@@ -216,7 +216,9 @@ namespace UberTappDeveloping.Controllers
 				}
 				AddErrors(result);
 			}
+
 			viewModel.Locations = context.Locations;
+
 			// If we got this far, something failed, redisplay form
 			return View(viewModel);
 		}
