@@ -97,13 +97,13 @@ namespace UberTappDeveloping.ViewModels
 		[StringLength(50, MinimumLength = 3, ErrorMessage = "Last Name should be 3-50 characters long")]
 		public string LastName { get; set; }
 
-		[DataType(DataType.Date)]
-		[DisplayFormat(DataFormatString = "{0:dd/MMM/yyyy}", ApplyFormatInEditMode = true)]
-		[Display(Name = "Date Of Birth")]
-		//[FutureDate(ErrorMessage = "Event's Date must be a future date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MMM/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date Of Birth")]
+        [IsAdult(ErrorMessage = "You have to be over 18!")]
 		public DateTime? BirthDate { get; set; }
 
-		public Gender? Gender { get; set; }
+        public Gender? Gender { get; set; }
 
 		[Display(Name = "Are you a Venue Owner?")]
 		public bool IsVenueOwner { get; set; }
