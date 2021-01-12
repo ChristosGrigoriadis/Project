@@ -9,19 +9,23 @@
     <div class="container-fluid">
         @if (Model.IsIndexAction)
         {
-            <div class="row">
+            <div id="TitleContainer" class="row">
                 <div class="form-group col-md-6"></div>
                 <div class="form-group col-md-6">
+                    <img id="VenueSignImg" src="~/Helper/Images/8.png" alt="Alternate Text" />
                     <img id="VenuesImg" src="~/Helper/Images/Venues.png" alt="Alternate Text" />
+                    <img id="VenueSignImg" src="~/Helper/Images/8.png" alt="Alternate Text" />
                 </div>
             </div>
         }
         else
         {
-            <div class="row">
+            <div id="TitleContainer" class="row">
                 <div class="form-group col-md-6"></div>
                 <div class="form-group col-md-6">
+                    <img id="VenueSignImg" src="~/Helper/Images/8.png" alt="Alternate Text" />
                     <img id="MyVenuesImg" src="~/Helper/Images/My_Venues.png" alt="Alternate Text" />
+                    <img id="VenueSignImg" src="~/Helper/Images/8.png" alt="Alternate Text" />
                 </div>
             </div>
         }

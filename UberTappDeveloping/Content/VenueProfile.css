@@ -24,7 +24,6 @@
         cursor: pointer;
     }
 
-
     #VenueProfileView #MapAreaContainer .DecorativeImgs {
         margin-top: 6%;
         text-align: center;
@@ -34,7 +33,7 @@
         width: 20%;
     }
 
-    #VenueProfileView #MapAreaContainer .row .form-group #PurpleBeerImg {
+    #VenueProfileView #MapAreaContainer .row .form-group #LocationImg {
         width: 10%;
     }
 

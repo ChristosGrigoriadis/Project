@@ -227,11 +227,11 @@ namespace UberTappDeveloping.Controllers
                 Heading = "Update beer information.",
                 Id = beer.Id,
                 Name = beer.Name,
+                EBC = beer.EBC,
                 ABV = beer.ABV,
                 IBU = beer.IBU,
                 Description = beer.Description
             };
-
 
             if (viewModel == null)
                 return HttpNotFound();
