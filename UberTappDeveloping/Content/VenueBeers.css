@@ -8,16 +8,18 @@
     background-size: cover;
 }
 
-    #VenueBeersView .row .form-group h1 {
-        text-align: center;
+
+    #VenueBeersView #TitleContainer .form-group {
+        margin-top: 2%;
+        text-align:center;
+    }
+
+    #VenueBeersView .row .form-group #FrozenGlassImg {
+        width: 4%;
     }
 
     #VenueBeersView .row .form-group #AvailableBeersImg {
-        width:55%;
-        display:block;
-        margin-left:auto;
-        margin-right:auto;
-        margin-top:2%;
+        width:50%;     
     }
 
 /*Kots End*/

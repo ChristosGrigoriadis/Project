@@ -1,47 +1,72 @@
 ﻿@model UberTappDeveloping.ViewModels.EventFormViewModel
-@{
-    ViewBag.Title = "New";
-}
 
-@if (Model.Event.Id == 0)
-{
-    <h2>Create Event</h2>
-}
-else
-{
-    <h2>Edit Event</h2>
-}
+@*<style></style>*@
+<link href="~/Content/KotsDisplay.css" rel="stylesheet" />
+@*<style></style>*@
 
-@using (Html.BeginForm(Model.ActionName, "Event"))
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(v => v.Event.Id)
+<body id="EventFormView" class="body">
+    <div class="container-fluid">
+        @if (Model.Event.Id == 0)
+        {
+            <div id="TitleContainer" class="row">
+                <div class="form-group col-md-12">
+                    <img id="VenueSignImg" src="~/Helper/Images/8.png" alt="Alternate Text" />
+                    <img id="AddAnEventImg" src="~/Helper/Images/Add_an_Event.png" alt="Alternate Text" />
+                    <img id="VenueSignImg" src="~/Helper/Images/8.png" alt="Alternate Text" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div id="TitleContainer" class="row">
+                <div class="form-group col-md-12">
+                    <img id="VenueSignImg" src="~/Helper/Images/8.png" alt="Alternate Text" />
+                    <img id="EditAnEventImg" src="~/Helper/Images/Edit_an_Event.png" alt="Alternate Text" />
+                <img id="VenueSignImg" src="~/Helper/Images/8.png" alt="Alternate Text" />
+                </div>
+            </div>
+        }
 
-    <div class="form-group">
-        @Html.LabelFor(v => v.Event.Date)
-        @Html.TextBoxFor(v => v.Event.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", value = "" })
-        @Html.ValidationMessageFor(v => v.Event.Date)
+        <div id="FormArea" class="row">
+            <div class="form-group col-md-6">
+                @using (Html.BeginForm(Model.ActionName, "Event"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(v => v.Event.Id)
+
+                    <div class="form-group">
+                        @Html.LabelFor(v => v.Event.Date)
+                        @Html.TextBoxFor(v => v.Event.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", value = "" })
+                        @Html.ValidationMessageFor(v => v.Event.Date)
+                    </div>
+
+                    <div id="TextArea" class="form-group">
+                        @Html.LabelFor(v => v.Event.Description)
+                        @Html.TextBoxFor(v => v.Event.Description, new { @class = "form-control", autofocus = true })
+                        @Html.ValidationMessageFor(v => v.Event.Description)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(v => v.Event.VenueId)
+                        @Html.DropDownListFor(v => v.Event.VenueId, new SelectList(Model.Venues, "Id", "Name"), " --- Select --- ", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(v => v.Event.VenueId)
+                    </div>
+
+                    <div id="BtnArea" class="form-group">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        if (Model.Event.Id != 0)
+                        {
+                            <button id="deleteBtn" js-event-id="@Model.Event.Id" class="btn btn-danger">Cancel</button>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="form-group col-md-6">
+                <img id="DrunkUserImg" src="~/Helper/Images/9.png" alt="Alternate Text" />
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(v => v.Event.Description)
-        @Html.TextBoxFor(v => v.Event.Description, new { @class = "form-control", autofocus = true })
-        @Html.ValidationMessageFor(v => v.Event.Description)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(v => v.Event.VenueId)
-        @Html.DropDownListFor(v => v.Event.VenueId, new SelectList(Model.Venues, "Id", "Name"), " --- Select --- ", new { @class = "form-control" })
-        @Html.ValidationMessageFor(v => v.Event.VenueId)
-    </div>
-
-    <button type="submit" class="btn btn-primary">Save</button>
-    if (Model.Event.Id != 0)
-    {
-        <button id="deleteBtn" js-event-id="@Model.Event.Id" class="btn btn-danger">Cancel</button>
-    }
-
-}
+</body>
 
 
 @section scripts

@@ -6,7 +6,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="shortcut icon" type="image/ico" href="~/Helper/Images/1.png">
+    <title>UberTapp</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -43,8 +44,8 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
                             @if (User.IsInRole(RoleNames.Admin) || User.IsInRole(RoleNames.VenueOwner)) // Admin & VenueOwner can add
                             {
-                                <li><a href="@Url.Action("BeerForm", "Beer")">Add New Beer</a></li>
                                 <li><a href="@Url.Action("Beers", "Beer")">All Beers</a></li>
+                                <li><a href="@Url.Action("Create", "Beer")">Add New Beer</a></li>
                             }
                             else
                             {
@@ -83,9 +84,9 @@
                             }
                             else
                             {
-                                <li><a href="@Url.Action("New", "Event")">Add an Event</a></li>
-                                <li><a href="@Url.Action("VenueOwnerEvents", "Event")">My Events</a></li>
                                 <li><a href="@Url.Action("Index", "Event")">All Events</a></li>
+                                <li><a href="@Url.Action("VenueOwnerEvents", "Event")">My Events</a></li>
+                                <li><a href="@Url.Action("New", "Event")">Add an Event</a></li>
                             }
                         </ul>
                     </li>

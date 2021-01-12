@@ -47,13 +47,19 @@
     color: white;
 }
 
-    #RegisterView .container-fluid .row .form-group #CreateANewAccountImg {
-        padding: 10px 15px;
-        margin-top: 1%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+    #RegisterView .container-fluid #TitleContainer .form-group {
+        text-align: center;
+        margin-top: 2%;
     }
+
+        #RegisterView .container-fluid #TitleContainer .form-group #SingleCartoonBeerImg {
+            width: 4%;
+        }
+
+        #RegisterView .container-fluid #TitleContainer .form-group #CreateANewAccountImg {
+            width: 56%;
+            padding-right: 12px;
+        }
 
     #RegisterView .container-fluid #registerBtnRow {
         padding: 10px 15px;
@@ -125,48 +131,60 @@
         margin-bottom: 3%;
     }
 
-        #AboutView .container-fluid .row .form-group #AboutUs {
-            padding: 10px 15px;
-            margin-top: 1%;
-            width: 35%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    #AboutView .container-fluid #TitleContainer {
+        text-align: center;
+        padding: 15px 20px;
+    }
 
-        #AboutView .container-fluid .row .form-group p {
-            text-align: center;
-            font-size: 1.4em;
-        }
+    #AboutView .container-fluid .row .form-group #CheersBeerImg {
+        width: 4%;
+    }
 
-        #AboutView .container-fluid .row .form-group #DrunkUserImg {
-            padding: 10px 15px;
-            margin-top: 1%;
-            width: 60%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    #AboutView .container-fluid .row .form-group #AboutUs {
+        width: 34%;
+    }
 
-        #AboutView .container-fluid .row .form-group #VenueSignImg {
-            padding: 10px 15px;
-            margin-top: 1%;
-            width: 60%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    #AboutView .container-fluid .row .form-group p {
+        text-align: center;
+        font-size: 1.4em;
+    }
 
-        #AboutView .container-fluid .row .form-group h2 {
-            text-align: center;
-            padding-bottom: 5px;
-        }
+    #AboutView .container-fluid .row .form-group #DrunkUserImg {
+        padding: 10px 15px;
+        margin-top: 1%;
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-        #AboutView .container-fluid .row .form-group li {
-            text-align: left;
-            font-size: 1.4em;
-            padding-bottom: 1px;
-        }
+    #AboutView .container-fluid .row .form-group #VenueSignImg {
+        padding: 10px 15px;
+        margin-top: 1%;
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #AboutView .container-fluid .row .form-group #ForBeerEnthusiastImg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 5px;
+        width: 98%;
+    }
+
+    #AboutView .container-fluid .row .form-group #ForBusinessImg {
+        padding-bottom: 5px;
+        width: 80%;
+    }
+
+    #AboutView .container-fluid .row .form-group li {
+        text-align: left;
+        font-size: 1.4em;
+        padding-bottom: 1px;
+    }
 
 /*Contact.cshtml*/
 
@@ -179,14 +197,25 @@
     #ContactView .container-fluid .row .form-group #ContactImg {
         padding: 10px 15px;
         margin-top: 2%;
-        width: 55%;
+        margin-bottom:2%;
+        width: 48%;
         display: block;
         margin-left: 0;
         margin-right: auto;
     }
 
-    #ContactView .container-fluid .address a {
-        color: purple;
+    #ContactView .container-fluid .row .form-group .address {
+        font-size: 1.2em;
+    }
+
+        #ContactView .container-fluid .row .form-group .address a {
+            color: purple;
+        }
+
+    #ContactView .container-fluid .row .form-group #PhoneImg {
+        position: fixed;
+        bottom: 0;
+        width: 32%;
     }
 
 /*EmailForm.cshtml*/
@@ -212,10 +241,10 @@
     #EmailFormView .container-fluid .row .form-group #SparkingBeerImg {
         position: fixed;
         bottom: 0;
-        width: 25%;
-        padding-left: 6px;
-        padding-bottom: 6px;
-        margin-left: 10%;
+        width: 28%;
+        padding-left: 25px;
+        padding-bottom: 5px;
+        margin-left: 4%;
     }
 
     #EmailFormView .container-fluid form #EmailBtnRow {
@@ -234,14 +263,20 @@
     background-size: cover;
 }
 
-    #AllUsersView .container-fluid .row .form-group #AllUsersImg {
-        padding: 10px 15px;
+    #AllUsersView .container-fluid #TitleContainer .form-group {
+        text-align: center;
         margin-top: 2%;
-        width: 75%;
-        display: block;
-        margin-left: 0;
-        margin-right: auto;
+        margin-bottom: 2%;
     }
+
+        #AllUsersView .container-fluid #TitleContainer .form-group #CheersBeerImg {
+            width: 10%;
+        }
+
+        #AllUsersView .container-fluid #TitleContainer .form-group #AllUsersImg {
+            width: 66%;
+            padding-left: 2px;
+        }
 
     #AllUsersView .container-fluid .row .form-group #myProfile {
         padding: 5px 10px;
@@ -289,14 +324,20 @@
     background-size: cover;
 }
 
-    #DetailsView .container-fluid .row .form-group #ProfileDetailsImg {
-        padding: 10px 15px;
+    #DetailsView .container-fluid #TitleContainer .form-group {
+        text-align: center;
         margin-top: 2%;
-        width: 100%;
-        display: block;
-        margin-left: 0;
-        margin-right: auto;
+        margin-bottom: 2%;
     }
+
+        #DetailsView .container-fluid #TitleContainer .form-group #ProfileDetailsImg {
+            width: 74%;
+            padding-right:2px;
+        }
+
+        #DetailsView .container-fluid #TitleContainer .form-group #SingleBeerImg {
+            width: 4%;
+        }
 
     #DetailsView .container-fluid #ProfileDetailsField {
         color: white;
@@ -332,23 +373,20 @@
     color: white;
 }
 
-    #UserFormView .container-fluid .row .form-group #UpdateProfileImg {
-        padding: 10px 15px;
+    #UserFormView .container-fluid #TitleContainer .form-group {
         margin-top: 2%;
-        width: 40%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        text-align: center;
     }
 
-    #UserFormView .container-fluid .row #backToDetails .btn {
-        margin-left: 1%;
-        margin-right: 1%;
-    }
+        #UserFormView .container-fluid #TitleContainer .form-group #CheersBeerImg {
+            width: 6%;
+        }
 
-        #UserFormView .container-fluid .row #backToDetails .btn a {
-            color: white;
-            text-decoration: none;
+        #UserFormView .container-fluid #TitleContainer .form-group #UpdateProfileImg {
+            padding-top: 24px;
+            padding-right: 4px;
+            padding-left: 4px;
+            width: 46%;
         }
 
     #UserFormView .container-fluid .row .form-group h4 {
@@ -379,23 +417,23 @@
     color: white;
 }
 
-    #VenueFormView .container-fluid .row .form-group #AddNewVenueImg {
-        padding: 10px 15px;
+
+    #VenueFormView .container-fluid #TitleContainer .form-group {
+        text-align: center;
         margin-top: 2%;
-        width: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
     }
 
-    #VenueFormView .container-fluid .row .form-group #EditVenueImg {
-        padding: 10px 15px;
-        margin-top: 2%;
-        width: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        #VenueFormView .container-fluid #TitleContainer .form-group #VenueSignImg {
+            width: 8%;
+        }
+
+        #VenueFormView .container-fluid #TitleContainer .form-group #AddNewVenueImg {
+            width: 80%;
+        }
+
+        #VenueFormView .container-fluid #TitleContainer .form-group #EditVenueImg {
+            width: 54%;
+        }
 
     #VenueFormView .container-fluid .row .form-group #VenuesTranspImg {
         position: fixed;
@@ -424,23 +462,22 @@
     background-size: cover;
 }
 
-    #VenuesView .container-fluid .row .form-group #VenuesImg {
-        padding: 10px 15px;
+    #VenuesView .container-fluid #TitleContainer .form-group {
+        text-align: center;
         margin-top: 2%;
-        width: 78%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
     }
 
-    #VenuesView .container-fluid .row .form-group #MyVenuesImg {
-        padding: 10px 15px;
-        margin-top: 2%;
-        width: 78%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        #VenuesView .container-fluid #TitleContainer .form-group #VenueSignImg {
+            width: 10%;
+        }
+
+        #VenuesView .container-fluid #TitleContainer .form-group #VenuesImg {
+            width: 60%;
+        }
+
+        #VenuesView .container-fluid #TitleContainer .form-group #MyVenuesImg {
+            width: 70%;
+        }
 
     #VenuesView .container-fluid .row #VenueField {
         color: white;
@@ -489,36 +526,36 @@
     text-align: center;
 }
 
-#SuccessfulPaymentView .container-fluid .row #PremUserId {
-    display: block;
-    padding: 10px 15px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3%;
-    margin-bottom: 1%;
-    width: 65%;
-    border-radius: 7%;
-}
+    #SuccessfulPaymentView .container-fluid .row #PremUserId {
+        display: block;
+        padding: 10px 15px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3%;
+        margin-bottom: 1%;
+        width: 65%;
+        border-radius: 7%;
+    }
 
-#SuccessfulPaymentView .container-fluid .row #premBtn {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px 10px;
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-    #SuccessfulPaymentView .container-fluid .row #premBtn a {
+    #SuccessfulPaymentView .container-fluid .row #premBtn {
         display: block;
         margin-left: auto;
         margin-right: auto;
         padding: 5px 10px;
         margin-top: 1%;
         margin-bottom: 1%;
-        text-decoration: none;
-        color: white;
     }
+
+        #SuccessfulPaymentView .container-fluid .row #premBtn a {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 5px 10px;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            text-decoration: none;
+            color: white;
+        }
 
 /*Pavlos Notifications CSS start*/
 
@@ -552,8 +589,8 @@
 }
 
     #DetailsView #myModal .modal-body ul {
-        list-style:none;
-        padding:0px;
+        list-style: none;
+        padding: 0px;
     }
 
         #DetailsView #myModal .modal-body ul li {
@@ -573,11 +610,11 @@
                 margin-right: 20px;
             }
 
-            #DetailsView #myModal .modal-title {
-                text-align: center;
-                font-size: 24px;
-                font-weight: bold;
-            }
+#DetailsView #myModal .modal-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
 
 #DetailsView #myModal .modal-header {
     background-color: rebeccapurple;
@@ -586,3 +623,312 @@
 }
 
 /*Pavlos Notifications CSS end*/
+
+/*Beers.cshtml*/
+
+#BeersView {
+    background: url('../Helper/Images/RedMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+    #BeersView .container-fluid #TitleContainer {
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 1%;
+    }
+
+        #BeersView .container-fluid #TitleContainer .form-group #BeerpediaImg {
+            width: 32%;
+        }
+
+    #BeersView .container-fluid #ParagraphContainer .form-group p #TinyBeersImg {
+        width: 4%;
+        margin-bottom: 1%;
+    }
+
+    #BeersView .container-fluid #ImageTitleContainer .form-group {
+        text-align: left;
+    }
+
+        #BeersView .container-fluid #ImageTitleContainer .form-group #BookImg {
+            text-align: left;
+            margin-top: 2%;
+            width: 20%;
+        }
+
+    #BeersView .container-fluid .row .form-group .table {
+        text-align: center;
+        color: white;
+    }
+
+        #BeersView .container-fluid .row .form-group .table tr td img {
+            border-radius: 26%;
+            width: 150px;
+            height: 200px;
+        }
+
+        #BeersView .container-fluid .row .form-group .table tr td:nth-child(even) {
+            width: 14%;
+        }
+
+    #BeersView .container-fluid .row .form-group a {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1%;
+        margin-bottom: 4%;
+        width: 40%;
+        background-color: darkred;
+        border: solid black;
+        text-decoration: none;
+        text-align: center;
+        color: white;
+        font-size: 1.4em;
+    }
+
+/*FilterBeers.cshtml*/
+
+#FilterBeersView {
+    background: url('../Helper/Images/purpleMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+    #FilterBeersView .container-fluid #TitleContainer {
+        text-align: center;
+        margin-top: 2%;
+        margin-bottom: 1%;
+    }
+
+    #FilterBeersView .container-fluid .form-group #SingleBeerImg {
+        width: 3%;
+    }
+
+    #FilterBeersView .container-fluid .form-group #SelectedBeersImg {
+        width: 54%;
+    }
+
+    #FilterBeersView .container-fluid #TableContainer {
+        color: white;
+    }
+
+        #FilterBeersView .container-fluid #TableContainer .form-group #SingleCartoonBeerImg {
+            position: fixed;
+            bottom: 0;
+            width: 14%;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+
+        #FilterBeersView .container-fluid #TableContainer .form-group #beers tbody tr:hover {
+            color: black;
+            cursor: pointer;
+        }
+
+        #FilterBeersView .container-fluid #TableContainer .form-group #beers tbody tr .buttons a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #FilterBeersView .container-fluid #TableContainer .form-group #beers tbody tr .buttons {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+
+/*Details(Beer).cshtml*/
+
+#DetailsBeerView {
+    background: url('../Helper/Images/dark_backround.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+    #DetailsBeerView .container-fluid #TitleContainer .form-group {
+        margin-top: 2%;
+    }
+
+        #DetailsBeerView .container-fluid #TitleContainer .form-group #OldBeerBottleImg {
+            width: 4%;
+        }
+
+        #DetailsBeerView .container-fluid #TitleContainer .form-group #BeerInformationImg {
+            width: 48%;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+    #DetailsBeerView .container-fluid .row #BtnArea .btn {
+        margin-right: 1%;
+    }
+
+        #DetailsBeerView .container-fluid .row #BtnArea .btn a {
+            text-decoration: none;
+            color: white;
+        }
+
+    #DetailsBeerView .container-fluid .row .col-md-7 #BeersTransp {
+        position: fixed;
+        bottom: 0;
+        width: 42%;
+        padding-left: 15px;
+        padding-bottom: 5px;
+        margin-top: 2%;
+        margin-left: 10%;
+    }
+
+/*BeerForm.cshtml*/
+
+#BeerFormView {
+    background: url('../Helper/Images/YellowMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+    #BeerFormView .field-validation-error {
+        color: red;
+    }
+
+    #BeerFormView .input-validation-error {
+        border: 2px solid red;
+    }
+
+    #BeerFormView .container-fluid #TitleContainer {
+        text-align: left;
+    }
+
+        #BeerFormView .container-fluid #TitleContainer .form-group {
+            margin-top: 1%;
+        }
+
+            #BeerFormView .container-fluid #TitleContainer .form-group #OldBeerBottleImg {
+                width: 4%;
+            }
+
+            #BeerFormView .container-fluid #TitleContainer .form-group #AddBeerImg {
+                padding-left: 6px;
+                width: 30%;
+            }
+
+            #BeerFormView .container-fluid #TitleContainer .form-group #UpdateBeerImg {
+                padding-top: 24px;
+                width: 60%;
+            }
+
+    #BeerFormView .container-fluid .row .form-group #BeerDescription textarea {
+        height: 150px !important;
+    }
+
+    #BeerFormView .container-fluid .row .form-group #BarrelGermImg {
+        position: fixed;
+        bottom: 0;
+        width: 32%;
+        margin-left: 8%;
+    }
+
+    #BeerFormView .container-fluid .row .form-group #SubmitBtn {
+        background-color: black;
+        color: darkgoldenrod;
+        border: solid 1px darkgoldenrod;
+        border-radius: 6%;
+        width: 40%;
+        display: block;
+        margin-top: 4%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.4em;
+        padding: 5px 10px;
+    }
+
+/*Events.cshtml*/
+
+#EventsView {
+    background: url('../Helper/Images/greyishMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+    #EventsView .container-fluid #TitleContainer {
+        text-align: center;
+    }
+
+        #EventsView .container-fluid #TitleContainer .form-group {
+            margin-top: 2%;
+            margin-bottom: 1%;
+        }
+
+            #EventsView .container-fluid #TitleContainer .form-group #CrateBottleImg {
+                width: 8%;
+            }
+
+            #EventsView .container-fluid #TitleContainer .form-group #EventsImg {
+                width: 28%;
+            }
+
+    #EventsView .container-fluid #TableContainer {
+        color: purple;
+    }
+
+        #EventsView .container-fluid #TableContainer .table tbody {
+            color: whitesmoke;
+        }
+
+            #EventsView .container-fluid #TableContainer .table tbody tr:hover {
+                cursor: pointer;
+                color: purple;
+            }
+
+            #EventsView .container-fluid #TableContainer .table tbody tr .flex-area {
+                display: flex;
+                justify-content: center;
+            }
+
+/*EventForm.cshtml*/
+
+#EventFormView {
+    background: url('../Helper/Images/greyishMovBcg.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+    #EventFormView .container-fluid #TitleContainer {
+        text-align: left;
+    }
+
+        #EventFormView .container-fluid #TitleContainer .form-group {
+            margin-top: 2%;
+            margin-bottom: 1%;
+        }
+
+            #EventFormView .container-fluid #TitleContainer .form-group #VenueSignImg {
+                width: 8%;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            #EventFormView .container-fluid #TitleContainer .form-group #AddAnEventImg {
+                width: 38%;
+            }
+
+            #EventFormView .container-fluid #TitleContainer .form-group #EditAnEventImg {
+                width: 38%;
+            }
+
+    #EventFormView .container-fluid #FormArea {
+        color: white;
+    }
+
+        #EventFormView .container-fluid #FormArea .col-md-6 #TextArea input {
+            height: 100px;
+        }
+
+        #EventFormView .container-fluid #FormArea .col-md-6 #BtnArea {
+            text-align: center;
+            padding-top: 14px;
+        }
+
+        #EventFormView .container-fluid #FormArea .form-group #DrunkUserImg {
+            position: fixed;
+            bottom: 0;
+            width: 33%;
+            margin-left: 8%;
+            margin-right: auto;
+        }
