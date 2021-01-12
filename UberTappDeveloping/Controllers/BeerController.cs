@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UberTappDeveloping.DAL;
+using UberTappDeveloping.Helper.Roles;
 using UberTappDeveloping.Models;
 using UberTappDeveloping.ViewModels;
 
@@ -27,7 +28,6 @@ namespace UberTappDeveloping.Controllers
 
         #region GET
         // GET: Beer
-        [Authorize]
         public ActionResult Beers()
         {
             var userId = User.Identity.GetUserId();
@@ -219,6 +219,7 @@ namespace UberTappDeveloping.Controllers
             }
         }
 
+        [Authorize(Roles = RoleNames.Admin)]
         public ActionResult Edit(int id)
         {
             var beer = context.Beers.SingleOrDefault(b => b.Id == id);
@@ -239,6 +240,7 @@ namespace UberTappDeveloping.Controllers
             return View("BeerForm", viewModel);
         }
 
+        [Authorize(Roles = RoleNames.Admin)]
         public ActionResult Create()
         {
 
@@ -261,9 +263,10 @@ namespace UberTappDeveloping.Controllers
 
         #region POST
 
-        [Authorize]
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleNames.Admin)]
         public ActionResult Create(BeerFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -284,7 +287,7 @@ namespace UberTappDeveloping.Controllers
             return RedirectToAction("Beers", "Beer");
         }
 
-        [Authorize]
+        [Authorize(Roles = RoleNames.Admin)]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Update(BeerFormViewModel viewModel)
@@ -304,7 +307,7 @@ namespace UberTappDeveloping.Controllers
             return RedirectToAction("Beers", "Beer");
         }
 
-        [Authorize]
+        [Authorize(Roles = RoleNames.Admin)]
         public ActionResult Delete(int id)
         {
             var beer = context.Beers.SingleOrDefault(b => b.Id == id);

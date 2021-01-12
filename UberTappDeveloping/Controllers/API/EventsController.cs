@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using UberTappDeveloping.DAL;
 using System.Data.Entity;
 using UberTappDeveloping.Models;
+using UberTappDeveloping.Helper.Roles;
 
 namespace UberTappDeveloping.Controllers.API
 {
@@ -25,7 +26,7 @@ namespace UberTappDeveloping.Controllers.API
             var userId = User.Identity.GetUserId();
             var evnt = context.Events
                 .Include(e => e.Venue)
-                .Single(e => e.Id == id && e.Venue.OwnerId == userId);
+                .Single(e => e.Id == id /*&& (e.Venue.OwnerId == userId || User.IsInRole(RoleNames.Admin))*/);
 
             if (evnt.IsCanceled)
                 return NotFound();

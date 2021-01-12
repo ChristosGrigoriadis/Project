@@ -14,7 +14,7 @@
 <body id="VenueProfileView">
 
     <div id="ProfilePic">
-        @if (Model.Venue.OwnerId == User.Identity.GetUserId())
+        @if (Model.Venue.OwnerId == User.Identity.GetUserId() || User.IsInRole(RoleNames.Admin))
         {
             using (Html.BeginForm("VenueProfileImage", "Venue", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
@@ -34,7 +34,7 @@
         </div>
 
     </div>
-    @if (Model.Venue.OwnerId == User.Identity.GetUserId())
+    @if (Model.Venue.OwnerId == User.Identity.GetUserId() || User.IsInRole(RoleNames.Admin))
     {
         using (Html.BeginForm("VenueProfile", "Venue", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {

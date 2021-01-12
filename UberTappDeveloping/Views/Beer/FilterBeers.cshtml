@@ -30,7 +30,7 @@
                             <th>EBC</th>
                             <th>ABV</th>
                             <th>IBU</th>
-                            <th>Actions</th>
+                            <th style="text-align:center !important;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,12 +42,14 @@
                                 <td>@beer.ABV</td>
                                 <td>@beer.IBU</td>
                                 <td class="buttons">
-                                    @*@if (User.IsInRole(RoleNames.VenueOwner) || User.IsInRole(RoleNames.Admin))*@
-                                    @*{*@
+
                                     <button class="btn btn-sm btn-info">@Html.ActionLink("Info", "Details", "Beer", new { Id = beer.Id }, new { title = "View Beer Details" })</button>
-                                    <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "Beer", new { Id = beer.Id }, new { title = "Update Beer Info" })</button>
-                                    <button class="btn btn-sm btn-danger">@Html.ActionLink("Delete", "Delete", "Beer", new { Id = beer.Id }, new { title = "Delete this beer" })</button>
-                                    @*}*@
+
+                                    @if (User.IsInRole(RoleNames.Admin))
+                                    {
+                                        <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", "Beer", new { Id = beer.Id }, new { title = "Update Beer Info" })</button>
+                                        <button class="btn btn-sm btn-danger">@Html.ActionLink("Delete", "Delete", "Beer", new { Id = beer.Id }, new { title = "Delete this beer" })</button>
+                                    }
                                     @if (User.Identity.IsAuthenticated)
                                     {
                                         if (User.IsInRole(RoleNames.BeerEnthusiast))

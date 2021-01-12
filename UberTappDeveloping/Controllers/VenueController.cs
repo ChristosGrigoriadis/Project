@@ -14,7 +14,7 @@ using System.Data.Entity.Migrations;
 
 namespace UberTappDeveloping.Controllers
 {
-	[Authorize(Roles = RoleNames.VenueOwner)]
+	[Authorize(Roles = RoleNames.VenueOwner+","+RoleNames.Admin)]
 	public class VenueController : Controller
 	{
 		private ApplicationDbContext context;
@@ -107,6 +107,7 @@ namespace UberTappDeveloping.Controllers
 
 
 		//Get venue/venueBeers
+		[Authorize(Roles = RoleNames.VenueOwner)]
 		public ActionResult VenueBeers()
 		{
 			var userId = User.Identity.GetUserId();
@@ -149,7 +150,7 @@ namespace UberTappDeveloping.Controllers
 			var viewModel = new VenueFormViewModel
 			{
 				Locations = context.Locations,
-				ManagerName = GetUser().FirstName + " " + GetUser().LastName,
+				ManagerName = venue.Manager,
 				Venue = venue
 			};
 

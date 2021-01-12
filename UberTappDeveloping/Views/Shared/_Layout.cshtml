@@ -1,4 +1,4 @@
-﻿ @using Microsoft.AspNet.Identity
+﻿@using Microsoft.AspNet.Identity
 @using UberTappDeveloping.Helper.Roles;
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
-                            @if (User.IsInRole(RoleNames.Admin) || User.IsInRole(RoleNames.VenueOwner)) // Admin & VenueOwner can add
+                            @if (User.IsInRole(RoleNames.Admin)) // Admin & VenueOwner can add
                             {
                                 <li><a href="@Url.Action("Beers", "Beer")">All Beers</a></li>
                                 <li><a href="@Url.Action("Create", "Beer")">Add New Beer</a></li>
@@ -68,7 +68,10 @@
                                 <li><a href="@Url.Action("Index", "Venue")">All Venues</a></li>
                                 <li><a href="@Url.Action("UserVenues", "Venue")">My Venues</a></li>
                                 <li><a href="@Url.Action("New", "Venue")">Create Venue</a></li>
-                                <li><a href="@Url.Action("VenueBeers", "Venue")">Add Beers to Venues</a></li>
+                                if (User.IsInRole(RoleNames.VenueOwner))
+                                {
+                                    <li><a href="@Url.Action("VenueBeers", "Venue")">Add Beers to Venues</a></li>
+                                }
                             }
                         </ul>
                     </li>

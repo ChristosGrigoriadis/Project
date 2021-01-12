@@ -62,7 +62,7 @@
                                 <td class="date">@venue.DateOpened.Value.ToString("dd MMMM yyyy")</td>
                                 <td>@venue.Location.Display</td>
                                 <td class="flex-area">
-                                    @if (!Model.IsIndexAction)
+                                    @if (!Model.IsIndexAction || User.IsInRole(RoleNames.Admin))
                                     {
                                         <a class="btn btn-primary" href="@Url.Action("Edit","venue",new {id = venue.Id })">Edit</a>
                                     }

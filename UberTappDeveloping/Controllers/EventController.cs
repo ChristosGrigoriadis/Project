@@ -13,7 +13,7 @@ using System.Data.Entity.Migrations;
 
 namespace UberTappDeveloping.Controllers
 {
-    [Authorize(Roles = RoleNames.VenueOwner)]
+    [Authorize(Roles = RoleNames.VenueOwner + "," + RoleNames.Admin)]
     public class EventController : Controller
     {
         private ApplicationDbContext context;

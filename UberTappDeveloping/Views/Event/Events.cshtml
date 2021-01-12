@@ -1,5 +1,5 @@
 ﻿@model UberTappDeveloping.ViewModels.EventsViewModel
-
+@using UberTappDeveloping.Helper.Roles
 @*<style></style>*@
 <link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
@@ -54,7 +54,7 @@
                             <td class="date">@evt.Date.ToString("dd MMMM yyyy") </td>
                             <td>@evt.Description</td>
                             <td>@evt.Venue.Name</td>
-                            @if (!Model.IsIndexAction)
+                            @if (!Model.IsIndexAction || User.IsInRole(RoleNames.Admin))
                             {
                                 if (!evt.IsCanceled)
                                 {

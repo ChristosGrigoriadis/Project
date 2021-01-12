@@ -777,7 +777,11 @@
 
         #FilterBeersView .container-fluid #TableContainer .form-group #beers tbody tr .buttons {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
+        }
+
+        #FilterBeersView .container-fluid #TableContainer .form-group #beers tbody tr .buttons button {
+            margin-right:2%;
         }
 
 

@@ -1,5 +1,5 @@
 ﻿@model UberTappDeveloping.Models.Beer
-
+@using UberTappDeveloping.Helper.Roles
 @*<style></style>*@
 <link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
@@ -70,9 +70,13 @@
 
         <div class="row">
             <div id="BtnArea" class="form-group col-md-5">
-                <div class="btn btn-success form-group col-md-2">
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
-                </div>
+                @if (User.IsInRole(RoleNames.Admin))
+                {
+                    <div class="btn btn-success form-group col-md-2">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                    </div>
+                }
+
                 <div class="btn btn-danger form-group col-md-3">
                     @Html.ActionLink("Back to List", "Beers", "Beer")
                 </div>
