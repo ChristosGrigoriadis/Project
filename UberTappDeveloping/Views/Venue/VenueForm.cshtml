@@ -31,6 +31,7 @@
             <div class="form-group col-md-6">
                 @using (Html.BeginForm(Model.ActionName, "Venue"))
                 {
+                    @Html.AntiForgeryToken()
                     @Html.HiddenFor(v => v.Venue.Id)
                     <div class="form-group">
                         @Html.LabelFor(v => v.Venue.Name)

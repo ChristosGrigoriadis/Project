@@ -18,6 +18,8 @@ namespace UberTappDeveloping.Models
 
         [FutureDate(ErrorMessage = "Event's Date must be a future date")]
         [Display(Name = "Event's Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime Date { get; set; }
 
         public bool IsCanceled { get; set; }

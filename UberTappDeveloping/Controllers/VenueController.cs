@@ -157,6 +157,7 @@ namespace UberTappDeveloping.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Update(Venue venue)
 		{
 			if (venue == null)
@@ -234,6 +235,7 @@ namespace UberTappDeveloping.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult New(Venue venue)
 		{
 			if (!ModelState.IsValid)

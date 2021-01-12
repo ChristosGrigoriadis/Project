@@ -11,8 +11,11 @@ namespace UberTappDeveloping.Helper.CustomDA
     {
         public override bool IsValid(object value)
         {
+            if (value != null)
+                value = String.Format("{0:M/d/yyyy}", value); // Fix Localization Date problems
+
             DateTime dateTime;
-            var isValid = DateTime.TryParseExact(Convert.ToString(value), "M/d/yyyy hh:mm:ss tt",
+            var isValid = DateTime.TryParseExact(Convert.ToString(value), "M/d/yyyy",
                 CultureInfo.CurrentCulture, DateTimeStyles.None, out dateTime);
 
             return (isValid && dateTime > DateTime.Now);

@@ -65,13 +65,15 @@ namespace UberTappDeveloping.Controllers
             return View("Events", viewModel);
         }
 
+        [ValidateAntiForgeryToken]
+        [HttpPost]
         public ActionResult Update(EventFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.Values.SelectMany(v => v.Errors);
 
-                return View("EventForm", new EventFormViewModel(User.Identity.GetUserId(), new Event())); ;
+                return View("EventForm", new EventFormViewModel(User.Identity.GetUserId(), viewModel.Event)); ;
             }
 
             var evntDb = context.Events.SingleOrDefault(e => e.Id == viewModel.Event.Id);
@@ -113,6 +115,7 @@ namespace UberTappDeveloping.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult New(EventFormViewModel viewModel)
         {
             if (!ModelState.IsValid)

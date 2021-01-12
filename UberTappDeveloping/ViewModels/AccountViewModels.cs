@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using UberTappDeveloping.Helper.CustomDA;
 using UberTappDeveloping.Helper.Enums;
 using UberTappDeveloping.Models;
 
@@ -99,6 +100,7 @@ namespace UberTappDeveloping.ViewModels
 		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd/MMM/yyyy}", ApplyFormatInEditMode = true)]
 		[Display(Name = "Date Of Birth")]
+		//[FutureDate(ErrorMessage = "Event's Date must be a future date")]
 		public DateTime? BirthDate { get; set; }
 
 		public Gender? Gender { get; set; }
