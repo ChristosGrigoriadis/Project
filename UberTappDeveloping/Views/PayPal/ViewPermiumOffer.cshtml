@@ -5,20 +5,41 @@
 <link href="~/Content/KotsDisplay.css" rel="stylesheet" />
 @*<style></style>*@
 
-<!--<h2>ViewPermiumOffer</h2>
-
-<button class="btn btn-sm btn-primary">@Html.ActionLink("Become A Premium User", "PaymentWithPaypal", "PayPal")</button>-->
-
-<body class="bodyPremiumOffer">
+<body id="ViewPermiumOfferView" class="body-content">
     <div class="container-fluid">
-        <div class="row">
-            @*<img id="premId" src="~/Helper/Images/Premium User.jpg" />*@
+
+        <div id="TitleContainer" class="row">
+            <div class="form-group col-md-12">
+                <img id="PurpleBeerImg" src="~/Helper/Images/1.png" alt="Alternate Text" />
+                <img id="PremiumUserOfferImg" src="~/Helper/Images/Premium_User_Offer.png" alt="Alternate Text" />
+                <img id="PurpleBeerImg" src="~/Helper/Images/1.png" alt="Alternate Text" />
+            </div>
         </div>
+
+        <div id="TextContainer" class="row">
+                <p>- Once in a lifetime offer to become a Premium User in UberTapp with 10€ only!</p>
+                <p>- What you get you ask? Ok... </p>
+
+                <ul>
+                    <li>10% Discount on EVERY BEER OF EVERY VENUE registered in our App!</li>
+                    <li>Free Pass in Venue Events!</li>
+                    <li>An Awesome Membership Card (delivered to your house after 5 - 10 business days)</li>
+                    <li>And SO much more...</li>
+                </ul>
+
+                   
+        </div>
+
         <div class="row">
-            <button id="premBtn" class="btn btn-primary">
-                @Html.ActionLink("Become A Premium User", "PaymentWithPaypal", "PayPal", new { Id = User.Identity.GetUserId() })
+            <button class="btn btn-lg btn-primary">
+                @Html.ActionLink("Become A Premium User!", "PaymentWithPaypal", "PayPal", new { Id = User.Identity.GetUserId() })
             </button>
         </div>
+
+        <div class="row">
+            <h6>*Premium Accounts are activated one business day after payment*</h6>
+        </div>
+
     </div>
 </body>
 

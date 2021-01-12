@@ -594,6 +594,7 @@
     <Content Include="Helper\Images\My_Venues.png" />
     <Content Include="Helper\Images\phone.png" />
     <Content Include="Helper\Images\PremiumUser.jpg" />
+    <Content Include="Helper\Images\Premium_User_Offer.png" />
     <Content Include="Helper\Images\Profile_Details.png" />
     <Content Include="Helper\Images\Purple.jpg" />
     <Content Include="Helper\Images\purpleMovBcg.gif" />
