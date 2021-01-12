@@ -511,11 +511,55 @@
 
 /*ViewPermiumOffer.cshtml*/
 
-.bodyPremiumOffer {
-    background-image: url('../Helper/Images/Premium User.jpg');
-    background-repeat: no-repeat;
+#ViewPermiumOfferView {
+    background: url('../Helper/Images/YellowMovBcg.gif') no-repeat center center fixed;
     background-size: cover;
+    text-align:center;
 }
+
+    #ViewPermiumOfferView .container-fluid #TitleContainer .form-group {
+       margin-top:2%;
+       margin-bottom:1%;
+    }
+
+        #ViewPermiumOfferView .container-fluid #TitleContainer .form-group #PurpleBeerImg {
+            width: 8%;
+        }
+
+        #ViewPermiumOfferView .container-fluid #TitleContainer .form-group #PremiumUserOfferImg {
+            width:54%;
+        }
+
+    #ViewPermiumOfferView .container-fluid #TextContainer {
+        margin-top: 4%;
+    }
+
+        #ViewPermiumOfferView .container-fluid #TextContainer p {
+            font-weight: 800;
+            font-size: 1.8em;
+        }
+
+        #ViewPermiumOfferView .container-fluid #TextContainer ul {
+            font-weight: 600;
+            font-size: 1.4em;
+            list-style:none;
+            margin-top:3%;
+        }
+
+        #ViewPermiumOfferView .container-fluid .row .btn {
+            margin-top:5%;
+        }
+
+        #ViewPermiumOfferView .container-fluid .row .btn a {
+            text-decoration:none;
+            color:#fff;
+        }
+
+    #ViewPermiumOfferView .container-fluid .row h6 {
+       position:fixed;
+       bottom:0;
+
+    }
 
 /*SuccessfulPayment.cshtml*/
 
