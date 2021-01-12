@@ -216,6 +216,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CustomDA\IsAdult.cs" />
     <Compile Include="Helper\Enums\Gender.cs" />
     <Compile Include="Helper\Enums\NotificationType.cs" />
     <Compile Include="Helper\Enums\SupportCategory.cs" />

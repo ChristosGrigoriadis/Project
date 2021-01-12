@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using UberTappDeveloping.Helper.CustomDA;
 using UberTappDeveloping.Helper.Enums;
 using UberTappDeveloping.Models;
 
@@ -33,6 +34,7 @@ namespace UberTappDeveloping.ViewModels
 		[DataType(DataType.Date)]
 		[DisplayFormat(DataFormatString = "{0:dd/MMM/yyyy}", ApplyFormatInEditMode = true)]
 		[Display(Name = "Date Of Birth")]
+		[IsAdult(ErrorMessage = "You have to be over 18!")]
 		public DateTime? BirthDate { get; set; }
 
 		public Gender? Gender { get; set; }

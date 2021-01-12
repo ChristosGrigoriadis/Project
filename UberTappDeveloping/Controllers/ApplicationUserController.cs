@@ -102,11 +102,12 @@ namespace UberTappDeveloping.Controllers
 		[HttpPost]
 		[Authorize]
 		[ValidateAntiForgeryToken]
-		public ActionResult Save(ApplicationUser applicationUser)
+		public ActionResult Save(UserFormViewModel applicationUser)
 		{
-
+			var errors = ModelState.Values.SelectMany(v => v.Errors);
 			if (!ModelState.IsValid)
 			{
+				applicationUser.Locations = context.Locations;
 				return View("UserForm", applicationUser);
 			}
 
