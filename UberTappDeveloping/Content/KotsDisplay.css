@@ -676,8 +676,12 @@
     background-size: cover;
     color: white;
     text-align: center;
-    font-size:2em;
+    
 }
+
+    #BeersView .container-fluid {
+        font-size: 1.3em;
+    }
 
     #BeersView .container-fluid #TitleContainer {
         text-align: center;

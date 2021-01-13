@@ -25,6 +25,7 @@
                 }
                 else if (User.IsInRole(RoleNames.BeerEnthusiast))
                 {
+                    <button class="btn btn-sm btn-primary">@Html.ActionLink("All Users", "AllUsers", null, new { title = "View All Users" })</button>
                     <button class="btn btn-sm btn-success">@Html.ActionLink("Edit", "Edit", new { Id = User.Identity.GetUserId() }, new { title = "Update Profile" })</button>
                     <button id="deleteBtn" class="btn btn-sm btn-danger" title="Delete Profile">Delete</button>
 
