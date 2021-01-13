@@ -98,7 +98,7 @@ namespace UberTappDeveloping.Controllers
 				GetImages = venue.VenueImages,
 				ProfileImage = venue.ProfileImage,
 				Beers = venue.VenueBeers.Select(vb => new BeerPriceViewModel { Name = vb.AvailableBeer.Name, Price = vb.Price }).OrderBy(vm => vm.Name),
-				Events = venue.Events,
+				Events = venue.Events.OrderBy(e => e.Date),
 				Location = venue.Location
 			};
 

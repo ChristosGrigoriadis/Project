@@ -18,6 +18,17 @@
 
     #VenueProfileView .container-fluid .row .col-md-8 h1 {
         text-align: center;
+        font-weight: bold;
+        color: darkslateblue;
+        background-color: blanchedalmond;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        border: medium solid black;
+    }
+
+    #VenueProfileView .container-fluid .row .col-md-8 table {
+        font-size:22px;
     }
 
     #VenueProfileView .container-fluid .row .col-md-8 table:hover {

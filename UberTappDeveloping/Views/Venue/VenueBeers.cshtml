@@ -120,8 +120,8 @@
                 if (event.target.classList.contains("dropzone")) {
                     event.target.style.background = "coral";
                     $(event.target).css("border-color", "#ff6b66");
-                    console.log($(event.target).parents(".origin").children("h1"));
-                    $(event.target).parents(".origin").children("h1").css("color", "coral");
+                    console.log($(event.target).parents(".origin").children(".searchBeers").children("h1"));
+                    $(event.target).parents(".origin").children(".searchBeers").children("h1").css("color", "coral");
                     $(event.target).parents(".destination").children("h1").css("color", "coral");
                 }
             }, false);
@@ -132,7 +132,7 @@
                 if (event.target.classList.contains("dropzone")) {
                     event.target.style.background = "";
                     event.target.style.borderColor = "";
-                    $(event.target).parents(".origin").children("h1").css("color", "black");
+                    $(event.target).parents(".origin").children(".searchBeers").children("h1").css("color", "black");
                     $(event.target).parents(".destination").children("h1").css("color", "black");
                 }
 
@@ -155,7 +155,7 @@
 
                     event.target.style.background = "";
                     event.target.style.borderColor = "";
-                    $(event.target).parents(".origin").children("h1").css("color", "black");
+                    $(event.target).parents(".origin").children(".searchBeers").children("h1").css("color", "black");
                     $(event.target).parents(".destination").children("h1").css("color", "black");
                     dragged.parentNode.removeChild(dragged);
                     event.target.appendChild(dragged);
