@@ -1,7 +1,8 @@
 ﻿.container {
     width: 90%;
+    font-family: 'East Sea Dokdo', cursive;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
 body {
     padding-top: 50px;
     padding-bottom: 20px;
