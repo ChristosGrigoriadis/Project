@@ -289,6 +289,14 @@
     <Compile Include="Migrations\202101091530341_FavoriteBeersAndUserFollowing.Designer.cs">
       <DependentUpon>202101091530341_FavoriteBeersAndUserFollowing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101131232063_UserNotificationUsersCascadeDeleteTrue.cs" />
+    <Compile Include="Migrations\202101131232063_UserNotificationUsersCascadeDeleteTrue.designer.cs">
+      <DependentUpon>202101131232063_UserNotificationUsersCascadeDeleteTrue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101131251087_VenueOwnersAndBeersCascadeDeleteTrue.cs" />
+    <Compile Include="Migrations\202101131251087_VenueOwnersAndBeersCascadeDeleteTrue.designer.cs">
+      <DependentUpon>202101131251087_VenueOwnersAndBeersCascadeDeleteTrue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\ChatHub.cs" />
@@ -850,6 +858,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101091530341_FavoriteBeersAndUserFollowing.resx">
       <DependentUpon>202101091530341_FavoriteBeersAndUserFollowing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101131232063_UserNotificationUsersCascadeDeleteTrue.resx">
+      <DependentUpon>202101131232063_UserNotificationUsersCascadeDeleteTrue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101131251087_VenueOwnersAndBeersCascadeDeleteTrue.resx">
+      <DependentUpon>202101131251087_VenueOwnersAndBeersCascadeDeleteTrue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

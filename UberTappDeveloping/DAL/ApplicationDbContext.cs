@@ -75,12 +75,12 @@ namespace UberTappDeveloping.DAL
             modelBuilder.Entity<Venue>()
                 .HasMany(v => v.VenueBeers)
                 .WithRequired(b => b.Venue)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true); // venues with beers can be deleted
 
             modelBuilder.Entity<Beer>()
                 .HasMany(b => b.VenueBeers)
                 .WithRequired(v => v.AvailableBeer)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true); // all beers can be deleted
 
             modelBuilder.Entity<VenueProfileImage>()
                 .HasRequired(vp => vp.Venue)
@@ -89,12 +89,22 @@ namespace UberTappDeveloping.DAL
             modelBuilder.Entity<UserNotification>()
                 .HasRequired(un => un.BeerEnthusiast)
                 .WithMany()
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true); //users with notifications can be deleted
             
             modelBuilder.Entity<UserNotification>()
                 .HasRequired(un => un.Notification)
                 .WithMany()
                 .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Venue>()
+            //    .HasOptional(v => v.Owner)
+            //    .WithMany(u => u.VenuesOwned)
+            //    .WillCascadeOnDelete(true); // users with venues can be deleted
+
+            //modelBuilder.Entity<ApplicationUser>()
+            //    .HasMany(u => u.VenuesOwned)
+            //    .WithOptional(v => v.Owner)
+            //    .WillCascadeOnDelete(true);
 
             base.OnModelCreating(modelBuilder);
         }
